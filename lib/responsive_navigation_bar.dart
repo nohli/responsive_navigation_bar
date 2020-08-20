@@ -141,7 +141,7 @@ class NavigationBar extends StatelessWidget {
     for (final NavigationBarButton button in navigationBarButtons) {
       final index = navigationBarButtons.indexOf(button);
       buttons.add(
-        Button(
+        _Button(
           index: index,
           active: selectedIndex == index,
           text: button.text,
@@ -232,7 +232,7 @@ class NavigationBarButton {
       this.textColor});
 }
 
-class Button extends StatelessWidget {
+class _Button extends StatelessWidget {
   final int index;
   final bool active;
   final String text;
@@ -250,7 +250,7 @@ class Button extends StatelessWidget {
   final bool debugPaint;
   final Function onTap;
 
-  const Button(
+  const _Button(
       {this.index,
       this.active,
       this.text,

@@ -1,3 +1,8 @@
+## 0.0.3
+
+* Minor improvements.
+* Add example.
+
 ## 0.0.2
 
 * Pub.dev improvement.
