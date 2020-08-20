@@ -1,3 +1,7 @@
+## 0.0.8
+
+* Pub.dev improvement.
+
 ## 0.0.4
 
 * Add web support.

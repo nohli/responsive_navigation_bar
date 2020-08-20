@@ -1,11 +1,11 @@
 name: responsive_navigation_bar
 description: A responsive (and floatable) bottom navigation bar. Very beginner friendly.
-version: 0.0.4
+version: 0.0.8
 homepage: https://github.com/nohli/navigation_bar
 
 environment:
-  sdk: ">=2.9.0 <3.0.0"
-  flutter: ">=1.20.1 <2.0.0"
+  sdk: ">=2.8.0 <3.0.0"
+  flutter: ">=1.20.0 <2.0.0"
 
 dependencies:
   flutter:
