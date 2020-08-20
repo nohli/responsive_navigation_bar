@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_navigation_bar/responsive_navigation_bar.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,10 +9,49 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  int selectedIndex = 0;
+
+  void changeTab() {
+    if (mounted) setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(),
+      home: Scaffold(
+        bottomNavigationBar: NavigationBar(
+          selectedIndex: selectedIndex,
+          onTabChange: (int index) {
+            selectedIndex = index;
+            changeTab();
+          },
+          textStyle:
+              TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          navigationBarButtons: [
+            NavigationBarButton(
+              text: 'Tab 1',
+              icon: Icons.people,
+              backgroundGradient: const LinearGradient(
+                colors: [Colors.yellow, Colors.green, Colors.blue],
+              ),
+            ),
+            NavigationBarButton(
+              text: 'Tab 2',
+              icon: Icons.star,
+              backgroundGradient: const LinearGradient(
+                colors: [Colors.cyan, Colors.teal],
+              ),
+            ),
+            NavigationBarButton(
+              text: 'Tab 3',
+              icon: Icons.settings,
+              backgroundGradient: const LinearGradient(
+                colors: [Colors.green, Colors.yellow],
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }

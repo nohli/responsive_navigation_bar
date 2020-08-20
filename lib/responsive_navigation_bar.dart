@@ -146,7 +146,8 @@ class NavigationBar extends StatelessWidget {
           active: selectedIndex == index,
           text: button.text,
           textColor: button.textColor ?? textStyle.color,
-          textStyle: textStyle.copyWith(fontSize: buttonFontSize),
+          textStyle: textStyle.copyWith(
+              color: button.textColor, fontSize: buttonFontSize),
           icon: button.icon,
           iconSize: buttonFontSize ?? textStyle.fontSize,
           activeIconColor: activeIconColor,
@@ -226,7 +227,7 @@ class NavigationBarButton {
       {@required this.text,
       this.icon = Icons.hourglass_empty,
       this.padding = const EdgeInsets.all(8),
-      this.backgroundColor = Colors.transparent,
+      this.backgroundColor = Colors.grey,
       this.backgroundGradient,
       this.textColor});
 }
