@@ -1,3 +1,7 @@
+## 0.0.4
+
+* Add web support.
+
 ## 0.0.3
 
 * Minor improvements.
