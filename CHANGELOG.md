@@ -1,3 +1,7 @@
+## 0.1.0
+
+* Update readme.
+
 ## 0.0.10
 
 * Make text of buttons optional.

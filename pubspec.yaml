@@ -1,6 +1,6 @@
 name: responsive_navigation_bar
 description: A responsive (and floatable) bottom navigation bar. Very beginner friendly.
-version: 0.0.10
+version: 0.1.0
 homepage: https://github.com/nohli/navigation_bar
 
 environment:
