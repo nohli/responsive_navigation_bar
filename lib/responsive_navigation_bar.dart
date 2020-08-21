@@ -56,6 +56,10 @@ class NavigationBar extends StatelessWidget {
 
   /// Size of text and icons.
   ///
+  /// The textScaleFactor is 1, so the text will NOT be scaled dynamically with the user's device settings.
+  ///
+  /// That means, you can use the largest fontSize that does not overflow.
+  ///
   /// If null, defaults to:
   ///
   /// ```
@@ -72,10 +76,6 @@ class NavigationBar extends StatelessWidget {
   /// TextStyle for all buttons.
   ///
   /// The [TextStyle]'s [fontSize] value is always overridden by [fontSize].
-  ///
-  /// The textScaleFactor is 1, so the text will NOT be scaled dynamically with the user's device settings.
-  ///
-  /// That means, you can use the largest fontSize that does not overflow.
   final TextStyle textStyle;
 
   /// Icon color of the selected button.
