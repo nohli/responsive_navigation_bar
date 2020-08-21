@@ -1,3 +1,7 @@
+## 0.1.3
+
+* Add macOS support.
+
 ## 0.1.2
 
 * Update readme.

@@ -1,6 +1,6 @@
 name: responsive_navigation_bar
 description: A responsive bottom navigation bar. Very beginner friendly. Feel free to contribute.
-version: 0.1.2
+version: 0.1.3
 homepage: https://github.com/nohli/navigation_bar
 
 environment:
@@ -25,6 +25,8 @@ flutter:
         package: com.achimsapps.responsive_navigation_bar
         pluginClass: ResponsiveNavigationBarPlugin
       ios:
+        pluginClass: ResponsiveNavigationBarPlugin
+      macos:
         pluginClass: ResponsiveNavigationBarPlugin
       web:
         fileName: responsive_navigation_bar_web.dart
