@@ -25,6 +25,7 @@ class _MyAppState extends State<MyApp> {
             selectedIndex = index;
             changeTab();
           },
+          // showActiveButtonText: false,
           textStyle:
               TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           navigationBarButtons: [

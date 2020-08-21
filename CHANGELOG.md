@@ -1,3 +1,7 @@
+## 0.0.10
+
+* Make text of buttons optional.
+
 ## 0.0.8
 
 * Pub.dev improvement.

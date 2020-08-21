@@ -84,6 +84,11 @@ class NavigationBar extends StatelessWidget {
   /// Icon colors of unselected buttons.
   final Color inactiveIconColor;
 
+  /// This overrides [activeButtonFlexFactor] and [inactiveButtonsFlexFactor] and sets each to 1 - so that active and inactive buttons have the same size.
+  ///
+  /// Also, this overrides individual [text] parameters of [NavigationBarButton]s (since the [text] will not be shown).
+  final bool showActiveButtonText;
+
   /// Flex factor.
   ///
   /// Only set this combined with [inactiveButtonsFlexFactor]!
@@ -125,6 +130,7 @@ class NavigationBar extends StatelessWidget {
       this.textStyle = const TextStyle(fontWeight: FontWeight.bold),
       this.activeIconColor = Colors.white,
       this.inactiveIconColor = Colors.white,
+      this.showActiveButtonText = true,
       this.activeButtonFlexFactor = 160,
       this.inactiveButtonsFlexFactor = 60,
       this.debugPaint = false});
@@ -158,8 +164,10 @@ class NavigationBar extends StatelessWidget {
                   : const EdgeInsets.symmetric(horizontal: 8, vertical: 5)),
           backgroundColor: button.backgroundColor,
           backgroundGradient: button.backgroundGradient,
-          activeFlexFactor: activeButtonFlexFactor,
-          inactiveFlexFactor: inactiveButtonsFlexFactor,
+          activeFlexFactor: showActiveButtonText ? activeButtonFlexFactor : 1,
+          inactiveFlexFactor:
+              showActiveButtonText ? inactiveButtonsFlexFactor : 1,
+          showActiveButtonText: showActiveButtonText,
           debugPaint: debugPaint,
           onTap: () => onTabChange(index),
         ),
@@ -224,7 +232,7 @@ class NavigationBarButton {
   final Color textColor;
 
   const NavigationBarButton(
-      {@required this.text,
+      {this.text,
       this.icon = Icons.hourglass_empty,
       this.padding = const EdgeInsets.all(8),
       this.backgroundColor = Colors.grey,
@@ -247,6 +255,7 @@ class _Button extends StatelessWidget {
   final Gradient backgroundGradient;
   final int activeFlexFactor;
   final int inactiveFlexFactor;
+  final bool showActiveButtonText;
   final bool debugPaint;
   final Function onTap;
 
@@ -265,11 +274,13 @@ class _Button extends StatelessWidget {
       this.backgroundGradient,
       this.activeFlexFactor,
       this.inactiveFlexFactor,
+      this.showActiveButtonText,
       this.debugPaint,
       this.onTap});
 
   @override
   Widget build(BuildContext context) {
+    final bool showText = active && showActiveButtonText && text != null;
     return Flexible(
       flex: active ? activeFlexFactor : inactiveFlexFactor,
       child: Container(
@@ -298,9 +309,11 @@ class _Button extends StatelessWidget {
                       child: Icon(icon,
                           size: iconSize,
                           color: active ? activeIconColor : inactiveIconColor)),
-                  if (active) const Padding(padding: EdgeInsets.only(left: 5)),
-                  if (active) Text(text, style: textStyle, textScaleFactor: 1),
-                  if (active) const Padding(padding: EdgeInsets.zero),
+                  if (showText)
+                    const Padding(padding: EdgeInsets.only(left: 5)),
+                  if (showText)
+                    Text(text, style: textStyle, textScaleFactor: 1),
+                  if (showText) const Padding(padding: EdgeInsets.zero),
                 ],
               ),
             ),
