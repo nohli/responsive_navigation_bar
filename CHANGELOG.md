@@ -1,3 +1,7 @@
+## 0.1.4
+
+* Improve description.
+
 ## 0.1.3
 
 * Add macOS support.
