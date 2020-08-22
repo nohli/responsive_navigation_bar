@@ -19,8 +19,8 @@ class NavigationBar extends StatelessWidget {
   /// ```
   final Function onTabChange;
 
-  /// Experimental - set this to true if you do not use the NavigationBar as [bottomNavigationBar] in your Scaffold,
-  /// but for example in the [body] in a Stack.
+  /// Experimental - set this to true if you do not use the [NavigationBar] as [bottomNavigationBar] in your [Scaffold],
+  /// but for example in the [Scaffold]'s [body] in a [Stack].
   final bool floating;
 
   /// Color of the whole bar.
