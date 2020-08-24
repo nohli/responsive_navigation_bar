@@ -1,3 +1,7 @@
+## 1.0.0+1
+
+* Improve description
+
 ## 1.0.0
 
 * Release version 1.0.0
@@ -18,7 +22,7 @@
 
 * Add macOS support
 
-## 0.1.2 - 0.1.0
+## 0.1.2-0.1.0
 
 * Update readme
 
@@ -26,7 +30,7 @@
 
 * Make text of buttons optional
 
-## 0.0.9 - 0.0.5
+## 0.0.9-0.0.5
 
 * Pub.dev improvement
 

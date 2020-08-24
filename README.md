@@ -29,3 +29,4 @@ Todo:
 * Improve floating
 * Add feature requests
 * Merge your pull requests
+* Add Linux and Windows support
