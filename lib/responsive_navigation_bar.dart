@@ -293,7 +293,7 @@ class _Button extends StatelessWidget {
           onTap: () => onTap(),
           child: Container(
             decoration: BoxDecoration(
-                gradient: backgroundGradient,
+                gradient: active ? backgroundGradient : null,
                 color: active
                     ? backgroundGradient != null
                         ? Colors.white

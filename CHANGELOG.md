@@ -1,3 +1,7 @@
+## 0.1.5
+
+* Fixes for Flutter web.
+
 ## 0.1.4
 
 * Improve description.
