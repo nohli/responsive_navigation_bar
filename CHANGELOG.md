@@ -1,3 +1,7 @@
+## 0.1.6
+
+* Fixes for macOS.
+
 ## 0.1.5
 
 * Fixes for Flutter web.
