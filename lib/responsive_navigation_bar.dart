@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+/// Put this in [Scaffold]'s [bottomNavigationBar]
 class NavigationBar extends StatelessWidget {
   /// List of buttons.
   ///
@@ -196,6 +197,9 @@ class NavigationBar extends StatelessWidget {
   }
 }
 
+/// Put this in [NavigationBar]'s [navigationBarButtons]
+///
+/// [ NavigationBarButton(...), NavigationBarButton(...), ... ]
 class NavigationBarButton {
   /// Text of the button (if active).
   final String text;

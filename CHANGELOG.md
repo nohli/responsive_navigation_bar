@@ -1,3 +1,7 @@
+## 1.0.0+2
+
+* Improve documentation
+
 ## 1.0.0+1
 
 * Improve description
