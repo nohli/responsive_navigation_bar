@@ -1,3 +1,7 @@
+## 1.1.0+1
+
+* Add `How to make the BottomBar float` to readme
+
 ## 1.1.0
 
 * Remove floating (experimental feature)

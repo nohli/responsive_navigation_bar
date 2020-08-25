@@ -19,6 +19,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        // extendBody: true,
         bottomNavigationBar: NavigationBar(
           selectedIndex: selectedIndex,
           onTabChange: (int index) {

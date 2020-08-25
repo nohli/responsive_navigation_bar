@@ -17,6 +17,15 @@ Features:
 * Optional: Change the opacity of the menu bar
 * By default shows text on selected button (and resizes all buttons), this can simply be disabled via: showActiveButtonText = false
 * Only StatelessWidgets
+* How to make the `BottomBar` float above the body:
+```
+Scaffold(
+  extendBody: true,
+  body: // <- no SafeArea here
+  bottomNavigationBar: ...
+  ...
+)
+```
 
 ![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/example/assets/darkmode-with-text.gif)
 ![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/example/assets/darkmode-without-text.gif)
