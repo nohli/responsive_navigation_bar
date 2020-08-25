@@ -1,3 +1,7 @@
+## 1.1.0+3
+
+* Improve readme regarding floating
+
 ## 1.1.0+2
 
 * Improve layout of readme
