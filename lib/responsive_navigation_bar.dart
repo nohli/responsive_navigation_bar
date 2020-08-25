@@ -20,10 +20,6 @@ class NavigationBar extends StatelessWidget {
   /// ```
   final Function onTabChange;
 
-  /// Experimental - set this to true if you do not use the [NavigationBar] as [bottomNavigationBar] in your [Scaffold],
-  /// but for example in the [Scaffold]'s [body] in a [Stack].
-  final bool floating;
-
   /// Color of the whole bar.
   ///
   /// Gets overridden by [backgroundGradient]!
@@ -120,7 +116,6 @@ class NavigationBar extends StatelessWidget {
   const NavigationBar(
       {@required this.navigationBarButtons,
       @required this.onTabChange,
-      this.floating = false,
       this.backgroundColor,
       this.backgroundGradient,
       this.backgroundOpacity = 0.5,
@@ -175,24 +170,22 @@ class NavigationBar extends StatelessWidget {
       );
     }
 
-    final Widget child = Padding(
+    return SafeArea(
+      child: Padding(
         padding: outerPadding,
         child: Container(
-            decoration: BoxDecoration(
-              color: (backgroundGradient != null
-                      ? Colors.white
-                      : backgroundColor ?? const Color(0x7d8c8c8c))
-                  .withOpacity(backgroundOpacity),
-              gradient: backgroundGradient,
-              borderRadius: const BorderRadius.all(Radius.circular(80)),
-            ),
-            padding: padding,
-            child: Row(children: buttons)));
-
-    return SafeArea(
-      child: floating
-          ? Align(alignment: Alignment.bottomCenter, child: child)
-          : child,
+          decoration: BoxDecoration(
+            color: (backgroundGradient != null
+                    ? Colors.white
+                    : backgroundColor ?? const Color(0x7d8c8c8c))
+                .withOpacity(backgroundOpacity),
+            gradient: backgroundGradient,
+            borderRadius: const BorderRadius.all(Radius.circular(80)),
+          ),
+          padding: padding,
+          child: Row(children: buttons),
+        ),
+      ),
     );
   }
 }

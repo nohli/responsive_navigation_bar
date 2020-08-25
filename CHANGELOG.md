@@ -1,3 +1,7 @@
+## 1.1.0
+
+* Remove floating (experimental feature)
+
 ## 1.0.0+2
 
 * Improve documentation
