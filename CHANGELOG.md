@@ -1,3 +1,7 @@
+## 1.1.0+4
+
+* Improve readme
+
 ## 1.1.0+3
 
 * Improve readme regarding floating

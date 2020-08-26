@@ -13,6 +13,7 @@ https://pub.dev/packages/responsive_navigation_bar/example
 * Optional: Change the opacity of the menu bar
 * By default shows text on selected button (and resizes all buttons), this can simply be disabled via: showActiveButtonText = false
 * Only StatelessWidgets
+* Compatible with Flutter for iOS, Android, Web and macOS
 * How to make the `BottomBar` float above the body:
 ```
 Scaffold(
@@ -23,7 +24,7 @@ Scaffold(
 )
 ```
 
-## NavigationBar in action
+## NavigationBar in Action
 
 ![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/example/assets/darkmode-with-text.gif)
 ![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/example/assets/darkmode-without-text.gif)
