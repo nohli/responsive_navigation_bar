@@ -1,3 +1,7 @@
+## 1.2.0+1
+
+* Improve readme
+
 ## 1.2.0
 
 * Add background blur

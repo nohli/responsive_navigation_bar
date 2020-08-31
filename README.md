@@ -27,16 +27,14 @@ Scaffold(
 
 * Colors in the example GIFs below:
 ```
-// backgroundColor:
+backgroundColor:
     MediaQuery.of(context).platformBrightness == Brightness.dark
         ? const Color(0xff3c3c3c)
-        : const Color(0xffbebebe);
-```
-```
-// inactiveIconColor
-MediaQuery.of(context).platformBrightness == Brightness.dark
+        : const Color(0xffbebebe),
+inactiveIconColor:
+    MediaQuery.of(context).platformBrightness == Brightness.dark
         ? const Color(0xffaaaaaa)
-        : const Color(0xff969696);
+        : const Color(0xff969696),
 ```
 
 
