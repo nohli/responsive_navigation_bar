@@ -11,6 +11,7 @@ https://pub.dev/packages/responsive_navigation_bar/example
 * By default, fontSize, icon size and padding are responsive (change size with screen size)
 * Optional: Beautiful gradient for navigation bar and/or buttons (or solid colors)
 * Optional: Change the opacity of the menu bar
+* Optional: Blurred background from the top of the navigation bar to the bottom of the screen
 * By default shows text on selected button (and resizes all buttons), this can simply be disabled via: showActiveButtonText = false
 * Only StatelessWidgets
 * Compatible with Flutter for iOS, Android, Web and macOS
@@ -23,6 +24,21 @@ Scaffold(
   ...
 )
 ```
+
+* Colors in the example GIFs below:
+```
+// backgroundColor:
+    MediaQuery.of(context).platformBrightness == Brightness.dark
+        ? const Color(0xff3c3c3c)
+        : const Color(0xffbebebe);
+```
+```
+// inactiveIconColor
+MediaQuery.of(context).platformBrightness == Brightness.dark
+        ? const Color(0xffaaaaaa)
+        : const Color(0xff969696);
+```
+
 
 ## NavigationBar in Action
 

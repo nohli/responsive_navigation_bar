@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -41,6 +42,11 @@ class NavigationBar extends StatelessWidget {
   /// ```
   final double backgroundOpacity;
 
+  /// Blur factor, from the [NavigationBar]'s top to the bottom of the screen.
+  ///
+  /// Defaults to 2.5
+  final double backgroundBlur;
+
   /// Padding of the bar inside [backgroundColor]
   final EdgeInsetsGeometry padding;
 
@@ -78,7 +84,7 @@ class NavigationBar extends StatelessWidget {
   /// Icon color of the selected button.
   final Color activeIconColor;
 
-  /// Icon colors of unselected buttons.
+  /// Icon color of unselected buttons.
   final Color inactiveIconColor;
 
   /// This overrides [activeButtonFlexFactor] and [inactiveButtonsFlexFactor] and sets each to 1 - so that active and inactive buttons have the same size.
@@ -119,6 +125,7 @@ class NavigationBar extends StatelessWidget {
       this.backgroundColor,
       this.backgroundGradient,
       this.backgroundOpacity = 0.5,
+      this.backgroundBlur = 2.5,
       this.padding = const EdgeInsets.all(6),
       this.outerPadding = const EdgeInsets.fromLTRB(8, 0, 8, 5),
       this.selectedIndex = 0,
@@ -170,20 +177,30 @@ class NavigationBar extends StatelessWidget {
       );
     }
 
-    return SafeArea(
-      child: Padding(
-        padding: outerPadding,
-        child: Container(
-          decoration: BoxDecoration(
-            color: (backgroundGradient != null
-                    ? Colors.white
-                    : backgroundColor ?? const Color(0x7d8c8c8c))
-                .withOpacity(backgroundOpacity),
-            gradient: backgroundGradient,
-            borderRadius: const BorderRadius.all(Radius.circular(80)),
+    return ClipRect(
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        heightFactor: 1,
+        child: BackdropFilter(
+          filter:
+              ImageFilter.blur(sigmaX: backgroundBlur, sigmaY: backgroundBlur),
+          child: SafeArea(
+            child: Padding(
+              padding: outerPadding,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: (backgroundGradient != null
+                          ? Colors.white
+                          : backgroundColor ?? const Color(0x7d8c8c8c))
+                      .withOpacity(backgroundOpacity),
+                  gradient: backgroundGradient,
+                  borderRadius: const BorderRadius.all(Radius.circular(80)),
+                ),
+                padding: padding,
+                child: Row(children: buttons),
+              ),
+            ),
           ),
-          padding: padding,
-          child: Row(children: buttons),
         ),
       ),
     );
