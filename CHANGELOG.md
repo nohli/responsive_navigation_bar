@@ -1,3 +1,7 @@
+## 1.5.0
+
+* Auto-format using line length of 80 (to get 10 pub points)
+
 ## 1.4.0
 
 * Update dependencies, improve readme

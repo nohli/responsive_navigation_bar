@@ -143,7 +143,8 @@ class NavigationBar extends StatelessWidget {
     // [points] from:
     // https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions
     final double deviceWidth = MediaQuery.of(context).size.width ?? 320;
-    final double buttonFontSize = fontSize ?? (deviceWidth >= 650 ? 33 : deviceWidth >= 375 ? 20 : 18);
+    final double buttonFontSize =
+        fontSize ?? (deviceWidth >= 650 ? 33 : deviceWidth >= 375 ? 20 : 18);
 
     final List<Widget> buttons = <Widget>[];
     for (final NavigationBarButton button in navigationBarButtons) {
@@ -154,7 +155,8 @@ class NavigationBar extends StatelessWidget {
           active: selectedIndex == index,
           text: button.text,
           textColor: button.textColor ?? textStyle.color,
-          textStyle: textStyle.copyWith(color: button.textColor, fontSize: buttonFontSize),
+          textStyle: textStyle.copyWith(
+              color: button.textColor, fontSize: buttonFontSize),
           icon: button.icon,
           iconSize: buttonFontSize ?? textStyle.fontSize,
           activeIconColor: activeIconColor,
@@ -166,7 +168,8 @@ class NavigationBar extends StatelessWidget {
           backgroundColor: button.backgroundColor,
           backgroundGradient: button.backgroundGradient,
           activeFlexFactor: showActiveButtonText ? activeButtonFlexFactor : 1,
-          inactiveFlexFactor: showActiveButtonText ? inactiveButtonsFlexFactor : 1,
+          inactiveFlexFactor:
+              showActiveButtonText ? inactiveButtonsFlexFactor : 1,
           showActiveButtonText: showActiveButtonText,
           debugPaint: debugPaint,
           onTap: () => onTabChange(index),
@@ -179,15 +182,17 @@ class NavigationBar extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         heightFactor: 1,
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: backgroundBlur, sigmaY: backgroundBlur),
+          filter:
+              ImageFilter.blur(sigmaX: backgroundBlur, sigmaY: backgroundBlur),
           child: SafeArea(
             child: Padding(
               padding: outerPadding,
               child: Container(
                 decoration: BoxDecoration(
-                  color:
-                      (backgroundGradient != null ? Colors.white : backgroundColor ?? const Color(0x7d8c8c8c))
-                          .withOpacity(backgroundOpacity),
+                  color: (backgroundGradient != null
+                          ? Colors.white
+                          : backgroundColor ?? const Color(0x7d8c8c8c))
+                      .withOpacity(backgroundOpacity),
                   gradient: backgroundGradient,
                   borderRadius: const BorderRadius.all(Radius.circular(80)),
                 ),
@@ -294,15 +299,20 @@ class _Button extends StatelessWidget {
       flex: active ? activeFlexFactor : inactiveFlexFactor,
       child: Container(
         color: kDebugMode && debugPaint
-            ? index.remainder(2) == 0 ? Colors.green.withOpacity(0.3) : Colors.red.withOpacity(0.3)
+            ? index.remainder(2) == 0
+                ? Colors.green.withOpacity(0.3)
+                : Colors.red.withOpacity(0.3)
             : Colors.transparent,
         child: GestureDetector(
           onTap: () => onTap(),
           child: Container(
             decoration: BoxDecoration(
                 gradient: active ? backgroundGradient : null,
-                color:
-                    active ? backgroundGradient != null ? Colors.white : backgroundColor : Colors.transparent,
+                color: active
+                    ? backgroundGradient != null
+                        ? Colors.white
+                        : backgroundColor
+                    : Colors.transparent,
                 borderRadius: const BorderRadius.all(Radius.circular(80))),
             child: Padding(
               padding: padding,
@@ -310,9 +320,13 @@ class _Button extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Flexible(
-                      child: Icon(icon, size: iconSize, color: active ? activeIconColor : inactiveIconColor)),
-                  if (showText) const Padding(padding: EdgeInsets.only(left: 5)),
-                  if (showText) Text(text, style: textStyle, textScaleFactor: 1),
+                      child: Icon(icon,
+                          size: iconSize,
+                          color: active ? activeIconColor : inactiveIconColor)),
+                  if (showText)
+                    const Padding(padding: EdgeInsets.only(left: 5)),
+                  if (showText)
+                    Text(text, style: textStyle, textScaleFactor: 1),
                   if (showText) const Padding(padding: EdgeInsets.zero),
                 ],
               ),
