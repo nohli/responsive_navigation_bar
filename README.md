@@ -19,7 +19,7 @@ https://pub.dev/packages/responsive_navigation_bar/example
 ```
 Scaffold(
   extendBody: true,
-  body: // <- SafeArea(bottom: false, ...)
+  body: SafeArea(bottom: false, ...),
   bottomNavigationBar: ...
   ...
 )
