@@ -1,6 +1,10 @@
+## 1.6.0
+
+* Auto-format with Dart's new formatter style (to get 10 pub points back)
+
 ## 1.5.0
 
-* Auto-format using line length of 80 (to get 10 pub points)
+* Auto-format using line length of 80 (to get 10 pub points back)
 
 ## 1.4.0
 

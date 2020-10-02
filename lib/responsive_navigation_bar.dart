@@ -143,8 +143,12 @@ class NavigationBar extends StatelessWidget {
     // [points] from:
     // https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions
     final double deviceWidth = MediaQuery.of(context).size.width ?? 320;
-    final double buttonFontSize =
-        fontSize ?? (deviceWidth >= 650 ? 33 : deviceWidth >= 375 ? 20 : 18);
+    final double buttonFontSize = fontSize ??
+        (deviceWidth >= 650
+            ? 33
+            : deviceWidth >= 375
+                ? 20
+                : 18);
 
     final List<Widget> buttons = <Widget>[];
     for (final NavigationBarButton button in navigationBarButtons) {
