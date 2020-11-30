@@ -3,3 +3,4 @@
 .dart_tool/package_config.json
 .packages
 .idea/libraries/Dart_SDK.xml
+.dart_tool/package_config_subset

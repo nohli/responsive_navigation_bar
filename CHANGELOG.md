@@ -1,3 +1,7 @@
+## 2.0.0-nullsafety.0
+
+* Migrate package to null safety (and publish prerelease)
+
 ## 1.6.0
 
 * Auto-format with Dart's new formatter style (to get 10 pub points back)

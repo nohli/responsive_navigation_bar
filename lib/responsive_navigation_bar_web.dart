@@ -28,7 +28,6 @@ class ResponsiveNavigationBarWeb {
     switch (call.method) {
       case 'getPlatformVersion':
         return getPlatformVersion();
-        break;
       default:
         throw PlatformException(
           code: 'Unimplemented',

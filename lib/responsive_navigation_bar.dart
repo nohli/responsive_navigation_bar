@@ -24,12 +24,12 @@ class NavigationBar extends StatelessWidget {
   /// Color of the whole bar.
   ///
   /// Gets overridden by [backgroundGradient]!
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// Color(s) of the whole bar.
   ///
   /// Overrides [backgroundColor]!
-  final Gradient backgroundGradient;
+  final Gradient? backgroundGradient;
 
   /// Opacity of [backgroundColor]/[backGroundGradient].
   ///
@@ -74,7 +74,7 @@ class NavigationBar extends StatelessWidget {
   /// ```
   ///
   /// If you specify your own [fontSize], it will NOT be responsive any more - unless you pass something like above.
-  final double fontSize;
+  final double? fontSize;
 
   /// TextStyle for all buttons.
   ///
@@ -120,8 +120,8 @@ class NavigationBar extends StatelessWidget {
   final bool debugPaint;
 
   const NavigationBar(
-      {@required this.navigationBarButtons,
-      @required this.onTabChange,
+      {required this.navigationBarButtons,
+      required this.onTabChange,
       this.backgroundColor,
       this.backgroundGradient,
       this.backgroundOpacity = 0.5,
@@ -142,7 +142,7 @@ class NavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     // [points] from:
     // https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions
-    final double deviceWidth = MediaQuery.of(context).size.width ?? 320;
+    final double deviceWidth = MediaQuery.of(context).size.width;
     final double buttonFontSize = fontSize ??
         (deviceWidth >= 650
             ? 33
@@ -162,7 +162,7 @@ class NavigationBar extends StatelessWidget {
           textStyle: textStyle.copyWith(
               color: button.textColor, fontSize: buttonFontSize),
           icon: button.icon,
-          iconSize: buttonFontSize ?? textStyle.fontSize,
+          iconSize: buttonFontSize,
           activeIconColor: activeIconColor,
           inactiveIconColor: inactiveIconColor,
           padding: button.padding ??
@@ -232,7 +232,7 @@ class NavigationBarButton {
   /// ```
   ///
   /// If you specify your own [padding], it will NOT be responsive any more - unless you pass something like above.
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
 
   /// Color of the button.
   ///
@@ -242,17 +242,17 @@ class NavigationBarButton {
   /// Color(s) of the button.
   ///
   /// Overrides [backgroundColor]!
-  final Gradient backgroundGradient;
+  final Gradient? backgroundGradient;
 
   /// Color of the text.
   ///
   /// If null, the button uses the color of the [NavigationBar]'s [textStyle].
-  final Color textColor;
+  final Color? textColor;
 
   const NavigationBarButton(
-      {this.text,
+      {this.text = '',
       this.icon = Icons.hourglass_empty,
-      this.padding = const EdgeInsets.all(8),
+      this.padding,
       this.backgroundColor = Colors.grey,
       this.backgroundGradient,
       this.textColor});
@@ -262,7 +262,7 @@ class _Button extends StatelessWidget {
   final int index;
   final bool active;
   final String text;
-  final Color textColor;
+  final Color? textColor;
   final TextStyle textStyle;
   final IconData icon;
   final double iconSize;
@@ -270,7 +270,7 @@ class _Button extends StatelessWidget {
   final Color inactiveIconColor;
   final EdgeInsetsGeometry padding;
   final Color backgroundColor;
-  final Gradient backgroundGradient;
+  final Gradient? backgroundGradient;
   final int activeFlexFactor;
   final int inactiveFlexFactor;
   final bool showActiveButtonText;
@@ -278,27 +278,27 @@ class _Button extends StatelessWidget {
   final Function onTap;
 
   const _Button(
-      {this.index,
-      this.active,
-      this.text,
-      this.textColor,
-      this.textStyle,
-      this.icon,
-      this.iconSize,
-      this.activeIconColor,
-      this.inactiveIconColor,
-      this.padding,
-      this.backgroundColor,
-      this.backgroundGradient,
-      this.activeFlexFactor,
-      this.inactiveFlexFactor,
-      this.showActiveButtonText,
-      this.debugPaint,
-      this.onTap});
+      {required this.index,
+      required this.active,
+      required this.text,
+      required this.textColor,
+      required this.textStyle,
+      required this.icon,
+      required this.iconSize,
+      required this.activeIconColor,
+      required this.inactiveIconColor,
+      required this.padding,
+      required this.backgroundColor,
+      required this.backgroundGradient,
+      required this.activeFlexFactor,
+      required this.inactiveFlexFactor,
+      required this.showActiveButtonText,
+      required this.debugPaint,
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    final bool showText = active && showActiveButtonText && text != null;
+    final bool showText = active && showActiveButtonText && text != '';
     return Flexible(
       flex: active ? activeFlexFactor : inactiveFlexFactor,
       child: Container(
