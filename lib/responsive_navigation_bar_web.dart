@@ -10,6 +10,7 @@ import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 /// A web implementation of the ResponsiveNavigationBar plugin.
 class ResponsiveNavigationBarWeb {
+  ///
   static void registerWith(Registrar registrar) {
     final MethodChannel channel = MethodChannel(
       'responsive_navigation_bar',
@@ -17,7 +18,8 @@ class ResponsiveNavigationBarWeb {
       registrar.messenger,
     );
 
-    final pluginInstance = ResponsiveNavigationBarWeb();
+    final ResponsiveNavigationBarWeb pluginInstance =
+        ResponsiveNavigationBarWeb();
     channel.setMethodCallHandler(pluginInstance.handleMethodCall);
   }
 
@@ -39,7 +41,7 @@ class ResponsiveNavigationBarWeb {
 
   /// Returns a [String] containing the version of the platform.
   Future<String> getPlatformVersion() {
-    final version = html.window.navigator.userAgent;
-    return Future.value(version);
+    final String version = html.window.navigator.userAgent;
+    return Future<String>.value(version);
   }
 }

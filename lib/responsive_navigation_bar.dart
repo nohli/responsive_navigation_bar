@@ -2,8 +2,28 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-/// Put this in [Scaffold]'s [bottomNavigationBar]
+///
 class NavigationBar extends StatelessWidget {
+  /// Put this in [Scaffold]'s [bottomNavigationBar]
+  const NavigationBar(
+      {required this.navigationBarButtons,
+      required this.onTabChange,
+      this.backgroundColor,
+      this.backgroundGradient,
+      this.backgroundOpacity = 0.5,
+      this.backgroundBlur = 2.5,
+      this.padding = const EdgeInsets.all(6),
+      this.outerPadding = const EdgeInsets.fromLTRB(8, 0, 8, 5),
+      this.selectedIndex = 0,
+      this.fontSize,
+      this.textStyle = const TextStyle(fontWeight: FontWeight.bold),
+      this.activeIconColor = Colors.white,
+      this.inactiveIconColor = Colors.white,
+      this.showActiveButtonText = true,
+      this.activeButtonFlexFactor = 160,
+      this.inactiveButtonsFlexFactor = 60,
+      this.debugPaint = false});
+
   /// List of buttons.
   ///
   /// [ NavigationBarButton(...), NavigationBarButton(...), ... ]
@@ -119,25 +139,6 @@ class NavigationBar extends StatelessWidget {
   /// Paints green/red background color for each button.
   final bool debugPaint;
 
-  const NavigationBar(
-      {required this.navigationBarButtons,
-      required this.onTabChange,
-      this.backgroundColor,
-      this.backgroundGradient,
-      this.backgroundOpacity = 0.5,
-      this.backgroundBlur = 2.5,
-      this.padding = const EdgeInsets.all(6),
-      this.outerPadding = const EdgeInsets.fromLTRB(8, 0, 8, 5),
-      this.selectedIndex = 0,
-      this.fontSize,
-      this.textStyle = const TextStyle(fontWeight: FontWeight.bold),
-      this.activeIconColor = Colors.white,
-      this.inactiveIconColor = Colors.white,
-      this.showActiveButtonText = true,
-      this.activeButtonFlexFactor = 160,
-      this.inactiveButtonsFlexFactor = 60,
-      this.debugPaint = false});
-
   @override
   Widget build(BuildContext context) {
     // [points] from:
@@ -152,7 +153,7 @@ class NavigationBar extends StatelessWidget {
 
     final List<Widget> buttons = <Widget>[];
     for (final NavigationBarButton button in navigationBarButtons) {
-      final index = navigationBarButtons.indexOf(button);
+      final int index = navigationBarButtons.indexOf(button);
       buttons.add(
         _Button(
           index: index,
@@ -211,10 +212,19 @@ class NavigationBar extends StatelessWidget {
   }
 }
 
-/// Put this in [NavigationBar]'s [navigationBarButtons]
 ///
-/// [ NavigationBarButton(...), NavigationBarButton(...), ... ]
 class NavigationBarButton {
+  /// Put this in [NavigationBar]'s [navigationBarButtons]
+  ///
+  /// [ NavigationBarButton(...), NavigationBarButton(...), ... ]
+  const NavigationBarButton(
+      {this.text = '',
+      this.icon = Icons.hourglass_empty,
+      this.padding,
+      this.backgroundColor = Colors.grey,
+      this.backgroundGradient,
+      this.textColor});
+
   /// Text of the button (if active).
   final String text;
 
@@ -248,35 +258,9 @@ class NavigationBarButton {
   ///
   /// If null, the button uses the color of the [NavigationBar]'s [textStyle].
   final Color? textColor;
-
-  const NavigationBarButton(
-      {this.text = '',
-      this.icon = Icons.hourglass_empty,
-      this.padding,
-      this.backgroundColor = Colors.grey,
-      this.backgroundGradient,
-      this.textColor});
 }
 
 class _Button extends StatelessWidget {
-  final int index;
-  final bool active;
-  final String text;
-  final Color? textColor;
-  final TextStyle textStyle;
-  final IconData icon;
-  final double iconSize;
-  final Color activeIconColor;
-  final Color inactiveIconColor;
-  final EdgeInsetsGeometry padding;
-  final Color backgroundColor;
-  final Gradient? backgroundGradient;
-  final int activeFlexFactor;
-  final int inactiveFlexFactor;
-  final bool showActiveButtonText;
-  final bool debugPaint;
-  final Function onTap;
-
   const _Button(
       {required this.index,
       required this.active,
@@ -295,6 +279,24 @@ class _Button extends StatelessWidget {
       required this.showActiveButtonText,
       required this.debugPaint,
       required this.onTap});
+
+  final int index;
+  final bool active;
+  final String text;
+  final Color? textColor;
+  final TextStyle textStyle;
+  final IconData icon;
+  final double iconSize;
+  final Color activeIconColor;
+  final Color inactiveIconColor;
+  final EdgeInsetsGeometry padding;
+  final Color backgroundColor;
+  final Gradient? backgroundGradient;
+  final int activeFlexFactor;
+  final int inactiveFlexFactor;
+  final bool showActiveButtonText;
+  final bool debugPaint;
+  final Function onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -322,7 +324,7 @@ class _Button extends StatelessWidget {
               padding: padding,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
+                children: <Widget>[
                   Flexible(
                       child: Icon(icon,
                           size: iconSize,
