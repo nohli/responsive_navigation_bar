@@ -1,6 +1,19 @@
+## 1.8.0
+
+* Improve padding
+
+## 2.0.0-nullsafety.1
+
+* Improve padding
+
 ## 2.0.0-nullsafety.0
 
 * Migrate package to null safety (and publish prerelease)
+
+## 1.7.0
+
+* Improve padding
+* Update Gradle and Kotlin versions
 
 ## 1.6.0
 

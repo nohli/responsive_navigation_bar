@@ -169,7 +169,7 @@ class NavigationBar extends StatelessWidget {
           padding: button.padding ??
               (deviceWidth >= 650
                   ? const EdgeInsets.symmetric(horizontal: 30, vertical: 10)
-                  : const EdgeInsets.symmetric(horizontal: 8, vertical: 5)),
+                  : const EdgeInsets.symmetric(horizontal: 8, vertical: 10)),
           backgroundColor: button.backgroundColor,
           backgroundGradient: button.backgroundGradient,
           activeFlexFactor: showActiveButtonText ? activeButtonFlexFactor : 1,
@@ -238,7 +238,7 @@ class NavigationBarButton {
   /// ```
   ///  MediaQuery.of(context).size.width >= 650
   ///    ? const EdgeInsets.symmetric(horizontal: 30, vertical: 10)
-  ///    : const EdgeInsets.symmetric(horizontal: 8, vertical: 5)
+  ///    : const EdgeInsets.symmetric(horizontal: 8, vertical: 10)
   /// ```
   ///
   /// If you specify your own [padding], it will NOT be responsive any more - unless you pass something like above.
