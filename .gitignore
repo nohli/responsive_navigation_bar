@@ -4,3 +4,4 @@
 .packages
 .idea/libraries/Dart_SDK.xml
 .dart_tool/package_config_subset
+.dart_tool/version
