@@ -1,6 +1,6 @@
-## 1.8.0
+## 2.0.0-nullsafety.2
 
-* Improve padding
+* Remove deprecated call
 
 ## 2.0.0-nullsafety.1
 

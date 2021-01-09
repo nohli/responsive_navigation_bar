@@ -15,7 +15,7 @@ class ResponsiveNavigationBarWeb {
     final MethodChannel channel = MethodChannel(
       'responsive_navigation_bar',
       const StandardMethodCodec(),
-      registrar.messenger,
+      registrar,
     );
 
     final ResponsiveNavigationBarWeb pluginInstance =
