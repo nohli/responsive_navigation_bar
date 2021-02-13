@@ -7,5 +7,5 @@ void main() {
 
   tearDown(() {});
 
-  test('getPlatformVersion', () async {});
+  test('Test', () async {});
 }

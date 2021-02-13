@@ -1,14 +1,10 @@
-## 2.0.0-nullsafety.2
+## 2.0.0
 
-* Remove deprecated call
+* Migrate to null safety
 
-## 2.0.0-nullsafety.1
+## 1.8.0
 
 * Improve padding
-
-## 2.0.0-nullsafety.0
-
-* Migrate package to null safety (and publish prerelease)
 
 ## 1.7.0
 
