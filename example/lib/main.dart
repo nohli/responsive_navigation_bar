@@ -29,26 +29,26 @@ class _MyAppState extends State<MyApp> {
           },
           // showActiveButtonText: false,
           textStyle:
-              TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          navigationBarButtons: <NavigationBarButton>[
+              const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          navigationBarButtons: const <NavigationBarButton>[
             NavigationBarButton(
               text: 'Tab 1',
               icon: Icons.people,
-              backgroundGradient: const LinearGradient(
+              backgroundGradient: LinearGradient(
                 colors: <Color>[Colors.yellow, Colors.green, Colors.blue],
               ),
             ),
             NavigationBarButton(
               text: 'Tab 2',
               icon: Icons.star,
-              backgroundGradient: const LinearGradient(
+              backgroundGradient: LinearGradient(
                 colors: <Color>[Colors.cyan, Colors.teal],
               ),
             ),
             NavigationBarButton(
               text: 'Tab 3',
               icon: Icons.settings,
-              backgroundGradient: const LinearGradient(
+              backgroundGradient: LinearGradient(
                 colors: <Color>[Colors.green, Colors.yellow],
               ),
             )
