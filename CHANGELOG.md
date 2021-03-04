@@ -1,3 +1,7 @@
+## 2.0.2
+
+* Enable desktop support for Linux and Windows
+
 ## 2.0.1
 
 * Update dependencies
