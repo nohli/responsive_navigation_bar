@@ -1,3 +1,7 @@
+## 2.0.3
+
+* Improve pub.dev score
+
 ## 2.0.2
 
 * Enable desktop support for Linux and Windows
