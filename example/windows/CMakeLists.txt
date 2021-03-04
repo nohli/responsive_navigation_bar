@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project(navigation_bar_example LANGUAGES CXX)
+project(responsive_navigation_bar_example LANGUAGES CXX)
 
-set(BINARY_NAME "navigation_bar_example")
+set(BINARY_NAME "responsive_navigation_bar_example")
 
 cmake_policy(SET CMP0063 NEW)
 

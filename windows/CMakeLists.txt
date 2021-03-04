@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 3.15)
-set(PROJECT_NAME "navigation_bar")
+set(PROJECT_NAME "responsive_navigation_bar")
 project(${PROJECT_NAME} LANGUAGES CXX)
 
 # This value is used when generating builds using this plugin, so it must
 # not be changed
-set(PLUGIN_NAME "navigation_bar_plugin")
+set(PLUGIN_NAME "responsive_navigation_bar_plugin")
 
 add_library(${PLUGIN_NAME} SHARED
-  "navigation_bar_plugin.cpp"
+  "responsive_navigation_bar_plugin.cpp"
 )
 apply_standard_settings(${PLUGIN_NAME})
 set_target_properties(${PLUGIN_NAME} PROPERTIES
@@ -18,7 +18,7 @@ target_include_directories(${PLUGIN_NAME} INTERFACE
 target_link_libraries(${PLUGIN_NAME} PRIVATE flutter flutter_wrapper_plugin)
 
 # List of absolute paths to libraries that should be bundled with the plugin
-set(navigation_bar_bundled_libraries
+set(responsive_navigation_bar_bundled_libraries
   ""
   PARENT_SCOPE
 )

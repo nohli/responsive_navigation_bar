@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.achimsapps" "\0"
-            VALUE "FileDescription", "Demonstrates how to use the navigation_bar plugin." "\0"
+            VALUE "FileDescription", "Demonstrates how to use the responsive_navigation_bar plugin." "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "navigation_bar_example" "\0"
+            VALUE "InternalName", "responsive_navigation_bar_example" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2021 com.achimsapps. All rights reserved." "\0"
-            VALUE "OriginalFilename", "navigation_bar_example.exe" "\0"
-            VALUE "ProductName", "navigation_bar_example" "\0"
+            VALUE "OriginalFilename", "responsive_navigation_bar_example.exe" "\0"
+            VALUE "ProductName", "responsive_navigation_bar_example" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

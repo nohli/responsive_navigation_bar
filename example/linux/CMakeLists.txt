@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 project(runner LANGUAGES CXX)
 
-set(BINARY_NAME "navigation_bar_example")
-set(APPLICATION_ID "com.achimsapps.navigation_bar")
+set(BINARY_NAME "responsive_navigation_bar_example")
+set(APPLICATION_ID "com.achimsapps.responsive_navigation_bar")
 
 cmake_policy(SET CMP0063 NEW)
 
