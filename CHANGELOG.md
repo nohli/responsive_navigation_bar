@@ -1,3 +1,7 @@
+## 2.1.1
+
+* Fix wrong naming
+
 ## 2.1.0
 
 * Update to Dart 2.12.0 stable
