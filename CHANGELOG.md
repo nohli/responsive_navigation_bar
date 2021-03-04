@@ -1,3 +1,7 @@
+## 2.1.0
+
+* Update to Dart 2.12.0 stable
+
 ## 2.0.3
 
 * Improve pub.dev score
