@@ -39,7 +39,7 @@ class NavigationBar extends StatelessWidget {
   ///    ... ;
   ///  },
   /// ```
-  final Function onTabChange;
+  final Function(int) onTabChange;
 
   /// Color of the whole bar.
   ///
@@ -296,7 +296,7 @@ class _Button extends StatelessWidget {
   final int inactiveFlexFactor;
   final bool showActiveButtonText;
   final bool debugPaint;
-  final Function onTap;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
