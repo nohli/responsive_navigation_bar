@@ -5,24 +5,26 @@ import 'package:flutter/material.dart';
 ///
 class NavigationBar extends StatelessWidget {
   /// Put this in [Scaffold]'s [bottomNavigationBar]
-  const NavigationBar(
-      {required this.navigationBarButtons,
-      required this.onTabChange,
-      this.backgroundColor,
-      this.backgroundGradient,
-      this.backgroundOpacity = 0.5,
-      this.backgroundBlur = 2.5,
-      this.padding = const EdgeInsets.all(6),
-      this.outerPadding = const EdgeInsets.fromLTRB(8, 0, 8, 5),
-      this.selectedIndex = 0,
-      this.fontSize,
-      this.textStyle = const TextStyle(fontWeight: FontWeight.bold),
-      this.activeIconColor = Colors.white,
-      this.inactiveIconColor = Colors.white,
-      this.showActiveButtonText = true,
-      this.activeButtonFlexFactor = 160,
-      this.inactiveButtonsFlexFactor = 60,
-      this.debugPaint = false});
+  const NavigationBar({
+    required this.navigationBarButtons,
+    required this.onTabChange,
+    this.backgroundColor,
+    this.backgroundGradient,
+    this.backgroundOpacity = 0.5,
+    this.backgroundBlur = 2.5,
+    this.padding = const EdgeInsets.all(6),
+    this.outerPadding = const EdgeInsets.fromLTRB(8, 0, 8, 5),
+    this.selectedIndex = 0,
+    this.fontSize,
+    this.textStyle = const TextStyle(fontWeight: FontWeight.bold),
+    this.activeIconColor = Colors.white,
+    this.inactiveIconColor = Colors.white,
+    this.showActiveButtonText = true,
+    this.activeButtonFlexFactor = 160,
+    this.inactiveButtonsFlexFactor = 60,
+    this.debugPaint = false,
+    Key? key,
+  }) : super(key: key);
 
   /// List of buttons.
   ///

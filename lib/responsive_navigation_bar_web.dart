@@ -34,7 +34,7 @@ class ResponsiveNavigationBarWeb {
         throw PlatformException(
           code: 'Unimplemented',
           details:
-              "responsive_navigation_bar for web doesn't implement '${call.method}'",
+              """responsive_navigation_bar for web doesn't implement '${call.method}'""",
         );
     }
   }
