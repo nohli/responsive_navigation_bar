@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_navigation_bar/responsive_navigation_bar.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 ///
 class MyApp extends StatefulWidget {
+  ///
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   _MyAppState createState() => _MyAppState();
 }
