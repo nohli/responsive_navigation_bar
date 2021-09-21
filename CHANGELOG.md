@@ -1,3 +1,7 @@
+## 2.2.0
+
+* Minor updates
+
 ## 2.1.2
 
 * Minor updates
