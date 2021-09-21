@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - responsive_navigation_bar (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - responsive_navigation_bar (from `.symlinks/plugins/responsive_navigation_bar/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  responsive_navigation_bar:
+    :path: ".symlinks/plugins/responsive_navigation_bar/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  responsive_navigation_bar: 41845ac546fe6b18a9fa0a4432022f8fc98d1cd8
+
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+
+COCOAPODS: 1.10.0
