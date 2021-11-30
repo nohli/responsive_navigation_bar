@@ -1,3 +1,7 @@
+## 2.2.2
+
+* Update name in license
+
 ## 2.2.1
 
 * Minor updates
