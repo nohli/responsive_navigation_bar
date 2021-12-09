@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         // extendBody: true,
-        bottomNavigationBar: NavigationBar(
+        bottomNavigationBar: ResponsiveNavigationBar(
           selectedIndex: selectedIndex,
           onTabChange: (int index) {
             selectedIndex = index;

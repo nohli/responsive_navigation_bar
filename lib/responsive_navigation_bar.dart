@@ -3,9 +3,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 ///
-class NavigationBar extends StatelessWidget {
+class ResponsiveNavigationBar extends StatelessWidget {
   /// Put this in [Scaffold]'s [bottomNavigationBar]
-  const NavigationBar({
+  const ResponsiveNavigationBar({
     required this.navigationBarButtons,
     required this.onTabChange,
     this.backgroundColor,
@@ -64,7 +64,7 @@ class NavigationBar extends StatelessWidget {
   /// ```
   final double backgroundOpacity;
 
-  /// Blur factor, from the [NavigationBar]'s top to the bottom of the screen.
+  /// Blur factor, from the [ResponsiveNavigationBar]'s top to the bottom of the screen.
   ///
   /// Defaults to 2.5
   final double backgroundBlur;
@@ -216,7 +216,7 @@ class NavigationBar extends StatelessWidget {
 
 ///
 class NavigationBarButton {
-  /// Put this in [NavigationBar]'s [navigationBarButtons]
+  /// Put this in [ResponsiveNavigationBar]'s [navigationBarButtons]
   ///
   /// [ NavigationBarButton(...), NavigationBarButton(...), ... ]
   const NavigationBarButton(
@@ -258,7 +258,7 @@ class NavigationBarButton {
 
   /// Color of the text.
   ///
-  /// If null, the button uses the color of the [NavigationBar]'s [textStyle].
+  /// If null, the button uses the color of the [ResponsiveNavigationBar]'s [textStyle].
   final Color? textColor;
 }
 
