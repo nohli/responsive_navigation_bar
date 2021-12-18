@@ -1,3 +1,9 @@
+## 3.0.1
+
+* Update gradle versions
+* Set `compileSdkVersion` and `targetSdkVersion` to 31 (Android 12)
+* Fix build of example app for Android 12
+
 ## 3.0.0
 
 * Breaking change: The widget was renamed from `NavigationBar` to `ResponsiveNavigationBar` due to the name overlapping in Flutter 2.8.0 (`NavigationBar` is also present in `package:flutter/material.dart`)
