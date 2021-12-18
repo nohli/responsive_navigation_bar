@@ -1,3 +1,8 @@
+## 3.0.3
+
+* Remove unused native code of example app
+* Update packages of example app
+
 ## 3.0.2
 
 * Remove unused native code
