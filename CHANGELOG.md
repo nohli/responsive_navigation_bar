@@ -1,3 +1,7 @@
+## 3.0.2
+
+* Remove unused native code
+
 ## 3.0.1
 
 * Update gradle versions
@@ -6,7 +10,8 @@
 
 ## 3.0.0
 
-* Breaking change: The widget was renamed from `NavigationBar` to `ResponsiveNavigationBar` due to the name overlapping in Flutter 2.8.0 (`NavigationBar` is also present in `package:flutter/material.dart`)
+* Breaking change: The widget was renamed from `NavigationBar` to `ResponsiveNavigationBar` due to the name overlapping in Flutter 2.8.0
+  (`NavigationBar` is also present in `package:flutter/material.dart`)
 
 ## 2.2.2
 

@@ -3,7 +3,6 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
-  responsive_navigation_bar
 )
 
 set(PLUGIN_BUNDLED_LIBRARIES)
