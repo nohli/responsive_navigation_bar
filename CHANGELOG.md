@@ -1,3 +1,7 @@
+## 3.0.4
+
+* Update changelog
+
 ## 3.0.3
 
 * Remove unused native code of example app
