@@ -40,11 +40,11 @@ inactiveIconColor:
 
 ## NavigationBar in Action
 
-![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/example/assets/darkmode-with-text.gif)
-![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/example/assets/darkmode-without-text.gif)
+![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/assets/darkmode-with-text.gif)
+![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/assets/darkmode-without-text.gif)
 \
-![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/example/assets/lightmode-with-text.gif)
-![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/example/assets/lightmode-without-text.gif)
+![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/assets/lightmode-with-text.gif)
+![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/assets/lightmode-without-text.gif)
 
 ## Todo
 
