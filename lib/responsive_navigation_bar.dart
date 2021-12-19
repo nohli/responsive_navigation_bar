@@ -33,7 +33,8 @@ class ResponsiveNavigationBar extends StatelessWidget {
 
   /// Function to call when onTap of button is triggered.
   ///
-  /// The tab and button will NOT update unless you manage the state and update [selectedIndex] with the parameter of this function:
+  /// The tab and button will NOT update unless you manage the state and update
+  /// [selectedIndex] with the parameter of this function:
   ///
   /// ```
   ///  onTabChange: (int index) {
@@ -64,7 +65,8 @@ class ResponsiveNavigationBar extends StatelessWidget {
   /// ```
   final double backgroundOpacity;
 
-  /// Blur factor, from the [ResponsiveNavigationBar]'s top to the bottom of the screen.
+  /// Blur factor, from the [ResponsiveNavigationBar]'s top
+  /// to the bottom of the screen.
   ///
   /// Defaults to 2.5
   final double backgroundBlur;
@@ -81,7 +83,8 @@ class ResponsiveNavigationBar extends StatelessWidget {
 
   /// Size of text and icons.
   ///
-  /// The textScaleFactor is 1, so the text will NOT be scaled dynamically with the user's device settings.
+  /// The textScaleFactor is 1, so the text will NOT be scaled dynamically
+  /// with the user's device settings.
   ///
   /// That means, you can use the largest fontSize that does not overflow.
   ///
@@ -95,7 +98,8 @@ class ResponsiveNavigationBar extends StatelessWidget {
   ///      : 18
   /// ```
   ///
-  /// If you specify your own [fontSize], it will NOT be responsive any more - unless you pass something like above.
+  /// If you specify your own [fontSize], it will NOT be responsive any more
+  /// - unless you pass something like above.
   final double? fontSize;
 
   /// TextStyle for all buttons.
@@ -109,9 +113,12 @@ class ResponsiveNavigationBar extends StatelessWidget {
   /// Icon color of unselected buttons.
   final Color inactiveIconColor;
 
-  /// This overrides [activeButtonFlexFactor] and [inactiveButtonsFlexFactor] and sets each to 1 - so that active and inactive buttons have the same size.
+  /// This overrides [activeButtonFlexFactor] and [inactiveButtonsFlexFactor]
+  /// and sets each to 1 - so that active and inactive buttons
+  /// have the same size.
   ///
-  /// Also, this overrides individual [text] parameters of [NavigationBarButton]s (since the [text] will not be shown).
+  /// Also, this overrides individual [text] parameters of
+  /// [NavigationBarButton]s (since the [text] will not be shown).
   final bool showActiveButtonText;
 
   /// Flex factor.
@@ -122,7 +129,8 @@ class ResponsiveNavigationBar extends StatelessWidget {
   ///
   /// (this is a great package, so the flex is naturally pretty high)
   ///
-  /// Play around with these values, so that the text of all buttons and all icons are visible and there is no overflow - ideally on all screen sizes.
+  /// Play around with these values, so that the text of all buttons and all
+  /// icons are visible and there is no overflow - ideally on all screen sizes.
   final int activeButtonFlexFactor;
 
   /// Flex factor.
@@ -133,7 +141,8 @@ class ResponsiveNavigationBar extends StatelessWidget {
   ///
   /// (this is a great package, so the flex is naturally pretty high)
   ///
-  /// Play around with these values, so that the text of all buttons and all icons are visible and there is no overflow - ideally on all screen sizes.
+  /// Play around with these values, so that the text of all buttons and all
+  /// icons are visible and there is no overflow - ideally on all screen sizes.
   final int inactiveButtonsFlexFactor;
 
   /// This only affects debug builds.
@@ -243,7 +252,8 @@ class NavigationBarButton {
   ///    : const EdgeInsets.symmetric(horizontal: 8, vertical: 10)
   /// ```
   ///
-  /// If you specify your own [padding], it will NOT be responsive any more - unless you pass something like above.
+  /// If you specify your own [padding], it will NOT be responsive any more
+  /// - unless you pass something like above.
   final EdgeInsetsGeometry? padding;
 
   /// Color of the button.
@@ -258,7 +268,8 @@ class NavigationBarButton {
 
   /// Color of the text.
   ///
-  /// If null, the button uses the color of the [ResponsiveNavigationBar]'s [textStyle].
+  /// If null, the button uses the color of the
+  /// [ResponsiveNavigationBar]'s [textStyle].
   final Color? textColor;
 }
 
