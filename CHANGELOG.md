@@ -1,3 +1,7 @@
+## 3.0.5
+
+* Remove unused import of `flutter_web_plugins`
+
 ## 3.0.4
 
 * Update changelog
