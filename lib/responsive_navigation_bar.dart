@@ -12,6 +12,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
     this.backgroundGradient,
     this.backgroundOpacity = 0.5,
     this.backgroundBlur = 2.5,
+    this.borderRadius = 80,
     this.padding = const EdgeInsets.all(6),
     this.outerPadding = const EdgeInsets.fromLTRB(8, 0, 8, 5),
     this.selectedIndex = 0,
@@ -70,6 +71,9 @@ class ResponsiveNavigationBar extends StatelessWidget {
   ///
   /// Defaults to 2.5
   final double backgroundBlur;
+
+  /// BorderRadius of all elements
+  final double borderRadius;
 
   /// Padding of the bar inside [backgroundColor]
   final EdgeInsetsGeometry padding;
@@ -177,6 +181,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
           iconSize: buttonFontSize,
           activeIconColor: activeIconColor,
           inactiveIconColor: inactiveIconColor,
+          borderRadius: borderRadius,
           padding: button.padding ??
               (deviceWidth >= 650
                   ? const EdgeInsets.symmetric(horizontal: 30, vertical: 10)
@@ -198,8 +203,10 @@ class ResponsiveNavigationBar extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         heightFactor: 1,
         child: BackdropFilter(
-          filter:
-              ImageFilter.blur(sigmaX: backgroundBlur, sigmaY: backgroundBlur),
+          filter: ImageFilter.blur(
+            sigmaX: backgroundBlur,
+            sigmaY: backgroundBlur,
+          ),
           child: SafeArea(
             child: Padding(
               padding: outerPadding,
@@ -210,7 +217,9 @@ class ResponsiveNavigationBar extends StatelessWidget {
                           : backgroundColor ?? const Color(0x7d8c8c8c))
                       .withOpacity(backgroundOpacity),
                   gradient: backgroundGradient,
-                  borderRadius: const BorderRadius.all(Radius.circular(80)),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(borderRadius),
+                  ),
                 ),
                 padding: padding,
                 child: Row(children: buttons),
@@ -274,24 +283,26 @@ class NavigationBarButton {
 }
 
 class _Button extends StatelessWidget {
-  const _Button(
-      {required this.index,
-      required this.active,
-      required this.text,
-      required this.textColor,
-      required this.textStyle,
-      required this.icon,
-      required this.iconSize,
-      required this.activeIconColor,
-      required this.inactiveIconColor,
-      required this.padding,
-      required this.backgroundColor,
-      required this.backgroundGradient,
-      required this.activeFlexFactor,
-      required this.inactiveFlexFactor,
-      required this.showActiveButtonText,
-      required this.debugPaint,
-      required this.onTap});
+  const _Button({
+    required this.index,
+    required this.active,
+    required this.text,
+    required this.textColor,
+    required this.textStyle,
+    required this.icon,
+    required this.iconSize,
+    required this.activeIconColor,
+    required this.inactiveIconColor,
+    required this.borderRadius,
+    required this.padding,
+    required this.backgroundColor,
+    required this.backgroundGradient,
+    required this.activeFlexFactor,
+    required this.inactiveFlexFactor,
+    required this.showActiveButtonText,
+    required this.debugPaint,
+    required this.onTap,
+  });
 
   final int index;
   final bool active;
@@ -302,6 +313,7 @@ class _Button extends StatelessWidget {
   final double iconSize;
   final Color activeIconColor;
   final Color inactiveIconColor;
+  final double borderRadius;
   final EdgeInsetsGeometry padding;
   final Color backgroundColor;
   final Gradient? backgroundGradient;
@@ -325,30 +337,30 @@ class _Button extends StatelessWidget {
         child: GestureDetector(
           onTap: () => onTap(),
           child: Container(
+            padding: padding,
             decoration: BoxDecoration(
-                gradient: active ? backgroundGradient : null,
-                color: active
-                    ? backgroundGradient != null
-                        ? Colors.white
-                        : backgroundColor
-                    : Colors.transparent,
-                borderRadius: const BorderRadius.all(Radius.circular(80))),
-            child: Padding(
-              padding: padding,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  Flexible(
-                      child: Icon(icon,
-                          size: iconSize,
-                          color: active ? activeIconColor : inactiveIconColor)),
-                  if (showText)
-                    const Padding(padding: EdgeInsets.only(left: 5)),
-                  if (showText)
-                    Text(text, style: textStyle, textScaleFactor: 1),
-                  if (showText) const Padding(padding: EdgeInsets.zero),
-                ],
-              ),
+              borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
+              gradient: active ? backgroundGradient : null,
+              color: active
+                  ? backgroundGradient != null
+                      ? Colors.white
+                      : backgroundColor
+                  : Colors.transparent,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Flexible(
+                  child: Icon(
+                    icon,
+                    size: iconSize,
+                    color: active ? activeIconColor : inactiveIconColor,
+                  ),
+                ),
+                if (showText) const Padding(padding: EdgeInsets.only(left: 5)),
+                if (showText) Text(text, style: textStyle, textScaleFactor: 1),
+                if (showText) const Padding(padding: EdgeInsets.zero),
+              ],
             ),
           ),
         ),

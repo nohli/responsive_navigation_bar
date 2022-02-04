@@ -31,14 +31,20 @@ class _MyAppState extends State<MyApp> {
             changeTab();
           },
           // showActiveButtonText: false,
-          textStyle:
-              const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          textStyle: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
           navigationBarButtons: const <NavigationBarButton>[
             NavigationBarButton(
               text: 'Tab 1',
               icon: Icons.people,
               backgroundGradient: LinearGradient(
-                colors: <Color>[Colors.yellow, Colors.green, Colors.blue],
+                colors: <Color>[
+                  Colors.yellow,
+                  Colors.green,
+                  Colors.blue,
+                ],
               ),
             ),
             NavigationBarButton(
@@ -54,7 +60,7 @@ class _MyAppState extends State<MyApp> {
               backgroundGradient: LinearGradient(
                 colors: <Color>[Colors.green, Colors.yellow],
               ),
-            )
+            ),
           ],
         ),
       ),
