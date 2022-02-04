@@ -1,3 +1,8 @@
+## 3.1.0
+
+* Add `borderRadius`
+* Small refactoring
+
 ## 3.0.6
 
 * Add automated publishing via GitHub Actions
