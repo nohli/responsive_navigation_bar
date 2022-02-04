@@ -1,3 +1,7 @@
+## 3.0.6
+
+* Add automated publishing via GitHub Actions
+
 ## 3.0.5
 
 * Remove unused import of `flutter_web_plugins`
