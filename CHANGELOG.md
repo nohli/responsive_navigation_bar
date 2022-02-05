@@ -1,3 +1,7 @@
+## 3.1.1
+
+* Update readme
+
 ## 3.1.0
 
 * Add `borderRadius`
