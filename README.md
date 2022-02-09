@@ -1,8 +1,8 @@
 ## Getting Started
 
-https://pub.dev/packages/responsive_navigation_bar/install
+[Installation](https://pub.dev/packages/responsive_navigation_bar/install)
 
-https://pub.dev/packages/responsive_navigation_bar/example
+[Example Code](https://pub.dev/packages/responsive_navigation_bar/example)
 
 ## Features
 
