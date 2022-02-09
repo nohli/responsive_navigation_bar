@@ -1,4 +1,5 @@
 import 'dart:ui';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -237,13 +238,14 @@ class NavigationBarButton {
   /// Put this in [ResponsiveNavigationBar]'s [navigationBarButtons]
   ///
   /// [ NavigationBarButton(...), NavigationBarButton(...), ... ]
-  const NavigationBarButton(
-      {this.text = '',
-      this.icon = Icons.hourglass_empty,
-      this.padding,
-      this.backgroundColor = Colors.grey,
-      this.backgroundGradient,
-      this.textColor});
+  const NavigationBarButton({
+    this.text = '',
+    this.icon = Icons.hourglass_empty,
+    this.padding,
+    this.backgroundColor = Colors.grey,
+    this.backgroundGradient,
+    this.textColor,
+  });
 
   /// Text of the button (if active).
   final String text;
@@ -326,6 +328,7 @@ class _Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool showText = active && showActiveButtonText && text != '';
+
     return Flexible(
       flex: active ? activeFlexFactor : inactiveFlexFactor,
       child: Container(
@@ -357,9 +360,11 @@ class _Button extends StatelessWidget {
                     color: active ? activeIconColor : inactiveIconColor,
                   ),
                 ),
-                if (showText) const Padding(padding: EdgeInsets.only(left: 5)),
-                if (showText) Text(text, style: textStyle, textScaleFactor: 1),
-                if (showText) const Padding(padding: EdgeInsets.zero),
+                if (showText) ...[
+                  const SizedBox(width: 5),
+                  Text(text, style: textStyle, textScaleFactor: 1),
+                  const SizedBox(),
+                ],
               ],
             ),
           ),
