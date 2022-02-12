@@ -323,7 +323,7 @@ class _Button extends StatelessWidget {
   final int inactiveFlexFactor;
   final bool showActiveButtonText;
   final bool debugPaint;
-  final Function() onTap;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -338,7 +338,7 @@ class _Button extends StatelessWidget {
                 : Colors.red.withOpacity(0.3)
             : Colors.transparent,
         child: GestureDetector(
-          onTap: () => onTap(),
+          onTap: onTap,
           child: Container(
             padding: padding,
             decoration: BoxDecoration(
