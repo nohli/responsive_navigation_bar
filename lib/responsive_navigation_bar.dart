@@ -331,7 +331,7 @@ class _Button extends StatelessWidget {
 
     return Flexible(
       flex: active ? activeFlexFactor : inactiveFlexFactor,
-      child: Container(
+      child: ColoredBox(
         color: kDebugMode && debugPaint
             ? index.remainder(2) == 0
                 ? Colors.green.withOpacity(0.3)
