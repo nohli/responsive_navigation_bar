@@ -1,3 +1,7 @@
+## 3.2.0
+
+* Update `flutter_lints`
+
 ## 3.1.1
 
 * Update readme
