@@ -1,3 +1,7 @@
+## 3.2.1
+
+* Update example app's description
+
 ## 3.2.0
 
 * Update `flutter_lints`

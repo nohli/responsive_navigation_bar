@@ -1,6 +1,6 @@
 # responsive_navigation_bar_example
 
-Demonstrates how to use the responsive_navigation_bar plugin.
+Demonstrates how to use the responsive_navigation_bar package.
 
 ## Getting Started
 
