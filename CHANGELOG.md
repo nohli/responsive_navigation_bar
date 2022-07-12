@@ -1,3 +1,7 @@
+## 3.2.2
+
+* Improve pub.dev metadata
+
 ## 3.2.1
 
 * Update example app's description
