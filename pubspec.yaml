@@ -1,8 +1,9 @@
 name: responsive_navigation_bar
 description: A responsive bottom navigation bar. Very beginner friendly. Feel free to contribute.
 repository: https://github.com/nohli/responsive_navigation_bar
+issue_tracker: https://github.com/nohli/responsive_navigation_bar/issues
 
-version: 3.2.2
+version: 3.2.3
 
 environment:
   sdk: '>=2.12.0 <3.0.0'

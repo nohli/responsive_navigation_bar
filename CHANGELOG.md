@@ -1,3 +1,7 @@
+## 3.2.3
+
+* Improve pub.dev metadata
+
 ## 3.2.2
 
 * Improve pub.dev metadata
