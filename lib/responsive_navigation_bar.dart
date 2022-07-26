@@ -211,7 +211,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
           child: SafeArea(
             child: Padding(
               padding: outerPadding,
-              child: Container(
+              child: DecoratedBox(
                 decoration: BoxDecoration(
                   color: (backgroundGradient != null
                           ? Colors.white
@@ -222,8 +222,10 @@ class ResponsiveNavigationBar extends StatelessWidget {
                     Radius.circular(borderRadius),
                   ),
                 ),
-                padding: padding,
-                child: Row(children: buttons),
+                child: Padding(
+                  padding: padding,
+                  child: Row(children: buttons),
+                ),
               ),
             ),
           ),
@@ -339,8 +341,7 @@ class _Button extends StatelessWidget {
             : Colors.transparent,
         child: GestureDetector(
           onTap: onTap,
-          child: Container(
-            padding: padding,
+          child: DecoratedBox(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
               gradient: active ? backgroundGradient : null,
@@ -350,22 +351,25 @@ class _Button extends StatelessWidget {
                       : backgroundColor
                   : Colors.transparent,
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                Flexible(
-                  child: Icon(
-                    icon,
-                    size: iconSize,
-                    color: active ? activeIconColor : inactiveIconColor,
+            child: Padding(
+              padding: padding,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Flexible(
+                    child: Icon(
+                      icon,
+                      size: iconSize,
+                      color: active ? activeIconColor : inactiveIconColor,
+                    ),
                   ),
-                ),
-                if (showText) ...[
-                  const SizedBox(width: 5),
-                  Text(text, style: textStyle, textScaleFactor: 1),
-                  const SizedBox(),
+                  if (showText) ...[
+                    const SizedBox(width: 5),
+                    Text(text, style: textStyle, textScaleFactor: 1),
+                    const SizedBox(),
+                  ],
                 ],
-              ],
+              ),
             ),
           ),
         ),
