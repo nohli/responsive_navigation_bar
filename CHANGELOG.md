@@ -1,3 +1,7 @@
+## 3.2.4
+
+* Minor refactoring and performance improvement
+
 ## 3.2.3
 
 * Improve pub.dev metadata
