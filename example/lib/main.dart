@@ -13,10 +13,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int selectedIndex = 0;
+  int _selectedIndex = 0;
 
-  void changeTab() {
-    if (mounted) setState(() {});
+  void changeTab(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override
@@ -25,11 +27,8 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         // extendBody: true,
         bottomNavigationBar: ResponsiveNavigationBar(
-          selectedIndex: selectedIndex,
-          onTabChange: (int index) {
-            selectedIndex = index;
-            changeTab();
-          },
+          selectedIndex: _selectedIndex,
+          onTabChange: changeTab,
           // showActiveButtonText: false,
           textStyle: const TextStyle(
             color: Colors.white,
