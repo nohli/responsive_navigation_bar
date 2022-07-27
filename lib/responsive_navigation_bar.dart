@@ -167,7 +167,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
                 ? 20
                 : 18);
 
-    final List<Widget> buttons = <Widget>[];
+    final List<Widget> buttons = [];
     for (final NavigationBarButton button in navigationBarButtons) {
       final int index = navigationBarButtons.indexOf(button);
       buttons.add(
@@ -355,7 +355,7 @@ class _Button extends StatelessWidget {
               padding: padding,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
+                children: [
                   Flexible(
                     child: Icon(
                       icon,

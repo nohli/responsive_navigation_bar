@@ -39,25 +39,21 @@ class _MyAppState extends State<MyApp> {
               text: 'Tab 1',
               icon: Icons.people,
               backgroundGradient: LinearGradient(
-                colors: <Color>[
-                  Colors.yellow,
-                  Colors.green,
-                  Colors.blue,
-                ],
+                colors: [Colors.yellow, Colors.green, Colors.blue],
               ),
             ),
             NavigationBarButton(
               text: 'Tab 2',
               icon: Icons.star,
               backgroundGradient: LinearGradient(
-                colors: <Color>[Colors.cyan, Colors.teal],
+                colors: [Colors.cyan, Colors.teal],
               ),
             ),
             NavigationBarButton(
               text: 'Tab 3',
               icon: Icons.settings,
               backgroundGradient: LinearGradient(
-                colors: <Color>[Colors.green, Colors.yellow],
+                colors: [Colors.green, Colors.yellow],
               ),
             ),
           ],
