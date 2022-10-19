@@ -1,3 +1,7 @@
+## 3.2.5
+
+* Add more GitHub Actions for checking code quality
+
 ## 3.2.4
 
 * Minor refactoring and performance improvement
