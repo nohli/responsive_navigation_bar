@@ -1,3 +1,7 @@
+## 3.2.6
+
+* Remove `pubspec.lock` from package
+
 ## 3.2.5
 
 * Add more GitHub Actions for checking code quality
