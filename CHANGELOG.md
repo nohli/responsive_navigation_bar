@@ -1,3 +1,7 @@
+## 3.2.8
+
+* Add more topics to pubspec.yaml
+
 ## 3.2.7
 
 * Add topics to pubspec.yaml

@@ -6,9 +6,11 @@ issue_tracker: https://github.com/nohli/responsive_navigation_bar/issues
 
 topics:
   - bottomnavigationbar
+  - bottombar
+  - responsive
   - ui
 
-version: 3.2.7
+version: 3.2.8
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
