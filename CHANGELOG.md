@@ -1,10 +1,14 @@
+## 3.2.8+1
+
+* Update supported platforms in readme
+
 ## 3.2.8
 
-* Add more topics to pubspec.yaml
+* Add more topics to `pubspec.yaml`
 
 ## 3.2.7
 
-* Add topics to pubspec.yaml
+* Add topics to `pubspec.yaml`
 
 ## 3.2.6
 
@@ -24,7 +28,7 @@
 
 ## 3.2.2
 
-* Improve pub.dev metadata
+* Improve `pub.dev` metadata
 
 ## 3.2.1
 
