@@ -159,17 +159,17 @@ class ResponsiveNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     // [points] from:
     // https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions
-    final double deviceWidth = MediaQuery.of(context).size.width;
-    final double buttonFontSize = fontSize ??
+    final deviceWidth = MediaQuery.of(context).size.width;
+    final buttonFontSize = fontSize ??
         (deviceWidth >= 650
             ? 33
             : deviceWidth >= 375
                 ? 20
                 : 18);
 
-    final List<Widget> buttons = [];
-    for (final NavigationBarButton button in navigationBarButtons) {
-      final int index = navigationBarButtons.indexOf(button);
+    final buttons = <Widget>[];
+    for (final button in navigationBarButtons) {
+      final index = navigationBarButtons.indexOf(button);
       buttons.add(
         _Button(
           index: index,
@@ -329,7 +329,7 @@ class _Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool showText = active && showActiveButtonText && text != '';
+    final showText = active && showActiveButtonText && text != '';
 
     return Flexible(
       flex: active ? activeFlexFactor : inactiveFlexFactor,
