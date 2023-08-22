@@ -213,10 +213,10 @@ class ResponsiveNavigationBar extends StatelessWidget {
               padding: outerPadding,
               child: DecoratedBox(
                 decoration: BoxDecoration(
-                  color: (backgroundGradient != null
-                          ? Colors.white
-                          : backgroundColor ?? const Color(0x7d8c8c8c))
-                      .withOpacity(backgroundOpacity),
+                  color: backgroundGradient == null
+                      ? (backgroundColor ?? const Color(0x7d8c8c8c))
+                          .withOpacity(backgroundOpacity)
+                      : null,
                   gradient: backgroundGradient,
                   borderRadius: BorderRadius.all(
                     Radius.circular(borderRadius),
