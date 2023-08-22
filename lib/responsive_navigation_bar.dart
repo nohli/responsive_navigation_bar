@@ -393,10 +393,13 @@ class _Button extends StatelessWidget {
                       ),
                       if (showText) ...[
                         const SizedBox(width: 5),
-                        Text(
-                          text,
-                          style: textStyle,
-                          textScaleFactor: 1,
+                        Flexible(
+                          child: Text(
+                            text,
+                            style: textStyle,
+                            textScaleFactor: 1,
+                            maxLines: 1,
+                          ),
                         ),
                         const SizedBox(),
                       ],
