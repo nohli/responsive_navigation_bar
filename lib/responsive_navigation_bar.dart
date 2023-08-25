@@ -375,39 +375,39 @@ class _Button extends StatelessWidget {
                   padding: padding,
                   child: SizedBox(
                     height: 29,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Flexible(
-                        child: TweenAnimationBuilder<Color?>(
-                          duration: animationDuration,
-                          tween: ColorTween(
-                            end: active ? activeIconColor : inactiveIconColor,
-                          ),
-                          builder: (context, color, _) {
-                            return Icon(
-                              icon,
-                              size: iconSize,
-                              color: color,
-                            );
-                          },
-                        ),
-                      ),
-                      if (showText) ...[
-                        const SizedBox(width: 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
                         Flexible(
-                          child: Text(
-                            text,
-                            style: textStyle,
-                            textScaleFactor: 1,
-                            maxLines: 1,
+                          child: TweenAnimationBuilder<Color?>(
+                            duration: animationDuration,
+                            tween: ColorTween(
+                              end: active ? activeIconColor : inactiveIconColor,
+                            ),
+                            builder: (context, color, _) {
+                              return Icon(
+                                icon,
+                                size: iconSize,
+                                color: color,
+                              );
+                            },
                           ),
                         ),
-                        const SizedBox(),
+                        if (showText) ...[
+                          const SizedBox(width: 5),
+                          Flexible(
+                            child: Text(
+                              text,
+                              style: textStyle,
+                              textScaleFactor: 1,
+                              maxLines: 1,
+                            ),
+                          ),
+                          const SizedBox(),
+                        ],
                       ],
-                    ],
+                    ),
                   ),
-                ),
                 ),
               );
             },
