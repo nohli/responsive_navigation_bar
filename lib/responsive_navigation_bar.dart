@@ -373,6 +373,8 @@ class _Button extends StatelessWidget {
                 ),
                 child: Padding(
                   padding: padding,
+                  child: SizedBox(
+                    height: 29,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -405,6 +407,7 @@ class _Button extends StatelessWidget {
                       ],
                     ],
                   ),
+                ),
                 ),
               );
             },
