@@ -21,7 +21,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
     this.textStyle = const TextStyle(fontWeight: FontWeight.bold),
     this.activeIconColor = Colors.white,
     this.inactiveIconColor = Colors.white,
-    this.animationDuration = const Duration(milliseconds: 250),
+    this.animationDuration = const Duration(milliseconds: 220),
     this.showActiveButtonText = true,
     this.activeButtonFlexFactor = 160,
     this.inactiveButtonsFlexFactor = 60,
