@@ -119,7 +119,9 @@ class ResponsiveNavigationBar extends StatelessWidget {
   /// Icon color of unselected buttons.
   final Color inactiveIconColor;
 
-  /// Duration of the animation when switching tabs.
+  /// Duration of the transition animations when switching tabs.
+  ///
+  /// Set to 0 to disable animations.
   final Duration animationDuration;
 
   /// This overrides [activeButtonFlexFactor] and [inactiveButtonsFlexFactor]
