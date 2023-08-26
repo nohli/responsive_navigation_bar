@@ -40,6 +40,16 @@ inactiveIconColor:
 
 ## ResponsiveNavigationBar in Action
 
+# With animation
+
+![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/assets/animation-darkmode-with-text.gif)
+![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/assets/animation-darkmode-without-text.gif)
+\
+![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/assets/animation-lightmode-with-text.gif)
+![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/assets/animation-lightmode-without-text.gif)
+
+# Without animation
+
 ![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/assets/darkmode-with-text.gif)
 ![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/assets/darkmode-without-text.gif)
 \
