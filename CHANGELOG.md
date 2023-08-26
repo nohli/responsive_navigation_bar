@@ -1,3 +1,7 @@
+## 4.0.0
+
+* Add transition animations for button width, background color, and icon color
+
 ## 3.2.8+1
 
 * Update supported platforms in readme
