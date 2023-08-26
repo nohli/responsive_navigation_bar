@@ -1,6 +1,7 @@
 ## 4.0.0
 
-* Add transition animations for button width, background color, and icon color
+* New transition animation for button width, background color, and icon color
+* To disable the animation, set `animationDuration` to `Duration.zero`
 
 ## 3.2.8+1
 
