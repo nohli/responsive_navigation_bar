@@ -21,6 +21,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
     this.textStyle = const TextStyle(fontWeight: FontWeight.bold),
     this.activeIconColor = Colors.white,
     this.inactiveIconColor = Colors.white,
+    this.animationDuration = const Duration(milliseconds: 220),
     this.showActiveButtonText = true,
     this.activeButtonFlexFactor = 160,
     this.inactiveButtonsFlexFactor = 60,
@@ -46,7 +47,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
   /// ```
   final void Function(int) onTabChange;
 
-  /// Color of the whole bar.
+  /// Color of the whole bar, with opacity [backgroundOpacity].
   ///
   /// Gets overridden by [backgroundGradient]!
   final Color? backgroundColor;
@@ -118,6 +119,11 @@ class ResponsiveNavigationBar extends StatelessWidget {
   /// Icon color of unselected buttons.
   final Color inactiveIconColor;
 
+  /// Duration of the transition animations when switching tabs.
+  ///
+  /// Set to 0 to disable animations.
+  final Duration animationDuration;
+
   /// This overrides [activeButtonFlexFactor] and [inactiveButtonsFlexFactor]
   /// and sets each to 1 - so that active and inactive buttons
   /// have the same size.
@@ -159,17 +165,17 @@ class ResponsiveNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     // [points] from:
     // https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions
-    final double deviceWidth = MediaQuery.of(context).size.width;
-    final double buttonFontSize = fontSize ??
+    final deviceWidth = MediaQuery.of(context).size.width;
+    final buttonFontSize = fontSize ??
         (deviceWidth >= 650
             ? 33
             : deviceWidth >= 375
                 ? 20
                 : 18);
 
-    final List<Widget> buttons = [];
-    for (final NavigationBarButton button in navigationBarButtons) {
-      final int index = navigationBarButtons.indexOf(button);
+    final buttons = <Widget>[];
+    for (final button in navigationBarButtons) {
+      final index = navigationBarButtons.indexOf(button);
       buttons.add(
         _Button(
           index: index,
@@ -182,6 +188,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
           iconSize: buttonFontSize,
           activeIconColor: activeIconColor,
           inactiveIconColor: inactiveIconColor,
+          animationDuration: animationDuration,
           borderRadius: borderRadius,
           padding: button.padding ??
               (deviceWidth >= 650
@@ -213,10 +220,10 @@ class ResponsiveNavigationBar extends StatelessWidget {
               padding: outerPadding,
               child: DecoratedBox(
                 decoration: BoxDecoration(
-                  color: (backgroundGradient != null
-                          ? Colors.white
-                          : backgroundColor ?? const Color(0x7d8c8c8c))
-                      .withOpacity(backgroundOpacity),
+                  color: backgroundGradient == null
+                      ? (backgroundColor ?? const Color(0x7d8c8c8c))
+                          .withOpacity(backgroundOpacity)
+                      : null,
                   gradient: backgroundGradient,
                   borderRadius: BorderRadius.all(
                     Radius.circular(borderRadius),
@@ -297,6 +304,7 @@ class _Button extends StatelessWidget {
     required this.iconSize,
     required this.activeIconColor,
     required this.inactiveIconColor,
+    required this.animationDuration,
     required this.borderRadius,
     required this.padding,
     required this.backgroundColor,
@@ -317,6 +325,7 @@ class _Button extends StatelessWidget {
   final double iconSize;
   final Color activeIconColor;
   final Color inactiveIconColor;
+  final Duration animationDuration;
   final double borderRadius;
   final EdgeInsetsGeometry padding;
   final Color backgroundColor;
@@ -329,10 +338,22 @@ class _Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool showText = active && showActiveButtonText && text != '';
+    final showText = active && showActiveButtonText && text != '';
 
-    return Flexible(
-      flex: active ? activeFlexFactor : inactiveFlexFactor,
+    // To align the button-height of non-text buttons
+    final buttonHeight = (textStyle.fontSize ?? 14) * 1.44;
+
+    return TweenAnimationBuilder<int>(
+      duration: animationDuration,
+      tween: IntTween(
+        end: active ? activeFlexFactor : inactiveFlexFactor,
+      ),
+      builder: (context, flex, child) {
+        return Flexible(
+          flex: flex,
+          child: child!,
+        );
+      },
       child: ColoredBox(
         color: kDebugMode && debugPaint
             ? index.remainder(2) == 0
@@ -341,36 +362,60 @@ class _Button extends StatelessWidget {
             : Colors.transparent,
         child: GestureDetector(
           onTap: onTap,
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
-              gradient: active ? backgroundGradient : null,
-              color: active
-                  ? backgroundGradient != null
-                      ? Colors.white
-                      : backgroundColor
-                  : Colors.transparent,
+          child: TweenAnimationBuilder<Color?>(
+            duration: animationDuration,
+            tween: ColorTween(
+              end: active ? backgroundColor : Colors.transparent,
             ),
-            child: Padding(
-              padding: padding,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Flexible(
-                    child: Icon(
-                      icon,
-                      size: iconSize,
-                      color: active ? activeIconColor : inactiveIconColor,
+            builder: (context, color, _) {
+              return DecoratedBox(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(borderRadius),
+                  ),
+                  gradient: backgroundGradient,
+                  color: color,
+                ),
+                child: Padding(
+                  padding: padding,
+                  child: SizedBox(
+                    height: buttonHeight,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        if (showText) const Flexible(child: SizedBox()),
+                        Expanded(
+                          child: TweenAnimationBuilder<Color?>(
+                            duration: animationDuration,
+                            tween: ColorTween(
+                              end: active ? activeIconColor : inactiveIconColor,
+                            ),
+                            builder: (context, color, _) {
+                              return Icon(
+                                icon,
+                                size: iconSize,
+                                color: color,
+                              );
+                            },
+                          ),
+                        ),
+                        if (showText)
+                          Expanded(
+                            flex: 10,
+                            child: Text(
+                              text,
+                              style: textStyle,
+                              textAlign: TextAlign.center,
+                              textScaleFactor: 1,
+                              maxLines: 1,
+                            ),
+                          ),
+                      ],
                     ),
                   ),
-                  if (showText) ...[
-                    const SizedBox(width: 5),
-                    Text(text, style: textStyle, textScaleFactor: 1),
-                    const SizedBox(),
-                  ],
-                ],
-              ),
-            ),
+                ),
+              );
+            },
           ),
         ),
       ),
