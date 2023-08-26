@@ -47,7 +47,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
   /// ```
   final void Function(int) onTabChange;
 
-  /// Color of the whole bar.
+  /// Color of the whole bar, with opacity [backgroundOpacity].
   ///
   /// Gets overridden by [backgroundGradient]!
   final Color? backgroundColor;
