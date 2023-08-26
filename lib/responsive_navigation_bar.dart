@@ -381,8 +381,9 @@ class _Button extends StatelessWidget {
                   child: SizedBox(
                     height: buttonHeight,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
+                        if (showText) const Flexible(child: SizedBox()),
                         Expanded(
                           child: TweenAnimationBuilder<Color?>(
                             duration: animationDuration,
@@ -400,7 +401,7 @@ class _Button extends StatelessWidget {
                         ),
                         if (showText)
                           Expanded(
-                            flex: 6,
+                            flex: 10,
                             child: Text(
                               text,
                               style: textStyle,
