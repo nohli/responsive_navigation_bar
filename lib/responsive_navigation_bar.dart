@@ -367,7 +367,7 @@ class _Button extends StatelessWidget {
             tween: ColorTween(
               end: active ? backgroundColor : Colors.transparent,
             ),
-            builder: (context, color, _) {
+            builder: (context, color, child) {
               return DecoratedBox(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(
@@ -376,46 +376,47 @@ class _Button extends StatelessWidget {
                   gradient: backgroundGradient,
                   color: color,
                 ),
-                child: Padding(
-                  padding: padding,
-                  child: SizedBox(
-                    height: buttonHeight,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        if (showText) const Flexible(child: SizedBox()),
-                        Expanded(
-                          child: TweenAnimationBuilder<Color?>(
-                            duration: animationDuration,
-                            tween: ColorTween(
-                              end: active ? activeIconColor : inactiveIconColor,
-                            ),
-                            builder: (context, color, _) {
-                              return Icon(
-                                icon,
-                                size: iconSize,
-                                color: color,
-                              );
-                            },
-                          ),
-                        ),
-                        if (showText)
-                          Expanded(
-                            flex: 10,
-                            child: Text(
-                              text,
-                              style: textStyle,
-                              textAlign: TextAlign.center,
-                              textScaleFactor: 1,
-                              maxLines: 1,
-                            ),
-                          ),
-                      ],
-                    ),
-                  ),
-                ),
+                child: child!,
               );
             },
+            child: Padding(
+              padding: padding,
+              child: SizedBox(
+                height: buttonHeight,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    if (showText) const Flexible(child: SizedBox()),
+                    Expanded(
+                      child: TweenAnimationBuilder<Color?>(
+                        duration: animationDuration,
+                        tween: ColorTween(
+                          end: active ? activeIconColor : inactiveIconColor,
+                        ),
+                        builder: (context, color, _) {
+                          return Icon(
+                            icon,
+                            size: iconSize,
+                            color: color,
+                          );
+                        },
+                      ),
+                    ),
+                    if (showText)
+                      Expanded(
+                        flex: 10,
+                        child: Text(
+                          text,
+                          style: textStyle,
+                          textAlign: TextAlign.center,
+                          textScaleFactor: 1,
+                          maxLines: 1,
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ),
           ),
         ),
       ),

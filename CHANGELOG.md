@@ -1,3 +1,7 @@
+## 4.0.1
+
+* Use builder's child argument
+
 ## 4.0.0
 
 * New transition animation for button width, background color, and icon color
