@@ -337,6 +337,7 @@ class _Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final showText = active && showActiveButtonText && text != '';
+
     // To align the button-height of non-text buttons
     final buttonHeight = (textStyle.fontSize ?? 14) * 1.44;
 
