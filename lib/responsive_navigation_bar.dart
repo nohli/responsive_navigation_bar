@@ -337,6 +337,8 @@ class _Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final showText = active && showActiveButtonText && text != '';
+    // To align the button-height of non-text buttons
+    final buttonHeight = (textStyle.fontSize ?? 14) * 1.44;
 
     return TweenAnimationBuilder<int>(
       duration: animationDuration,
@@ -374,39 +376,39 @@ class _Button extends StatelessWidget {
                 child: Padding(
                   padding: padding,
                   child: SizedBox(
-                    height: 29,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
+                    height: buttonHeight,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
                         Expanded(
-                        child: TweenAnimationBuilder<Color?>(
-                          duration: animationDuration,
-                          tween: ColorTween(
-                            end: active ? activeIconColor : inactiveIconColor,
+                          child: TweenAnimationBuilder<Color?>(
+                            duration: animationDuration,
+                            tween: ColorTween(
+                              end: active ? activeIconColor : inactiveIconColor,
+                            ),
+                            builder: (context, color, _) {
+                              return Icon(
+                                icon,
+                                size: iconSize,
+                                color: color,
+                              );
+                            },
                           ),
-                          builder: (context, color, _) {
-                            return Icon(
-                              icon,
-                              size: iconSize,
-                              color: color,
-                            );
-                          },
                         ),
-                      ),
                         if (showText)
                           Expanded(
                             flex: 6,
-                          child: Text(
-                            text,
-                            style: textStyle,
+                            child: Text(
+                              text,
+                              style: textStyle,
                               textAlign: TextAlign.center,
-                            textScaleFactor: 1,
-                            maxLines: 1,
+                              textScaleFactor: 1,
+                              maxLines: 1,
+                            ),
                           ),
-                        ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
                 ),
               );
             },
