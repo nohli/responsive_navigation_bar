@@ -1,3 +1,7 @@
+## 4.0.2
+
+* Improve spacing
+
 ## 4.0.1
 
 * Use builder's child argument
