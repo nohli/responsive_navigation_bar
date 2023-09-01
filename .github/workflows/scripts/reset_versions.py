@@ -40,6 +40,7 @@ def process_dependencies(dependencies_dict):
 
 
 yaml = YAML()
+yaml.width = 200
 yaml.preserve_quotes = True
 yaml.indent(mapping=2, sequence=4, offset=2)
 pubspec_path = 'pubspec.yaml'
