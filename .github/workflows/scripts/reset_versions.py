@@ -3,7 +3,7 @@ from ruamel.yaml import YAML
 
 
 def reduce_version(version_str: str) -> str:
-    # Split the main version from pre-release or build metadata
+    # Split the main version from pre-release or build metadata.
     main_parts = version_str.split('+')[0].split('-')
 
     main_version = main_parts[0]
