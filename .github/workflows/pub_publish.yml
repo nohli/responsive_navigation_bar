@@ -13,6 +13,6 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
       - name: Publish
-        uses: k-paxian/dart-package-publisher@v1.5.1
+        uses: k-paxian/dart-package-publisher@v1.6
         with:
           credentialJson: ${{ secrets.CREDENTIALS }}
