@@ -2,6 +2,12 @@ from typing import Optional
 from ruamel.yaml import YAML
 
 
+yaml = YAML()
+yaml.width = 200
+yaml.preserve_quotes = True
+yaml.indent(mapping=2, sequence=4, offset=2)
+
+
 def reduce_version(version_str: str) -> str:
     # Split the main version from pre-release or build metadata.
     main_parts = version_str.split('+')[0].split('-')
@@ -39,17 +45,18 @@ def process_dependencies(dependencies_dict):
     return dependencies_dict
 
 
-yaml = YAML()
-yaml.width = 200
-yaml.preserve_quotes = True
-yaml.indent(mapping=2, sequence=4, offset=2)
-pubspec_path = 'pubspec.yaml'
+def process_pubspec(pubspec_path: str):
+    with open(pubspec_path, 'r') as file:
+        pubspec_data = yaml.load(file)
 
-with open(pubspec_path, 'r') as file:
-    pubspec_data = yaml.load(file)
+        pubspec_data['dependencies'] = process_dependencies(
+            pubspec_data.get('dependencies', {}))
+        pubspec_data['dev_dependencies'] = process_dependencies(
+            pubspec_data.get('dev_dependencies', {}))
 
-    pubspec_data['dependencies'] = process_dependencies(pubspec_data.get('dependencies', {}))
-    pubspec_data['dev_dependencies'] = process_dependencies(pubspec_data.get('dev_dependencies', {}))
+    with open(pubspec_path, 'w') as file:
+        yaml.dump(pubspec_data, file)
 
-with open(pubspec_path, 'w') as file:
-    yaml.dump(pubspec_data, file)
+
+process_pubspec('pubspec.yaml')
+process_pubspec('example/pubspec.yaml')
