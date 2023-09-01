@@ -1,4 +1,4 @@
-name: Publish dry run
+name: Pub publish dry run
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   publish-dry-run:
-    name: Publish dry run
+    name: Pub publish dry run
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

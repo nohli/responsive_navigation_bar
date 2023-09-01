@@ -1,4 +1,4 @@
-name: Publish
+name: Pub publish
 
 on:
   release:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   publish:
-    name: Publish
+    name: Pub publish
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
