@@ -1,3 +1,8 @@
+## 4.0.4
+
+* Maintenance release
+* Update `flutter_lints`
+
 ## 4.0.3
 
 * Improve spacing
