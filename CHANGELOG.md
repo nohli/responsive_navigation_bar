@@ -1,3 +1,8 @@
+## 5.0.1
+
+* Improve changelog
+* Downgrade AGP version of example
+
 ## 5.0.0
 
 * Breaking change due to upgrade of `flutter_lints` and introduction of `TextScaler` (replacing `textScaleFactor`)
