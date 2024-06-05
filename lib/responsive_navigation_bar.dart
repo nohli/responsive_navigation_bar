@@ -410,7 +410,7 @@ class _Button extends StatelessWidget {
                           text,
                           style: textStyle,
                           textAlign: TextAlign.center,
-                          textScaleFactor: 1,
+                          textScaler: TextScaler.noScaling,
                           maxLines: 1,
                         ),
                       ),
