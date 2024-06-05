@@ -1,14 +1,14 @@
 ## 5.0.1
 
 * Improve changelog
-* Downgrade AGP version of example
+* Downgrade AGP version in example
 
 ## 5.0.0
 
 * Breaking change due to upgrade of `flutter_lints` and introduction of `TextScaler` (replacing `textScaleFactor`)
 * Upgrade minimum Flutter version to 3.13
 * Upgrade minimum Dart version to 3.1
-* Upgrade Android dependencies (Gradle, AGP, Java, Kotlin) of example app
+* Upgrade Android dependencies (Gradle, AGP, Java, Kotlin) in example app
 
 ## 4.0.4
 
