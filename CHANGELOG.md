@@ -1,3 +1,10 @@
+## 5.0.0
+
+* Breaking change due to upgrade of `flutter_lints` and introduction of `textScaler`
+* Upgrade minimum Flutter version to 3.13
+* Upgrade minimum Dart version to 3.1
+* Upgrade Android dependencies (Gradle, AGP, Java, Kotlin)
+
 ## 4.0.4
 
 * Maintenance release
