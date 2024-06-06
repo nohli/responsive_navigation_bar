@@ -1,3 +1,7 @@
+## 5.0.2
+
+* Update sdk constraints to Flutter `3.16.0` where `TextScaler` became available
+
 ## 5.0.1
 
 * Improve changelog
