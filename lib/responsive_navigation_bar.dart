@@ -26,8 +26,8 @@ class ResponsiveNavigationBar extends StatelessWidget {
     this.activeButtonFlexFactor = 160,
     this.inactiveButtonsFlexFactor = 60,
     this.debugPaint = false,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// List of buttons.
   ///
