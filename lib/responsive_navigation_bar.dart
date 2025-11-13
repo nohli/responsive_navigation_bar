@@ -222,7 +222,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: backgroundGradient == null
                       ? (backgroundColor ?? const Color(0x7d8c8c8c))
-                          .withOpacity(backgroundOpacity)
+                          .withValues(alpha: backgroundOpacity)
                       : null,
                   gradient: backgroundGradient,
                   borderRadius: BorderRadius.all(
@@ -357,8 +357,8 @@ class _Button extends StatelessWidget {
       child: ColoredBox(
         color: kDebugMode && debugPaint
             ? index.remainder(2) == 0
-                ? Colors.green.withOpacity(0.3)
-                : Colors.red.withOpacity(0.3)
+                ? Colors.green.withValues(alpha: 0.3)
+                : Colors.red.withValues(alpha: 0.3)
             : Colors.transparent,
         child: GestureDetector(
           onTap: onTap,
