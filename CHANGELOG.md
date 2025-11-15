@@ -1,3 +1,8 @@
+## 6.0.0
+
+* BREAKING: Upgrade minimum Flutter version to 3.29 due to using Color.withValues() 
+* Update Android tooling
+
 ## 5.1.0
 
 * Maintenance release

@@ -1,6 +1,6 @@
 name: responsive_navigation_bar
-description: A responsive bottom navigation bar. Very beginner friendly. Feel free to contribute.
 
+description: A responsive bottom navigation bar. Very beginner friendly. Feel free to contribute.
 repository: https://github.com/nohli/responsive_navigation_bar
 issue_tracker: https://github.com/nohli/responsive_navigation_bar/issues
 
@@ -10,17 +10,17 @@ topics:
   - responsive
   - ui
 
-version: 5.1.0
+version: 6.0.0
 
 environment:
   sdk: '>=3.6.0 <4.0.0'
-  flutter: '>=3.27.0'
+  flutter: '>=3.29.0'
 
 dependencies:
   flutter:
     sdk: flutter
 
 dev_dependencies:
-  flutter_lints: ">=4.0.0 <7.0.0"
+  flutter_lints: ^6.0.0
   flutter_test:
     sdk: flutter
