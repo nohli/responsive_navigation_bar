@@ -10,6 +10,16 @@ topics:
   - responsive
   - ui
 
+screenshots:
+  - description: 'Dark mode with text and animation'
+    path: assets/animation-darkmode-with-text.gif
+  - description: 'Light mode with text and animation'
+    path: assets/animation-lightmode-with-text.gif
+  - description: 'Dark mode with text'
+    path: assets/darkmode-with-text.gif
+  - description: 'Light mode with text'
+    path: assets/lightmode-with-text.gif
+
 version: 6.0.0
 
 environment:
