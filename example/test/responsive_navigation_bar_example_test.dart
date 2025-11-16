@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:responsive_navigation_bar_example/main.dart';
+import 'package:responsive_navigation_bar/responsive_navigation_bar.dart';
 
 void main() {
-  testWidgets('Displays text on first tab', (WidgetTester tester) async {
-    const widget = MyApp();
-    const text = 'Tab 1';
+  testWidgets(
+    'Displays text only on active tab when showInactiveButtonText is false',
+    (WidgetTester tester) async {
+      await tester.pumpWidget(_buildTestApp(showInactiveButtonText: false));
+      await tester.pumpAndSettle();
 
-    await tester.pumpWidget(widget);
-    await tester.pumpAndSettle();
+      // With showInactiveButtonText: false, only active tab text should be visible
+      expect(find.text('Tab 1'), findsOneWidget);
+      expect(find.text('Tab 2'), findsNothing);
+      expect(find.text('Tab 3'), findsNothing);
+    },
+  );
 
-    expect(find.text(text), findsOneWidget);
-  });
-
-  testWidgets('Displays text on all tabs with showInactiveButtonText', (
+  testWidgets('Displays text on all tabs when showInactiveButtonText is true', (
     WidgetTester tester,
   ) async {
-    const widget = MyApp();
-
-    await tester.pumpWidget(widget);
+    await tester.pumpWidget(_buildTestApp(showInactiveButtonText: true));
     await tester.pumpAndSettle();
 
     // With showInactiveButtonText: true, all button texts should be visible
@@ -28,16 +29,81 @@ void main() {
   });
 
   testWidgets('Button tap changes tab', (WidgetTester tester) async {
-    const widget = MyApp();
-    const text = 'Tab 3';
-
-    await tester.pumpWidget(widget);
+    await tester.pumpWidget(_buildTestApp(showInactiveButtonText: false));
     await tester.pumpAndSettle();
 
+    // Initially Tab 1 is selected
+    expect(find.text('Tab 1'), findsOneWidget);
+    expect(find.text('Tab 3'), findsNothing);
+
+    // Tap Tab 3 button
     final button = find.byIcon(Icons.settings);
     await tester.tap(button);
     await tester.pumpAndSettle();
 
-    expect(find.text(text), findsOneWidget);
+    // Now Tab 3 should be visible, Tab 1 should not
+    expect(find.text('Tab 1'), findsNothing);
+    expect(find.text('Tab 3'), findsOneWidget);
   });
+}
+
+Widget _buildTestApp({required bool showInactiveButtonText}) {
+  return MaterialApp(
+    home: _TestNavigationBar(showInactiveButtonText: showInactiveButtonText),
+  );
+}
+
+class _TestNavigationBar extends StatefulWidget {
+  const _TestNavigationBar({required this.showInactiveButtonText});
+
+  final bool showInactiveButtonText;
+
+  @override
+  State<_TestNavigationBar> createState() => _TestNavigationBarState();
+}
+
+class _TestNavigationBarState extends State<_TestNavigationBar> {
+  int _selectedIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      bottomNavigationBar: ResponsiveNavigationBar(
+        selectedIndex: _selectedIndex,
+        onTabChange: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+        showInactiveButtonText: widget.showInactiveButtonText,
+        textStyle: const TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+        ),
+        navigationBarButtons: const <NavigationBarButton>[
+          NavigationBarButton(
+            text: 'Tab 1',
+            icon: Icons.people,
+            backgroundGradient: LinearGradient(
+              colors: [Colors.yellow, Colors.green, Colors.blue],
+            ),
+          ),
+          NavigationBarButton(
+            text: 'Tab 2',
+            icon: Icons.star,
+            backgroundGradient: LinearGradient(
+              colors: [Colors.cyan, Colors.teal],
+            ),
+          ),
+          NavigationBarButton(
+            text: 'Tab 3',
+            icon: Icons.settings,
+            backgroundGradient: LinearGradient(
+              colors: [Colors.green, Colors.yellow],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
