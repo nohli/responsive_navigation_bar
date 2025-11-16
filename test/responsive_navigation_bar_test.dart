@@ -104,33 +104,31 @@ void main() {
       },
     );
 
-    testWidgets(
-      'shows all button text when both showActiveButtonText and showInactiveButtonText are true',
-      (WidgetTester tester) async {
-        await tester.pumpWidget(
-          MaterialApp(
-            home: Scaffold(
-              bottomNavigationBar: ResponsiveNavigationBar(
-                selectedIndex: 1,
-                onTabChange: (_) {},
-                showActiveButtonText: true,
-                showInactiveButtonText: true,
-                navigationBarButtons: const [
-                  NavigationBarButton(text: 'Home', icon: Icons.home),
-                  NavigationBarButton(text: 'Search', icon: Icons.search),
-                  NavigationBarButton(text: 'Settings', icon: Icons.settings),
-                ],
-              ),
+    testWidgets('shows all button text when both showActiveButtonText and '
+        'showInactiveButtonText are true', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            bottomNavigationBar: ResponsiveNavigationBar(
+              selectedIndex: 1,
+              onTabChange: (_) {},
+              showActiveButtonText: true,
+              showInactiveButtonText: true,
+              navigationBarButtons: const [
+                NavigationBarButton(text: 'Home', icon: Icons.home),
+                NavigationBarButton(text: 'Search', icon: Icons.search),
+                NavigationBarButton(text: 'Settings', icon: Icons.settings),
+              ],
             ),
           ),
-        );
+        ),
+      );
 
-        // All button texts should be visible
-        expect(find.text('Home'), findsOneWidget);
-        expect(find.text('Search'), findsOneWidget);
-        expect(find.text('Settings'), findsOneWidget);
-      },
-    );
+      // All button texts should be visible
+      expect(find.text('Home'), findsOneWidget);
+      expect(find.text('Search'), findsOneWidget);
+      expect(find.text('Settings'), findsOneWidget);
+    });
 
     testWidgets('hides all button text when both flags are false', (
       WidgetTester tester,
