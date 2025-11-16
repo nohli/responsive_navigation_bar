@@ -30,6 +30,7 @@ class _MyAppState extends State<MyApp> {
           selectedIndex: _selectedIndex,
           onTabChange: changeTab,
           // showActiveButtonText: false,
+          showInactiveButtonText: true,
           textStyle: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,

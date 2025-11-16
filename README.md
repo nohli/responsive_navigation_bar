@@ -13,6 +13,7 @@
 * Optional: Change the opacity (`backgroundOpacity`) of the menu bar
 * Optional: Blurred background (`backgroundBlur`) from the top of the navigation bar to the bottom of the screen
 * By default shows text on selected button (and resizes all buttons), this can simply be disabled via: `showActiveButtonText = false`
+* Optionally show text on inactive buttons as well by setting `showInactiveButtonText = true`
 * Only StatelessWidgets
 
 * How to make the `bottomNavigationBar` float above the `Scaffold`'s body:
