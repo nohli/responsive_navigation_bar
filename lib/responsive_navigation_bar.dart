@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 /// A responsive bottom navigation bar widget.
 ///
 /// This widget provides a customizable navigation bar with smooth animations,
-/// gradient support, and configurable text visibility for active and inactive buttons.
+/// gradient support, and configurable text visibility for active and
+/// inactive buttons.
 class ResponsiveNavigationBar extends StatelessWidget {
   /// Put this in [Scaffold]'s [bottomNavigationBar]
   const ResponsiveNavigationBar({
