@@ -14,6 +14,8 @@ class ResponsiveNavigationBar extends StatelessWidget {
     this.backgroundOpacity = 0.5,
     this.backgroundBlur = 2.5,
     this.borderRadius = 80,
+    this.navigationBarBorderRadius,
+    this.navigationBarButtonBorderRadius,
     this.padding = const EdgeInsets.all(6),
     this.outerPadding = const EdgeInsets.fromLTRB(8, 0, 8, 5),
     this.selectedIndex = 0,
@@ -74,8 +76,18 @@ class ResponsiveNavigationBar extends StatelessWidget {
   /// Defaults to 2.5
   final double backgroundBlur;
 
-  /// BorderRadius of all elements
+  /// BorderRadius fallback for both the navigation bar and its buttons.
   final double borderRadius;
+
+  /// BorderRadius of the navigation bar container.
+  ///
+  /// Defaults to [borderRadius] when null.
+  final double? navigationBarBorderRadius;
+
+  /// BorderRadius of the navigation bar buttons.
+  ///
+  /// Defaults to [borderRadius] when null.
+  final double? navigationBarButtonBorderRadius;
 
   /// Padding of the bar inside [backgroundColor]
   final EdgeInsetsGeometry padding;
@@ -173,6 +185,10 @@ class ResponsiveNavigationBar extends StatelessWidget {
                 ? 20
                 : 18);
 
+    final navigationBarRadius = navigationBarBorderRadius ?? borderRadius;
+    final navigationBarButtonRadius =
+        navigationBarButtonBorderRadius ?? borderRadius;
+
     final buttons = <Widget>[];
     for (final button in navigationBarButtons) {
       final index = navigationBarButtons.indexOf(button);
@@ -189,7 +205,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
           activeIconColor: activeIconColor,
           inactiveIconColor: inactiveIconColor,
           animationDuration: animationDuration,
-          borderRadius: borderRadius,
+          buttonBorderRadius: navigationBarButtonRadius,
           padding: button.padding ??
               (deviceWidth >= 650
                   ? const EdgeInsets.symmetric(horizontal: 30, vertical: 10)
@@ -226,7 +242,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
                       : null,
                   gradient: backgroundGradient,
                   borderRadius: BorderRadius.all(
-                    Radius.circular(borderRadius),
+                    Radius.circular(navigationBarRadius),
                   ),
                 ),
                 child: Padding(
@@ -305,7 +321,7 @@ class _Button extends StatelessWidget {
     required this.activeIconColor,
     required this.inactiveIconColor,
     required this.animationDuration,
-    required this.borderRadius,
+    required this.buttonBorderRadius,
     required this.padding,
     required this.backgroundColor,
     required this.backgroundGradient,
@@ -326,7 +342,7 @@ class _Button extends StatelessWidget {
   final Color activeIconColor;
   final Color inactiveIconColor;
   final Duration animationDuration;
-  final double borderRadius;
+  final double buttonBorderRadius;
   final EdgeInsetsGeometry padding;
   final Color backgroundColor;
   final Gradient? backgroundGradient;
@@ -371,7 +387,7 @@ class _Button extends StatelessWidget {
               return DecoratedBox(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(
-                    Radius.circular(borderRadius),
+                    Radius.circular(buttonBorderRadius),
                   ),
                   gradient: backgroundGradient,
                   color: color,

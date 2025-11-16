@@ -29,6 +29,8 @@ class _MyAppState extends State<MyApp> {
         bottomNavigationBar: ResponsiveNavigationBar(
           selectedIndex: _selectedIndex,
           onTabChange: changeTab,
+          navigationBarBorderRadius: 12,
+          navigationBarButtonBorderRadius: 18,
           // showActiveButtonText: false,
           textStyle: const TextStyle(
             color: Colors.white,
