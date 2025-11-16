@@ -12,14 +12,8 @@ void main() {
               selectedIndex: 0,
               onTabChange: (_) {},
               navigationBarButtons: const [
-                NavigationBarButton(
-                  text: 'Tab 1',
-                  icon: Icons.home,
-                ),
-                NavigationBarButton(
-                  text: 'Tab 2',
-                  icon: Icons.search,
-                ),
+                NavigationBarButton(text: 'Tab 1', icon: Icons.home),
+                NavigationBarButton(text: 'Tab 2', icon: Icons.search),
               ],
             ),
           ),
@@ -31,8 +25,9 @@ void main() {
       expect(find.byIcon(Icons.search), findsOneWidget);
     });
 
-    testWidgets('shows active button text by default',
-        (WidgetTester tester) async {
+    testWidgets('shows active button text by default', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -40,14 +35,8 @@ void main() {
               selectedIndex: 0,
               onTabChange: (_) {},
               navigationBarButtons: const [
-                NavigationBarButton(
-                  text: 'Home',
-                  icon: Icons.home,
-                ),
-                NavigationBarButton(
-                  text: 'Search',
-                  icon: Icons.search,
-                ),
+                NavigationBarButton(text: 'Home', icon: Icons.home),
+                NavigationBarButton(text: 'Search', icon: Icons.search),
               ],
             ),
           ),
@@ -60,8 +49,9 @@ void main() {
       expect(find.text('Search'), findsNothing);
     });
 
-    testWidgets('hides active button text when showActiveButtonText is false',
-        (WidgetTester tester) async {
+    testWidgets('hides active button text when showActiveButtonText is false', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -70,14 +60,8 @@ void main() {
               onTabChange: (_) {},
               showActiveButtonText: false,
               navigationBarButtons: const [
-                NavigationBarButton(
-                  text: 'Home',
-                  icon: Icons.home,
-                ),
-                NavigationBarButton(
-                  text: 'Search',
-                  icon: Icons.search,
-                ),
+                NavigationBarButton(text: 'Home', icon: Icons.home),
+                NavigationBarButton(text: 'Search', icon: Icons.search),
               ],
             ),
           ),
@@ -92,79 +76,65 @@ void main() {
       expect(find.byIcon(Icons.search), findsOneWidget);
     });
 
-    testWidgets('shows inactive button text when showInactiveButtonText is true',
-        (WidgetTester tester) async {
-      await tester.pumpWidget(
-        MaterialApp(
-          home: Scaffold(
-            bottomNavigationBar: ResponsiveNavigationBar(
-              selectedIndex: 0,
-              onTabChange: (_) {},
-              showInactiveButtonText: true,
-              navigationBarButtons: const [
-                NavigationBarButton(
-                  text: 'Home',
-                  icon: Icons.home,
-                ),
-                NavigationBarButton(
-                  text: 'Search',
-                  icon: Icons.search,
-                ),
-                NavigationBarButton(
-                  text: 'Settings',
-                  icon: Icons.settings,
-                ),
-              ],
+    testWidgets(
+      'shows inactive button text when showInactiveButtonText is true',
+      (WidgetTester tester) async {
+        await tester.pumpWidget(
+          MaterialApp(
+            home: Scaffold(
+              bottomNavigationBar: ResponsiveNavigationBar(
+                selectedIndex: 0,
+                onTabChange: (_) {},
+                showInactiveButtonText: true,
+                navigationBarButtons: const [
+                  NavigationBarButton(text: 'Home', icon: Icons.home),
+                  NavigationBarButton(text: 'Search', icon: Icons.search),
+                  NavigationBarButton(text: 'Settings', icon: Icons.settings),
+                ],
+              ),
             ),
           ),
-        ),
-      );
+        );
 
-      // Active button text should be visible
-      expect(find.text('Home'), findsOneWidget);
-      // Inactive button texts should also be visible
-      expect(find.text('Search'), findsOneWidget);
-      expect(find.text('Settings'), findsOneWidget);
-    });
+        // Active button text should be visible
+        expect(find.text('Home'), findsOneWidget);
+        // Inactive button texts should also be visible
+        expect(find.text('Search'), findsOneWidget);
+        expect(find.text('Settings'), findsOneWidget);
+      },
+    );
 
     testWidgets(
-        'shows all button text when both showActiveButtonText and showInactiveButtonText are true',
-        (WidgetTester tester) async {
-      await tester.pumpWidget(
-        MaterialApp(
-          home: Scaffold(
-            bottomNavigationBar: ResponsiveNavigationBar(
-              selectedIndex: 1,
-              onTabChange: (_) {},
-              showActiveButtonText: true,
-              showInactiveButtonText: true,
-              navigationBarButtons: const [
-                NavigationBarButton(
-                  text: 'Home',
-                  icon: Icons.home,
-                ),
-                NavigationBarButton(
-                  text: 'Search',
-                  icon: Icons.search,
-                ),
-                NavigationBarButton(
-                  text: 'Settings',
-                  icon: Icons.settings,
-                ),
-              ],
+      'shows all button text when both showActiveButtonText and showInactiveButtonText are true',
+      (WidgetTester tester) async {
+        await tester.pumpWidget(
+          MaterialApp(
+            home: Scaffold(
+              bottomNavigationBar: ResponsiveNavigationBar(
+                selectedIndex: 1,
+                onTabChange: (_) {},
+                showActiveButtonText: true,
+                showInactiveButtonText: true,
+                navigationBarButtons: const [
+                  NavigationBarButton(text: 'Home', icon: Icons.home),
+                  NavigationBarButton(text: 'Search', icon: Icons.search),
+                  NavigationBarButton(text: 'Settings', icon: Icons.settings),
+                ],
+              ),
             ),
           ),
-        ),
-      );
+        );
 
-      // All button texts should be visible
-      expect(find.text('Home'), findsOneWidget);
-      expect(find.text('Search'), findsOneWidget);
-      expect(find.text('Settings'), findsOneWidget);
-    });
+        // All button texts should be visible
+        expect(find.text('Home'), findsOneWidget);
+        expect(find.text('Search'), findsOneWidget);
+        expect(find.text('Settings'), findsOneWidget);
+      },
+    );
 
-    testWidgets('hides all button text when both flags are false',
-        (WidgetTester tester) async {
+    testWidgets('hides all button text when both flags are false', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -174,14 +144,8 @@ void main() {
               showActiveButtonText: false,
               showInactiveButtonText: false,
               navigationBarButtons: const [
-                NavigationBarButton(
-                  text: 'Home',
-                  icon: Icons.home,
-                ),
-                NavigationBarButton(
-                  text: 'Search',
-                  icon: Icons.search,
-                ),
+                NavigationBarButton(text: 'Home', icon: Icons.home),
+                NavigationBarButton(text: 'Search', icon: Icons.search),
               ],
             ),
           ),
@@ -196,8 +160,9 @@ void main() {
       expect(find.byIcon(Icons.search), findsOneWidget);
     });
 
-    testWidgets('calls onTabChange when button is tapped',
-        (WidgetTester tester) async {
+    testWidgets('calls onTabChange when button is tapped', (
+      WidgetTester tester,
+    ) async {
       int? tappedIndex;
 
       await tester.pumpWidget(
@@ -209,14 +174,8 @@ void main() {
                 tappedIndex = index;
               },
               navigationBarButtons: const [
-                NavigationBarButton(
-                  text: 'Home',
-                  icon: Icons.home,
-                ),
-                NavigationBarButton(
-                  text: 'Search',
-                  icon: Icons.search,
-                ),
+                NavigationBarButton(text: 'Home', icon: Icons.home),
+                NavigationBarButton(text: 'Search', icon: Icons.search),
               ],
             ),
           ),
@@ -230,8 +189,9 @@ void main() {
       expect(tappedIndex, 1);
     });
 
-    testWidgets('does not show text for empty text strings',
-        (WidgetTester tester) async {
+    testWidgets('does not show text for empty text strings', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -240,14 +200,8 @@ void main() {
               onTabChange: (_) {},
               showInactiveButtonText: true,
               navigationBarButtons: const [
-                NavigationBarButton(
-                  text: '',
-                  icon: Icons.home,
-                ),
-                NavigationBarButton(
-                  text: 'Search',
-                  icon: Icons.search,
-                ),
+                NavigationBarButton(text: '', icon: Icons.home),
+                NavigationBarButton(text: 'Search', icon: Icons.search),
               ],
             ),
           ),
@@ -260,8 +214,9 @@ void main() {
       expect(find.text('Search'), findsOneWidget);
     });
 
-    testWidgets('updates text visibility when selectedIndex changes',
-        (WidgetTester tester) async {
+    testWidgets('updates text visibility when selectedIndex changes', (
+      WidgetTester tester,
+    ) async {
       int selectedIndex = 0;
 
       await tester.pumpWidget(
@@ -278,14 +233,8 @@ void main() {
                   },
                   showInactiveButtonText: false,
                   navigationBarButtons: const [
-                    NavigationBarButton(
-                      text: 'Home',
-                      icon: Icons.home,
-                    ),
-                    NavigationBarButton(
-                      text: 'Search',
-                      icon: Icons.search,
-                    ),
+                    NavigationBarButton(text: 'Home', icon: Icons.home),
+                    NavigationBarButton(text: 'Search', icon: Icons.search),
                   ],
                 ),
               ),
@@ -310,10 +259,7 @@ void main() {
 
   group('NavigationBarButton', () {
     test('can be created with required parameters', () {
-      const button = NavigationBarButton(
-        text: 'Test',
-        icon: Icons.home,
-      );
+      const button = NavigationBarButton(text: 'Test', icon: Icons.home);
 
       expect(button.text, 'Test');
       expect(button.icon, Icons.home);

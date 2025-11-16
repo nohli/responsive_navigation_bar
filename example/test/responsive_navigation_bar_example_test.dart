@@ -13,15 +13,18 @@ void main() {
     expect(find.text(text), findsOneWidget);
   });
 
-  testWidgets('Does not display text on second tab',
-      (WidgetTester tester) async {
+  testWidgets('Displays text on all tabs with showInactiveButtonText', (
+    WidgetTester tester,
+  ) async {
     const widget = MyApp();
-    const text = 'Tab 2';
 
     await tester.pumpWidget(widget);
     await tester.pumpAndSettle();
 
-    expect(find.text(text), findsNothing);
+    // With showInactiveButtonText: true, all button texts should be visible
+    expect(find.text('Tab 1'), findsOneWidget);
+    expect(find.text('Tab 2'), findsOneWidget);
+    expect(find.text('Tab 3'), findsOneWidget);
   });
 
   testWidgets('Button tap changes tab', (WidgetTester tester) async {

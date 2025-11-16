@@ -174,12 +174,13 @@ class ResponsiveNavigationBar extends StatelessWidget {
     // [points] from:
     // https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions
     final deviceWidth = MediaQuery.of(context).size.width;
-    final buttonFontSize = fontSize ??
+    final buttonFontSize =
+        fontSize ??
         (deviceWidth >= 650
             ? 33
             : deviceWidth >= 375
-                ? 20
-                : 18);
+            ? 20
+            : 18);
 
     final buttons = <Widget>[];
     for (final button in navigationBarButtons) {
@@ -191,14 +192,17 @@ class ResponsiveNavigationBar extends StatelessWidget {
           text: button.text,
           textColor: button.textColor ?? textStyle.color,
           textStyle: textStyle.copyWith(
-              color: button.textColor, fontSize: buttonFontSize),
+            color: button.textColor,
+            fontSize: buttonFontSize,
+          ),
           icon: button.icon,
           iconSize: buttonFontSize,
           activeIconColor: activeIconColor,
           inactiveIconColor: inactiveIconColor,
           animationDuration: animationDuration,
           borderRadius: borderRadius,
-          padding: button.padding ??
+          padding:
+              button.padding ??
               (deviceWidth >= 650
                   ? const EdgeInsets.symmetric(horizontal: 30, vertical: 10)
                   : const EdgeInsets.symmetric(horizontal: 8, vertical: 10)),
@@ -233,13 +237,12 @@ class ResponsiveNavigationBar extends StatelessWidget {
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   color: backgroundGradient == null
-                      ? (backgroundColor ?? const Color(0x7d8c8c8c))
-                          .withValues(alpha: backgroundOpacity)
+                      ? (backgroundColor ?? const Color(0x7d8c8c8c)).withValues(
+                          alpha: backgroundOpacity,
+                        )
                       : null,
                   gradient: backgroundGradient,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(borderRadius),
-                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
                 ),
                 child: Padding(
                   padding: padding,
@@ -353,7 +356,8 @@ class _Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final showText = ((active && showActiveButtonText) ||
+    final showText =
+        ((active && showActiveButtonText) ||
             (!active && showInactiveButtonText)) &&
         text != '';
 
@@ -362,20 +366,15 @@ class _Button extends StatelessWidget {
 
     return TweenAnimationBuilder<int>(
       duration: animationDuration,
-      tween: IntTween(
-        end: active ? activeFlexFactor : inactiveFlexFactor,
-      ),
+      tween: IntTween(end: active ? activeFlexFactor : inactiveFlexFactor),
       builder: (context, flex, child) {
-        return Flexible(
-          flex: flex,
-          child: child!,
-        );
+        return Flexible(flex: flex, child: child!);
       },
       child: ColoredBox(
         color: kDebugMode && debugPaint
             ? index.remainder(2) == 0
-                ? Colors.green.withValues(alpha: 0.3)
-                : Colors.red.withValues(alpha: 0.3)
+                  ? Colors.green.withValues(alpha: 0.3)
+                  : Colors.red.withValues(alpha: 0.3)
             : Colors.transparent,
         child: GestureDetector(
           onTap: onTap,
@@ -387,9 +386,7 @@ class _Button extends StatelessWidget {
             builder: (context, color, child) {
               return DecoratedBox(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(borderRadius),
-                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
                   gradient: backgroundGradient,
                   color: color,
                 ),
@@ -411,11 +408,7 @@ class _Button extends StatelessWidget {
                           end: active ? activeIconColor : inactiveIconColor,
                         ),
                         builder: (context, color, _) {
-                          return Icon(
-                            icon,
-                            size: iconSize,
-                            color: color,
-                          );
+                          return Icon(icon, size: iconSize, color: color);
                         },
                       ),
                     ),
