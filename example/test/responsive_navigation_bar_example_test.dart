@@ -9,7 +9,8 @@ void main() {
     await tester.pumpWidget(_buildTestApp());
     await tester.pumpAndSettle();
 
-    // By default (showInactiveButtonText: false), only active tab text should be visible
+    // By default (showInactiveButtonText: false), only active tab text
+    // should be visible
     expect(find.text('Tab 1'), findsOneWidget);
     expect(find.text('Tab 2'), findsNothing);
     expect(find.text('Tab 3'), findsNothing);
