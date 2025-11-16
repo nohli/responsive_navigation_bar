@@ -12,6 +12,7 @@
 * Optional: Beautiful gradient (`backgroundGradient`) for navigation bar and/or buttons (or solid colors)
 * Optional: Change the opacity (`backgroundOpacity`) of the menu bar
 * Optional: Blurred background (`backgroundBlur`) from the top of the navigation bar to the bottom of the screen
+* Optional: Separate border radius controls for the navigation bar container (`borderRadius`) and buttons (`buttonBorderRadius`)
 * By default shows text on selected button (and resizes all buttons), this can simply be disabled via: `showActiveButtonText = false`
 * Only StatelessWidgets
 
