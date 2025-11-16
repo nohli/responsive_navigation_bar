@@ -11,6 +11,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
     required this.onTabChange,
     this.backgroundColor,
     this.backgroundGradient,
+    this.border,
     this.backgroundOpacity = 0.5,
     this.backgroundBlur = 2.5,
     this.borderRadius = 80,
@@ -25,6 +26,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
     this.showActiveButtonText = true,
     this.activeButtonFlexFactor = 160,
     this.inactiveButtonsFlexFactor = 60,
+    this.buttonBorder,
     this.debugPaint = false,
     super.key,
   });
@@ -56,6 +58,9 @@ class ResponsiveNavigationBar extends StatelessWidget {
   ///
   /// Overrides [backgroundColor]!
   final Gradient? backgroundGradient;
+
+  /// Border of the whole bar.
+  final BoxBorder? border;
 
   /// Opacity of [backgroundColor]/[backGroundGradient].
   ///
@@ -156,6 +161,9 @@ class ResponsiveNavigationBar extends StatelessWidget {
   /// icons are visible and there is no overflow - ideally on all screen sizes.
   final int inactiveButtonsFlexFactor;
 
+  /// Border applied to all [NavigationBarButton]s that do not override it.
+  final BoxBorder? buttonBorder;
+
   /// This only affects debug builds.
   ///
   /// Paints green/red background color for each button.
@@ -196,6 +204,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
                   : const EdgeInsets.symmetric(horizontal: 8, vertical: 10)),
           backgroundColor: button.backgroundColor,
           backgroundGradient: button.backgroundGradient,
+          border: button.border ?? buttonBorder,
           activeFlexFactor: showActiveButtonText ? activeButtonFlexFactor : 1,
           inactiveFlexFactor:
               showActiveButtonText ? inactiveButtonsFlexFactor : 1,
@@ -225,6 +234,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
                           .withValues(alpha: backgroundOpacity)
                       : null,
                   gradient: backgroundGradient,
+                  border: border,
                   borderRadius: BorderRadius.all(
                     Radius.circular(borderRadius),
                   ),
@@ -253,6 +263,7 @@ class NavigationBarButton {
     this.padding,
     this.backgroundColor = Colors.grey,
     this.backgroundGradient,
+    this.border,
     this.textColor,
   });
 
@@ -286,6 +297,9 @@ class NavigationBarButton {
   /// Overrides [backgroundColor]!
   final Gradient? backgroundGradient;
 
+  /// Border of the button.
+  final BoxBorder? border;
+
   /// Color of the text.
   ///
   /// If null, the button uses the color of the
@@ -309,6 +323,7 @@ class _Button extends StatelessWidget {
     required this.padding,
     required this.backgroundColor,
     required this.backgroundGradient,
+    required this.border,
     required this.activeFlexFactor,
     required this.inactiveFlexFactor,
     required this.showActiveButtonText,
@@ -330,6 +345,7 @@ class _Button extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   final Color backgroundColor;
   final Gradient? backgroundGradient;
+  final BoxBorder? border;
   final int activeFlexFactor;
   final int inactiveFlexFactor;
   final bool showActiveButtonText;
@@ -375,6 +391,7 @@ class _Button extends StatelessWidget {
                   ),
                   gradient: backgroundGradient,
                   color: color,
+                  border: border,
                 ),
                 child: child!,
               );
