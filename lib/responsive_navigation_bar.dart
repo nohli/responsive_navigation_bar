@@ -204,14 +204,12 @@ class ResponsiveNavigationBar extends StatelessWidget {
                   : const EdgeInsets.symmetric(horizontal: 8, vertical: 10)),
           backgroundColor: button.backgroundColor,
           backgroundGradient: button.backgroundGradient,
-          activeFlexFactor:
-              (showActiveButtonText || showInactiveButtonText)
-                  ? activeButtonFlexFactor
-                  : 1,
-          inactiveFlexFactor:
-              (showActiveButtonText || showInactiveButtonText)
-                  ? inactiveButtonsFlexFactor
-                  : 1,
+          activeFlexFactor: (showActiveButtonText || showInactiveButtonText)
+              ? activeButtonFlexFactor
+              : 1,
+          inactiveFlexFactor: (showActiveButtonText || showInactiveButtonText)
+              ? inactiveButtonsFlexFactor
+              : 1,
           showActiveButtonText: showActiveButtonText,
           showInactiveButtonText: showInactiveButtonText,
           debugPaint: debugPaint,
@@ -356,8 +354,8 @@ class _Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final showText = ((active && showActiveButtonText) ||
-                      (!active && showInactiveButtonText)) &&
-                     text != '';
+            (!active && showInactiveButtonText)) &&
+        text != '';
 
     // To align the button-height of non-text buttons
     final buttonHeight = (textStyle.fontSize ?? 14) * 1.44;
