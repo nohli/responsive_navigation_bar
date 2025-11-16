@@ -3,9 +3,9 @@ import 'package:responsive_navigation_bar/responsive_navigation_bar.dart';
 
 void main() => runApp(const MyApp());
 
-///
+/// Example app demonstrating the responsive navigation bar.
 class MyApp extends StatefulWidget {
-  ///
+  /// Creates the example app.
   const MyApp({super.key});
 
   @override

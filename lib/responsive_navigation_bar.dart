@@ -3,7 +3,10 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+/// A responsive bottom navigation bar widget.
 ///
+/// This widget provides a customizable navigation bar with smooth animations,
+/// gradient support, and configurable text visibility for active and inactive buttons.
 class ResponsiveNavigationBar extends StatelessWidget {
   /// Put this in [Scaffold]'s [bottomNavigationBar]
   const ResponsiveNavigationBar({
@@ -257,7 +260,10 @@ class ResponsiveNavigationBar extends StatelessWidget {
   }
 }
 
+/// A button configuration for [ResponsiveNavigationBar].
 ///
+/// Each button represents a navigation item with customizable appearance
+/// including icon, text, colors, and gradients.
 class NavigationBarButton {
   /// Put this in [ResponsiveNavigationBar]'s [navigationBarButtons]
   ///
