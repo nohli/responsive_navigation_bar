@@ -3,18 +3,17 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:responsive_navigation_bar/responsive_navigation_bar.dart';
 
 void main() {
-  testWidgets(
-    'Displays text only on active tab when showInactiveButtonText is false',
-    (WidgetTester tester) async {
-      await tester.pumpWidget(_buildTestApp(showInactiveButtonText: false));
-      await tester.pumpAndSettle();
+  testWidgets('Displays text only on active tab (default behavior)', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(_buildTestApp());
+    await tester.pumpAndSettle();
 
-      // With showInactiveButtonText: false, only active tab text should be visible
-      expect(find.text('Tab 1'), findsOneWidget);
-      expect(find.text('Tab 2'), findsNothing);
-      expect(find.text('Tab 3'), findsNothing);
-    },
-  );
+    // By default (showInactiveButtonText: false), only active tab text should be visible
+    expect(find.text('Tab 1'), findsOneWidget);
+    expect(find.text('Tab 2'), findsNothing);
+    expect(find.text('Tab 3'), findsNothing);
+  });
 
   testWidgets('Displays text on all tabs when showInactiveButtonText is true', (
     WidgetTester tester,
@@ -29,7 +28,7 @@ void main() {
   });
 
   testWidgets('Button tap changes tab', (WidgetTester tester) async {
-    await tester.pumpWidget(_buildTestApp(showInactiveButtonText: false));
+    await tester.pumpWidget(_buildTestApp());
     await tester.pumpAndSettle();
 
     // Initially Tab 1 is selected
@@ -47,7 +46,7 @@ void main() {
   });
 }
 
-Widget _buildTestApp({required bool showInactiveButtonText}) {
+Widget _buildTestApp({bool showInactiveButtonText = false}) {
   return MaterialApp(
     home: _TestNavigationBar(showInactiveButtonText: showInactiveButtonText),
   );
