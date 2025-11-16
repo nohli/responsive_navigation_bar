@@ -14,6 +14,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
     this.backgroundOpacity = 0.5,
     this.backgroundBlur = 2.5,
     this.borderRadius = 80,
+    this.border,
     this.padding = const EdgeInsets.all(6),
     this.outerPadding = const EdgeInsets.fromLTRB(8, 0, 8, 5),
     this.selectedIndex = 0,
@@ -76,6 +77,16 @@ class ResponsiveNavigationBar extends StatelessWidget {
 
   /// BorderRadius of all elements
   final double borderRadius;
+
+  /// Border of the navigation bar.
+  ///
+  /// Can be used to add a colored border around the navigation bar.
+  ///
+  /// Example:
+  /// ```dart
+  /// border: Border.all(color: Colors.white, width: 2)
+  /// ```
+  final BoxBorder? border;
 
   /// Padding of the bar inside [backgroundColor]
   final EdgeInsetsGeometry padding;
@@ -190,6 +201,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
           inactiveIconColor: inactiveIconColor,
           animationDuration: animationDuration,
           borderRadius: borderRadius,
+          border: button.border,
           padding: button.padding ??
               (deviceWidth >= 650
                   ? const EdgeInsets.symmetric(horizontal: 30, vertical: 10)
@@ -225,6 +237,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
                           .withValues(alpha: backgroundOpacity)
                       : null,
                   gradient: backgroundGradient,
+                  border: border,
                   borderRadius: BorderRadius.all(
                     Radius.circular(borderRadius),
                   ),
@@ -253,6 +266,7 @@ class NavigationBarButton {
     this.padding,
     this.backgroundColor = Colors.grey,
     this.backgroundGradient,
+    this.border,
     this.textColor,
   });
 
@@ -286,6 +300,16 @@ class NavigationBarButton {
   /// Overrides [backgroundColor]!
   final Gradient? backgroundGradient;
 
+  /// Border of the button.
+  ///
+  /// Can be used to add a colored border around the button.
+  ///
+  /// Example:
+  /// ```dart
+  /// border: Border.all(color: Colors.white, width: 2)
+  /// ```
+  final BoxBorder? border;
+
   /// Color of the text.
   ///
   /// If null, the button uses the color of the
@@ -306,6 +330,7 @@ class _Button extends StatelessWidget {
     required this.inactiveIconColor,
     required this.animationDuration,
     required this.borderRadius,
+    required this.border,
     required this.padding,
     required this.backgroundColor,
     required this.backgroundGradient,
@@ -327,6 +352,7 @@ class _Button extends StatelessWidget {
   final Color inactiveIconColor;
   final Duration animationDuration;
   final double borderRadius;
+  final BoxBorder? border;
   final EdgeInsetsGeometry padding;
   final Color backgroundColor;
   final Gradient? backgroundGradient;
@@ -375,6 +401,7 @@ class _Button extends StatelessWidget {
                   ),
                   gradient: backgroundGradient,
                   color: color,
+                  border: border,
                 ),
                 child: child!,
               );

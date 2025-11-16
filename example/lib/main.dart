@@ -29,6 +29,10 @@ class _MyAppState extends State<MyApp> {
         bottomNavigationBar: ResponsiveNavigationBar(
           selectedIndex: _selectedIndex,
           onTabChange: changeTab,
+          border: Border.all(
+            color: Colors.white,
+            width: 2,
+          ),
           // showActiveButtonText: false,
           textStyle: const TextStyle(
             color: Colors.white,
@@ -41,6 +45,10 @@ class _MyAppState extends State<MyApp> {
               backgroundGradient: LinearGradient(
                 colors: [Colors.yellow, Colors.green, Colors.blue],
               ),
+              border: Border.all(
+                color: Colors.white,
+                width: 1.5,
+              ),
             ),
             NavigationBarButton(
               text: 'Tab 2',
@@ -48,12 +56,20 @@ class _MyAppState extends State<MyApp> {
               backgroundGradient: LinearGradient(
                 colors: [Colors.cyan, Colors.teal],
               ),
+              border: Border.all(
+                color: Colors.white,
+                width: 1.5,
+              ),
             ),
             NavigationBarButton(
               text: 'Tab 3',
               icon: Icons.settings,
               backgroundGradient: LinearGradient(
                 colors: [Colors.green, Colors.yellow],
+              ),
+              border: Border.all(
+                color: Colors.white,
+                width: 1.5,
               ),
             ),
           ],
