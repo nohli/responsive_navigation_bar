@@ -82,9 +82,17 @@ class ResponsiveNavigationBar extends StatelessWidget {
   ///
   /// Can be used to add a colored border around the navigation bar.
   ///
-  /// Example:
+  /// Example with solid color border:
   /// ```dart
   /// border: Border.all(color: Colors.white, width: 2)
+  /// ```
+  ///
+  /// For gradient borders, you can use packages like `gradient_borders`:
+  /// ```dart
+  /// border: GradientBoxBorder(
+  ///   gradient: LinearGradient(colors: [Colors.red, Colors.blue]),
+  ///   width: 2,
+  /// )
   /// ```
   final BoxBorder? border;
 
@@ -304,9 +312,17 @@ class NavigationBarButton {
   ///
   /// Can be used to add a colored border around the button.
   ///
-  /// Example:
+  /// Example with solid color border:
   /// ```dart
   /// border: Border.all(color: Colors.white, width: 2)
+  /// ```
+  ///
+  /// For gradient borders, you can use packages like `gradient_borders`:
+  /// ```dart
+  /// border: GradientBoxBorder(
+  ///   gradient: LinearGradient(colors: [Colors.red, Colors.blue]),
+  ///   width: 2,
+  /// )
   /// ```
   final BoxBorder? border;
 
