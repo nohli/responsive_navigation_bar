@@ -13,7 +13,7 @@ void main() {
     expect(find.text(text), findsOneWidget);
   });
 
-  testWidgets('Does not display text on second tab',
+  testWidgets('Displays text on second tab (inactive)',
       (WidgetTester tester) async {
     const widget = MyApp();
     const text = 'Tab 2';
@@ -21,7 +21,7 @@ void main() {
     await tester.pumpWidget(widget);
     await tester.pumpAndSettle();
 
-    expect(find.text(text), findsNothing);
+    expect(find.text(text), findsOneWidget);
   });
 
   testWidgets('Button tap changes tab', (WidgetTester tester) async {
