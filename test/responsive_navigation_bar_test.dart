@@ -20,12 +20,12 @@ void main() {
               color: Colors.white,
               width: 2,
             ),
-            navigationBarButtons: const <NavigationBarButton>[
-              NavigationBarButton(
+            navigationBarButtons: <NavigationBarButton>[
+              const NavigationBarButton(
                 text: 'Tab 1',
                 icon: Icons.home,
               ),
-              NavigationBarButton(
+              const NavigationBarButton(
                 text: 'Tab 2',
                 icon: Icons.star,
               ),
@@ -51,7 +51,7 @@ void main() {
             onTabChange: (index) {
               selectedIndex = index;
             },
-            navigationBarButtons: const <NavigationBarButton>[
+            navigationBarButtons: <NavigationBarButton>[
               NavigationBarButton(
                 text: 'Tab 1',
                 icon: Icons.home,

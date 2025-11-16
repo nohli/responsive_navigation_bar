@@ -38,11 +38,11 @@ class _MyAppState extends State<MyApp> {
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
-          navigationBarButtons: const <NavigationBarButton>[
+          navigationBarButtons: <NavigationBarButton>[
             NavigationBarButton(
               text: 'Tab 1',
               icon: Icons.people,
-              backgroundGradient: LinearGradient(
+              backgroundGradient: const LinearGradient(
                 colors: [Colors.yellow, Colors.green, Colors.blue],
               ),
               border: Border.all(
@@ -53,7 +53,7 @@ class _MyAppState extends State<MyApp> {
             NavigationBarButton(
               text: 'Tab 2',
               icon: Icons.star,
-              backgroundGradient: LinearGradient(
+              backgroundGradient: const LinearGradient(
                 colors: [Colors.cyan, Colors.teal],
               ),
               border: Border.all(
@@ -64,7 +64,7 @@ class _MyAppState extends State<MyApp> {
             NavigationBarButton(
               text: 'Tab 3',
               icon: Icons.settings,
-              backgroundGradient: LinearGradient(
+              backgroundGradient: const LinearGradient(
                 colors: [Colors.green, Colors.yellow],
               ),
               border: Border.all(
