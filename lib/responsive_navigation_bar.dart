@@ -205,7 +205,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
           backgroundGradient: button.backgroundGradient,
           activeFlexFactor: showActiveButtonText ? activeButtonFlexFactor : 1,
           inactiveFlexFactor:
-              showActiveButtonText ? inactiveButtonsFlexFactor : 1,
+              (showActiveButtonText || showInactiveButtonText) ? inactiveButtonsFlexFactor : 1,
           showActiveButtonText: showActiveButtonText,
           showInactiveButtonText: showInactiveButtonText,
           debugPaint: debugPaint,
