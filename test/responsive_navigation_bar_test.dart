@@ -34,7 +34,41 @@ void main() {
       ),
     );
 
+    // Verify the widget is created
     expect(find.byType(ResponsiveNavigationBar), findsOneWidget);
+
+    // Verify the buttonBorderRadius parameter is set correctly
+    final navBar = tester.widget<ResponsiveNavigationBar>(
+      find.byType(ResponsiveNavigationBar),
+    );
+    expect(navBar.buttonBorderRadius, 20);
+    expect(navBar.borderRadius, 80);
+
+    // Verify that buttons use the buttonBorderRadius value
+    // Find all DecoratedBox widgets (buttons have DecoratedBox with border radius)
+    await tester.pumpAndSettle();
+    final decoratedBoxes = tester.widgetList<DecoratedBox>(
+      find.descendant(
+        of: find.byType(ResponsiveNavigationBar),
+        matching: find.byType(DecoratedBox),
+      ),
+    );
+
+    // Check that button DecoratedBoxes use buttonBorderRadius (20)
+    // The first DecoratedBox is the container, skip it
+    var buttonDecoratedBoxFound = false;
+    for (final box in decoratedBoxes.skip(1)) {
+      final decoration = box.decoration as BoxDecoration?;
+      if (decoration?.borderRadius != null) {
+        final radius = decoration!.borderRadius as BorderRadius;
+        // Button border radius should be 20
+        expect(radius.topLeft.x, 20);
+        buttonDecoratedBoxFound = true;
+        break;
+      }
+    }
+    expect(buttonDecoratedBoxFound, true,
+        reason: 'Should find at least one button with border radius');
   });
 
   testWidgets(
@@ -68,6 +102,38 @@ void main() {
       ),
     );
 
+    // Verify the widget is created
     expect(find.byType(ResponsiveNavigationBar), findsOneWidget);
+
+    // Verify the buttonBorderRadius is null (not set)
+    final navBar = tester.widget<ResponsiveNavigationBar>(
+      find.byType(ResponsiveNavigationBar),
+    );
+    expect(navBar.buttonBorderRadius, isNull);
+    expect(navBar.borderRadius, 40);
+
+    // Verify that buttons default to using borderRadius value (40)
+    await tester.pumpAndSettle();
+    final decoratedBoxes = tester.widgetList<DecoratedBox>(
+      find.descendant(
+        of: find.byType(ResponsiveNavigationBar),
+        matching: find.byType(DecoratedBox),
+      ),
+    );
+
+    // Check that button DecoratedBoxes use borderRadius (40) as fallback
+    var buttonDecoratedBoxFound = false;
+    for (final box in decoratedBoxes.skip(1)) {
+      final decoration = box.decoration as BoxDecoration?;
+      if (decoration?.borderRadius != null) {
+        final radius = decoration!.borderRadius as BorderRadius;
+        // Button border radius should default to borderRadius (40)
+        expect(radius.topLeft.x, 40);
+        buttonDecoratedBoxFound = true;
+        break;
+      }
+    }
+    expect(buttonDecoratedBoxFound, true,
+        reason: 'Should find at least one button with border radius');
   });
 }
