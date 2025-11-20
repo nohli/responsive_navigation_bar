@@ -13,8 +13,7 @@ void main() {
     expect(find.text(text), findsOneWidget);
   });
 
-  testWidgets('Does not display text on second tab',
-      (WidgetTester tester) async {
+  testWidgets('Does not display text on second tab', (WidgetTester tester) async {
     const widget = MyApp();
     const text = 'Tab 2';
 

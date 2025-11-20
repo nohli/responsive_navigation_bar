@@ -189,8 +189,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
           active: selectedIndex == index,
           text: button.text,
           textColor: button.textColor ?? textStyle.color,
-          textStyle: textStyle.copyWith(
-              color: button.textColor, fontSize: buttonFontSize),
+          textStyle: textStyle.copyWith(color: button.textColor, fontSize: buttonFontSize),
           icon: button.icon,
           iconSize: buttonFontSize,
           activeIconColor: activeIconColor,
@@ -204,8 +203,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
           backgroundColor: button.backgroundColor,
           backgroundGradient: button.backgroundGradient,
           activeFlexFactor: showActiveButtonText ? activeButtonFlexFactor : 1,
-          inactiveFlexFactor:
-              (showActiveButtonText || showInactiveButtonText) ? inactiveButtonsFlexFactor : 1,
+          inactiveFlexFactor: (showActiveButtonText || showInactiveButtonText) ? inactiveButtonsFlexFactor : 1,
           showActiveButtonText: showActiveButtonText,
           showInactiveButtonText: showInactiveButtonText,
           debugPaint: debugPaint,
@@ -229,8 +227,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   color: backgroundGradient == null
-                      ? (backgroundColor ?? const Color(0x7d8c8c8c))
-                          .withValues(alpha: backgroundOpacity)
+                      ? (backgroundColor ?? const Color(0x7d8c8c8c)).withValues(alpha: backgroundOpacity)
                       : null,
                   gradient: backgroundGradient,
                   borderRadius: BorderRadius.all(
@@ -348,9 +345,7 @@ class _Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final showText = ((active && showActiveButtonText) ||
-            (!active && showInactiveButtonText)) &&
-        text != '';
+    final showText = ((active && showActiveButtonText) || (!active && showInactiveButtonText)) && text != '';
 
     // To align the button-height of non-text buttons
     final buttonHeight = (textStyle.fontSize ?? 14) * 1.44;

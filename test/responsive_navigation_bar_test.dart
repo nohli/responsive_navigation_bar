@@ -3,8 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:responsive_navigation_bar/responsive_navigation_bar.dart';
 
 void main() {
-  testWidgets('showActiveButtonText displays text on active button',
-      (WidgetTester tester) async {
+  testWidgets('showActiveButtonText displays text on active button', (WidgetTester tester) async {
     int selectedIndex = 0;
 
     await tester.pumpWidget(
@@ -32,8 +31,7 @@ void main() {
     expect(find.text('Search'), findsNothing);
   });
 
-  testWidgets('showInactiveButtonText displays text on inactive buttons',
-      (WidgetTester tester) async {
+  testWidgets('showInactiveButtonText displays text on inactive buttons', (WidgetTester tester) async {
     int selectedIndex = 0;
 
     await tester.pumpWidget(
@@ -60,8 +58,7 @@ void main() {
     expect(find.text('Search'), findsOneWidget);
   });
 
-  testWidgets('inactive buttons show text when showInactiveButtonText is true',
-      (WidgetTester tester) async {
+  testWidgets('inactive buttons show text when showInactiveButtonText is true', (WidgetTester tester) async {
     int selectedIndex = 0;
 
     await tester.pumpWidget(
