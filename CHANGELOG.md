@@ -1,3 +1,8 @@
+## 6.1.0
+
+* Add `buttonSpacing` parameter to `ResponsiveNavigationBar` for spacing between buttons
+* Improve documentation for `NavigationBarButton.padding` to clarify it controls the button's inner padding
+
 ## 6.0.0
 
 * BREAKING: Upgrade minimum Flutter version to 3.29 due to using Color.withValues() 

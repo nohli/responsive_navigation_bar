@@ -17,6 +17,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
     this.buttonBorderRadius,
     this.padding = const EdgeInsets.all(6),
     this.outerPadding = const EdgeInsets.fromLTRB(8, 0, 8, 5),
+    this.buttonSpacing = 0,
     this.selectedIndex = 0,
     this.fontSize,
     this.textStyle = const TextStyle(fontWeight: FontWeight.bold),
@@ -89,6 +90,14 @@ class ResponsiveNavigationBar extends StatelessWidget {
 
   /// Padding of the bar outside [backgroundColor]
   final EdgeInsetsGeometry outerPadding;
+
+  /// Spacing between navigation buttons.
+  ///
+  /// This is useful when buttons have borders, allowing you to create
+  /// visual separation between them.
+  ///
+  /// Defaults to 0 (no spacing).
+  final double buttonSpacing;
 
   /// The selected tab.
   /// Pass your int value here.
@@ -189,6 +198,12 @@ class ResponsiveNavigationBar extends StatelessWidget {
     final buttons = <Widget>[];
     for (final button in navigationBarButtons) {
       final index = navigationBarButtons.indexOf(button);
+
+      // Add spacing before button (except for the first one)
+      if (index > 0 && buttonSpacing > 0) {
+        buttons.add(SizedBox(width: buttonSpacing));
+      }
+
       buttons.add(
         _Button(
           index: index,
@@ -277,7 +292,10 @@ class NavigationBarButton {
   /// Icon of the button.
   final IconData icon;
 
-  /// Padding of the button.
+  /// Inner padding of the button (padding inside the button's background).
+  ///
+  /// This controls the space between the button's content (icon and text)
+  /// and the button's edges.
   ///
   /// If null, defaults to:
   ///
