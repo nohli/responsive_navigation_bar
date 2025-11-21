@@ -178,4 +178,18 @@ void main() {
     // The widget should build without errors even with deprecated parameter
     expect(find.byType(ResponsiveNavigationBar), findsOneWidget);
   });
+
+  testWidgets('assertion fails when both buttonPadding and padding are used',
+      (WidgetTester tester) async {
+    expect(
+      () => NavigationBarButton(
+        text: 'Home',
+        icon: Icons.home,
+        // ignore: deprecated_member_use_from_same_package
+        padding: const EdgeInsets.all(10),
+        buttonPadding: const EdgeInsets.all(15),
+      ),
+      throwsA(isA<AssertionError>()),
+    );
+  });
 }

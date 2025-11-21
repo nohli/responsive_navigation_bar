@@ -281,7 +281,11 @@ class NavigationBarButton {
     this.backgroundColor = Colors.grey,
     this.backgroundGradient,
     this.textColor,
-  });
+  }) : assert(
+          buttonPadding == null || padding == null,
+          'Do not use both buttonPadding and padding. '
+          'Use buttonPadding only (padding is deprecated).',
+        );
 
   /// Text of the button (if active).
   final String text;
