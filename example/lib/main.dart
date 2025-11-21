@@ -31,6 +31,8 @@ class _MyAppState extends State<MyApp> {
           onTabChange: changeTab,
           // showActiveButtonText: false,
           // showInactiveButtonText: true, // Show text on inactive buttons
+          // borderRadius: 20,
+          // buttonBorderRadius: 15,
           textStyle: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
