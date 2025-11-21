@@ -230,7 +230,9 @@ class ResponsiveNavigationBar extends StatelessWidget {
                   : const EdgeInsets.symmetric(horizontal: 8, vertical: 10)),
           backgroundColor: button.backgroundColor,
           backgroundGradient: button.backgroundGradient,
-          activeFlexFactor: showActiveButtonText ? activeButtonFlexFactor : 1,
+          activeFlexFactor: (showActiveButtonText || showInactiveButtonText)
+              ? activeButtonFlexFactor
+              : 1,
           inactiveFlexFactor: (showActiveButtonText || showInactiveButtonText)
               ? inactiveButtonsFlexFactor
               : 1,
