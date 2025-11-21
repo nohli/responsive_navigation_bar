@@ -14,6 +14,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
     this.backgroundOpacity = 0.5,
     this.backgroundBlur = 2.5,
     this.borderRadius = 80,
+    this.buttonBorderRadius,
     this.padding = const EdgeInsets.all(6),
     this.outerPadding = const EdgeInsets.fromLTRB(8, 0, 8, 5),
     this.buttonSpacing = 0,
@@ -76,8 +77,13 @@ class ResponsiveNavigationBar extends StatelessWidget {
   /// Defaults to 2.5
   final double backgroundBlur;
 
-  /// BorderRadius of all elements
+  /// BorderRadius of the navigation bar container
   final double borderRadius;
+
+  /// BorderRadius of navigation bar buttons
+  ///
+  /// If null, defaults to [borderRadius] for backward compatibility
+  final double? buttonBorderRadius;
 
   /// Padding of the bar inside [backgroundColor]
   final EdgeInsetsGeometry padding;
@@ -211,7 +217,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
           activeIconColor: activeIconColor,
           inactiveIconColor: inactiveIconColor,
           animationDuration: animationDuration,
-          borderRadius: borderRadius,
+          borderRadius: buttonBorderRadius ?? borderRadius,
           padding: button.padding ??
               (deviceWidth >= 650
                   ? const EdgeInsets.symmetric(horizontal: 30, vertical: 10)
