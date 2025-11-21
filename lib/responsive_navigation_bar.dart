@@ -24,6 +24,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
     this.inactiveIconColor = Colors.white,
     this.animationDuration = const Duration(milliseconds: 220),
     this.showActiveButtonText = true,
+    this.showInactiveButtonText = false,
     this.activeButtonFlexFactor = 160,
     this.inactiveButtonsFlexFactor = 60,
     this.debugPaint = false,
@@ -138,6 +139,12 @@ class ResponsiveNavigationBar extends StatelessWidget {
   /// [NavigationBarButton]s (since the [text] will not be shown).
   final bool showActiveButtonText;
 
+  /// Whether to show text on inactive buttons.
+  ///
+  /// When true, text will be displayed on all inactive buttons.
+  /// This works independently from [showActiveButtonText].
+  final bool showInactiveButtonText;
+
   /// Flex factor.
   ///
   /// Only set this combined with [inactiveButtonsFlexFactor]!
@@ -203,9 +210,11 @@ class ResponsiveNavigationBar extends StatelessWidget {
           backgroundColor: button.backgroundColor,
           backgroundGradient: button.backgroundGradient,
           activeFlexFactor: showActiveButtonText ? activeButtonFlexFactor : 1,
-          inactiveFlexFactor:
-              showActiveButtonText ? inactiveButtonsFlexFactor : 1,
+          inactiveFlexFactor: (showActiveButtonText || showInactiveButtonText)
+              ? inactiveButtonsFlexFactor
+              : 1,
           showActiveButtonText: showActiveButtonText,
+          showInactiveButtonText: showInactiveButtonText,
           debugPaint: debugPaint,
           onTap: () => onTabChange(index),
         ),
@@ -318,6 +327,7 @@ class _Button extends StatelessWidget {
     required this.activeFlexFactor,
     required this.inactiveFlexFactor,
     required this.showActiveButtonText,
+    required this.showInactiveButtonText,
     required this.debugPaint,
     required this.onTap,
   });
@@ -339,12 +349,15 @@ class _Button extends StatelessWidget {
   final int activeFlexFactor;
   final int inactiveFlexFactor;
   final bool showActiveButtonText;
+  final bool showInactiveButtonText;
   final bool debugPaint;
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    final showText = active && showActiveButtonText && text != '';
+    final showText = ((active && showActiveButtonText) ||
+            (!active && showInactiveButtonText)) &&
+        text != '';
 
     // To align the button-height of non-text buttons
     final buttonHeight = (textStyle.fontSize ?? 14) * 1.44;

@@ -14,6 +14,7 @@
 * Optional: Blurred background (`backgroundBlur`) from the top of the navigation bar to the bottom of the screen
 * Optional: Separate border radius controls for the navigation bar container (`borderRadius`) and buttons (`buttonBorderRadius`)
 * By default shows text on selected button (and resizes all buttons), this can simply be disabled via: `showActiveButtonText = false`
+* Optional: Show text on inactive buttons via: `showInactiveButtonText = true`
 * Only StatelessWidgets
 
 * How to make the `bottomNavigationBar` float above the `Scaffold`'s body:

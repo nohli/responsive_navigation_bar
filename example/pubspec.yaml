@@ -1,5 +1,8 @@
 name: responsive_navigation_bar_example
+
 description: Demonstrates how to use the responsive_navigation_bar package.
+
+version: 1.0.0+1
 
 publish_to: 'none'
 

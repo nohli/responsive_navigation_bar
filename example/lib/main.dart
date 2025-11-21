@@ -30,6 +30,7 @@ class _MyAppState extends State<MyApp> {
           selectedIndex: _selectedIndex,
           onTabChange: changeTab,
           // showActiveButtonText: false,
+          // showInactiveButtonText: true, // Show text on inactive buttons
           borderRadius: 80,
           buttonBorderRadius: 20,
           textStyle: const TextStyle(
