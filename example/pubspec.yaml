@@ -1,7 +1,10 @@
 name: responsive_navigation_bar_example
+
 description: Demonstrates how to use the responsive_navigation_bar package.
 
-publish_to: 'none'
+version: 1.0.0+1
+
+publish_to: none
 
 environment:
   sdk: '>=3.6.0 <4.0.0'
