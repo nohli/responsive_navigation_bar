@@ -29,6 +29,7 @@ class _MyAppState extends State<MyApp> {
         bottomNavigationBar: ResponsiveNavigationBar(
           selectedIndex: _selectedIndex,
           onTabChange: changeTab,
+          buttonSpacing: 4, // Add spacing between buttons
           // showActiveButtonText: false,
           // showInactiveButtonText: true, // Show text on inactive buttons
           textStyle: const TextStyle(

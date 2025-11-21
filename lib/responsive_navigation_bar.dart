@@ -16,6 +16,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
     this.borderRadius = 80,
     this.padding = const EdgeInsets.all(6),
     this.outerPadding = const EdgeInsets.fromLTRB(8, 0, 8, 5),
+    this.buttonSpacing = 0,
     this.selectedIndex = 0,
     this.fontSize,
     this.textStyle = const TextStyle(fontWeight: FontWeight.bold),
@@ -83,6 +84,14 @@ class ResponsiveNavigationBar extends StatelessWidget {
 
   /// Padding of the bar outside [backgroundColor]
   final EdgeInsetsGeometry outerPadding;
+
+  /// Spacing between navigation buttons.
+  ///
+  /// This is useful when buttons have borders, allowing you to create
+  /// visual separation between them.
+  ///
+  /// Defaults to 0 (no spacing).
+  final double buttonSpacing;
 
   /// The selected tab.
   /// Pass your int value here.
@@ -183,6 +192,12 @@ class ResponsiveNavigationBar extends StatelessWidget {
     final buttons = <Widget>[];
     for (final button in navigationBarButtons) {
       final index = navigationBarButtons.indexOf(button);
+      
+      // Add spacing before button (except for the first one)
+      if (index > 0 && buttonSpacing > 0) {
+        buttons.add(SizedBox(width: buttonSpacing));
+      }
+      
       buttons.add(
         _Button(
           index: index,
@@ -197,7 +212,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
           inactiveIconColor: inactiveIconColor,
           animationDuration: animationDuration,
           borderRadius: borderRadius,
-          padding: button.padding ??
+          padding: button.buttonPadding ?? button.padding ??
               (deviceWidth >= 650
                   ? const EdgeInsets.symmetric(horizontal: 30, vertical: 10)
                   : const EdgeInsets.symmetric(horizontal: 8, vertical: 10)),
@@ -259,7 +274,10 @@ class NavigationBarButton {
   const NavigationBarButton({
     this.text = '',
     this.icon = Icons.hourglass_empty,
+    @Deprecated('Use buttonPadding instead. '
+        'This parameter will be removed in a future version.')
     this.padding,
+    this.buttonPadding,
     this.backgroundColor = Colors.grey,
     this.backgroundGradient,
     this.textColor,
@@ -273,6 +291,10 @@ class NavigationBarButton {
 
   /// Padding of the button.
   ///
+  /// **Deprecated:** Use [buttonPadding] instead for clarity.
+  /// This parameter name was ambiguous as users might confuse it
+  /// with outer padding.
+  ///
   /// If null, defaults to:
   ///
   /// ```
@@ -283,7 +305,26 @@ class NavigationBarButton {
   ///
   /// If you specify your own [padding], it will NOT be responsive any more
   /// - unless you pass something like above.
+  @Deprecated('Use buttonPadding instead. '
+      'This parameter will be removed in a future version.')
   final EdgeInsetsGeometry? padding;
+
+  /// Inner padding of the button (padding inside the button's background).
+  ///
+  /// This controls the space between the button's content (icon and text)
+  /// and the button's edges.
+  ///
+  /// If null, defaults to:
+  ///
+  /// ```
+  ///  MediaQuery.of(context).size.width >= 650
+  ///    ? const EdgeInsets.symmetric(horizontal: 30, vertical: 10)
+  ///    : const EdgeInsets.symmetric(horizontal: 8, vertical: 10)
+  /// ```
+  ///
+  /// If you specify your own [buttonPadding], it will NOT be responsive any more
+  /// - unless you pass something like above.
+  final EdgeInsetsGeometry? buttonPadding;
 
   /// Color of the button.
   ///

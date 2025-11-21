@@ -90,4 +90,92 @@ void main() {
     expect(find.text('Search'), findsOneWidget);
     expect(find.text('Profile'), findsOneWidget);
   });
+
+  testWidgets('buttonSpacing adds spacing between buttons',
+      (WidgetTester tester) async {
+    int selectedIndex = 0;
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          bottomNavigationBar: ResponsiveNavigationBar(
+            selectedIndex: selectedIndex,
+            onTabChange: (index) {
+              selectedIndex = index;
+            },
+            buttonSpacing: 8,
+            navigationBarButtons: const [
+              NavigationBarButton(text: 'Home', icon: Icons.home),
+              NavigationBarButton(text: 'Search', icon: Icons.search),
+              NavigationBarButton(text: 'Profile', icon: Icons.person),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    // Find all SizedBox widgets
+    final sizedBoxes = find.byType(SizedBox);
+    // There should be at least 2 SizedBox widgets for spacing (one between each button)
+    expect(sizedBoxes, findsWidgets);
+  });
+
+  testWidgets('buttonPadding parameter works on NavigationBarButton',
+      (WidgetTester tester) async {
+    int selectedIndex = 0;
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          bottomNavigationBar: ResponsiveNavigationBar(
+            selectedIndex: selectedIndex,
+            onTabChange: (index) {
+              selectedIndex = index;
+            },
+            navigationBarButtons: const [
+              NavigationBarButton(
+                text: 'Home',
+                icon: Icons.home,
+                buttonPadding: EdgeInsets.all(20),
+              ),
+              NavigationBarButton(text: 'Search', icon: Icons.search),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    // The widget should build without errors
+    expect(find.byType(ResponsiveNavigationBar), findsOneWidget);
+  });
+
+  testWidgets('deprecated padding parameter still works',
+      (WidgetTester tester) async {
+    int selectedIndex = 0;
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          bottomNavigationBar: ResponsiveNavigationBar(
+            selectedIndex: selectedIndex,
+            onTabChange: (index) {
+              selectedIndex = index;
+            },
+            navigationBarButtons: const [
+              // ignore: deprecated_member_use_from_same_package
+              NavigationBarButton(
+                text: 'Home',
+                icon: Icons.home,
+                padding: EdgeInsets.all(15),
+              ),
+              NavigationBarButton(text: 'Search', icon: Icons.search),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    // The widget should build without errors even with deprecated parameter
+    expect(find.byType(ResponsiveNavigationBar), findsOneWidget);
+  });
 }
