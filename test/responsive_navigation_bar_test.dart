@@ -123,9 +123,11 @@ void main() {
 
     // Check that button DecoratedBoxes use borderRadius (40) as fallback
     var buttonDecoratedBoxFound = false;
-    for (final box in decoratedBoxes.skip(1)) {
+    for (final box in decoratedBoxes) {
       final decoration = box.decoration as BoxDecoration?;
-      if (decoration?.borderRadius != null) {
+      // Only check DecoratedBoxes that have a borderRadius and a color matching button backgrounds
+      if (decoration?.borderRadius != null &&
+          (decoration?.color == Colors.blue || decoration?.color == Colors.red)) {
         final radius = decoration!.borderRadius as BorderRadius;
         // Button border radius should default to borderRadius (40)
         expect(radius.topLeft.x, 40);
