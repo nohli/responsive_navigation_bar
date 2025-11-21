@@ -212,8 +212,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
           inactiveIconColor: inactiveIconColor,
           animationDuration: animationDuration,
           borderRadius: borderRadius,
-          padding: button.buttonPadding ??
-              button.padding ??
+          padding: button.padding ??
               (deviceWidth >= 650
                   ? const EdgeInsets.symmetric(horizontal: 30, vertical: 10)
                   : const EdgeInsets.symmetric(horizontal: 8, vertical: 10)),
@@ -275,44 +274,17 @@ class NavigationBarButton {
   const NavigationBarButton({
     this.text = '',
     this.icon = Icons.hourglass_empty,
-    @Deprecated('Use buttonPadding instead. '
-        'This parameter will be removed in a future version.')
     this.padding,
-    this.buttonPadding,
     this.backgroundColor = Colors.grey,
     this.backgroundGradient,
     this.textColor,
-  }) : assert(
-          buttonPadding == null || padding == null,
-          'Do not use both buttonPadding and padding. '
-          'Use buttonPadding only (padding is deprecated).',
-        );
+  });
 
   /// Text of the button (if active).
   final String text;
 
   /// Icon of the button.
   final IconData icon;
-
-  /// Padding of the button.
-  ///
-  /// **Deprecated:** Use [buttonPadding] instead for clarity.
-  /// This parameter name was ambiguous as users might confuse it
-  /// with outer padding.
-  ///
-  /// If null, defaults to:
-  ///
-  /// ```
-  ///  MediaQuery.of(context).size.width >= 650
-  ///    ? const EdgeInsets.symmetric(horizontal: 30, vertical: 10)
-  ///    : const EdgeInsets.symmetric(horizontal: 8, vertical: 10)
-  /// ```
-  ///
-  /// If you specify your own [padding], it will NOT be responsive any more
-  /// - unless you pass something like above.
-  @Deprecated('Use buttonPadding instead. '
-      'This parameter will be removed in a future version.')
-  final EdgeInsetsGeometry? padding;
 
   /// Inner padding of the button (padding inside the button's background).
   ///
@@ -327,9 +299,9 @@ class NavigationBarButton {
   ///    : const EdgeInsets.symmetric(horizontal: 8, vertical: 10)
   /// ```
   ///
-  /// If you specify your own [buttonPadding], it will NOT be responsive any more
+  /// If you specify your own [padding], it will NOT be responsive any more
   /// - unless you pass something like above.
-  final EdgeInsetsGeometry? buttonPadding;
+  final EdgeInsetsGeometry? padding;
 
   /// Color of the button.
   ///

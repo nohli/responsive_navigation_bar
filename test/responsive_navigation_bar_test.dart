@@ -120,7 +120,7 @@ void main() {
     expect(sizedBoxes, findsWidgets);
   });
 
-  testWidgets('buttonPadding parameter works on NavigationBarButton',
+  testWidgets('padding parameter works on NavigationBarButton',
       (WidgetTester tester) async {
     int selectedIndex = 0;
 
@@ -136,7 +136,7 @@ void main() {
               NavigationBarButton(
                 text: 'Home',
                 icon: Icons.home,
-                buttonPadding: EdgeInsets.all(20),
+                padding: EdgeInsets.all(20),
               ),
               NavigationBarButton(text: 'Search', icon: Icons.search),
             ],
@@ -147,49 +147,5 @@ void main() {
 
     // The widget should build without errors
     expect(find.byType(ResponsiveNavigationBar), findsOneWidget);
-  });
-
-  testWidgets('deprecated padding parameter still works',
-      (WidgetTester tester) async {
-    int selectedIndex = 0;
-
-    await tester.pumpWidget(
-      MaterialApp(
-        home: Scaffold(
-          bottomNavigationBar: ResponsiveNavigationBar(
-            selectedIndex: selectedIndex,
-            onTabChange: (index) {
-              selectedIndex = index;
-            },
-            navigationBarButtons: const [
-              // ignore: deprecated_member_use_from_same_package
-              NavigationBarButton(
-                text: 'Home',
-                icon: Icons.home,
-                padding: EdgeInsets.all(15),
-              ),
-              NavigationBarButton(text: 'Search', icon: Icons.search),
-            ],
-          ),
-        ),
-      ),
-    );
-
-    // The widget should build without errors even with deprecated parameter
-    expect(find.byType(ResponsiveNavigationBar), findsOneWidget);
-  });
-
-  testWidgets('assertion fails when both buttonPadding and padding are used',
-      (WidgetTester tester) async {
-    expect(
-      () => NavigationBarButton(
-        text: 'Home',
-        icon: Icons.home,
-        // ignore: deprecated_member_use_from_same_package
-        padding: const EdgeInsets.all(10),
-        buttonPadding: const EdgeInsets.all(15),
-      ),
-      throwsA(isA<AssertionError>()),
-    );
   });
 }

@@ -1,8 +1,7 @@
 ## 6.1.0
 
 * Add `buttonSpacing` parameter to `ResponsiveNavigationBar` for spacing between buttons
-* Add `buttonPadding` parameter to `NavigationBarButton` for clearer naming
-* Deprecate `padding` parameter on `NavigationBarButton` (use `buttonPadding` instead)
+* Improve documentation for `NavigationBarButton.padding` to clarify it controls the button's inner padding
 
 ## 6.0.0
 
