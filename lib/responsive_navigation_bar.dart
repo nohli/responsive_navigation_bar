@@ -15,6 +15,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
     this.backgroundBlur = 2.5,
     this.borderRadius = 80,
     this.buttonBorderRadius,
+    this.border,
     this.padding = const EdgeInsets.all(6),
     this.outerPadding = const EdgeInsets.fromLTRB(8, 0, 8, 5),
     this.buttonSpacing = 0,
@@ -85,6 +86,13 @@ class ResponsiveNavigationBar extends StatelessWidget {
   /// If null, defaults to [borderRadius] for backward compatibility
   final double? buttonBorderRadius;
 
+  /// Border of the navigation bar.
+  ///
+  /// Example: `Border.all(color: Colors.white, width: 2)`
+  ///
+  /// Also supports gradient borders via third-party packages.
+  final BoxBorder? border;
+
   /// Padding of the bar inside [backgroundColor]
   final EdgeInsetsGeometry padding;
 
@@ -92,9 +100,6 @@ class ResponsiveNavigationBar extends StatelessWidget {
   final EdgeInsetsGeometry outerPadding;
 
   /// Spacing between navigation buttons.
-  ///
-  /// This is useful when buttons have borders, allowing you to create
-  /// visual separation between them.
   ///
   /// Defaults to 0 (no spacing).
   final double buttonSpacing;
@@ -218,13 +223,16 @@ class ResponsiveNavigationBar extends StatelessWidget {
           inactiveIconColor: inactiveIconColor,
           animationDuration: animationDuration,
           borderRadius: buttonBorderRadius ?? borderRadius,
+          border: button.border,
           padding: button.padding ??
               (deviceWidth >= 650
                   ? const EdgeInsets.symmetric(horizontal: 30, vertical: 10)
                   : const EdgeInsets.symmetric(horizontal: 8, vertical: 10)),
           backgroundColor: button.backgroundColor,
           backgroundGradient: button.backgroundGradient,
-          activeFlexFactor: showActiveButtonText ? activeButtonFlexFactor : 1,
+          activeFlexFactor: (showActiveButtonText || showInactiveButtonText)
+              ? activeButtonFlexFactor
+              : 1,
           inactiveFlexFactor: (showActiveButtonText || showInactiveButtonText)
               ? inactiveButtonsFlexFactor
               : 1,
@@ -255,6 +263,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
                           .withValues(alpha: backgroundOpacity)
                       : null,
                   gradient: backgroundGradient,
+                  border: border,
                   borderRadius: BorderRadius.all(
                     Radius.circular(borderRadius),
                   ),
@@ -283,6 +292,7 @@ class NavigationBarButton {
     this.padding,
     this.backgroundColor = Colors.grey,
     this.backgroundGradient,
+    this.border,
     this.textColor,
   });
 
@@ -319,6 +329,13 @@ class NavigationBarButton {
   /// Overrides [backgroundColor]!
   final Gradient? backgroundGradient;
 
+  /// Border of the button.
+  ///
+  /// Example: `Border.all(color: Colors.white, width: 2)`
+  ///
+  /// Also supports gradient borders via third-party packages.
+  final BoxBorder? border;
+
   /// Color of the text.
   ///
   /// If null, the button uses the color of the
@@ -339,6 +356,7 @@ class _Button extends StatelessWidget {
     required this.inactiveIconColor,
     required this.animationDuration,
     required this.borderRadius,
+    required this.border,
     required this.padding,
     required this.backgroundColor,
     required this.backgroundGradient,
@@ -361,6 +379,7 @@ class _Button extends StatelessWidget {
   final Color inactiveIconColor;
   final Duration animationDuration;
   final double borderRadius;
+  final BoxBorder? border;
   final EdgeInsetsGeometry padding;
   final Color backgroundColor;
   final Gradient? backgroundGradient;
@@ -412,6 +431,7 @@ class _Button extends StatelessWidget {
                   ),
                   gradient: backgroundGradient,
                   color: color,
+                  border: border,
                 ),
                 child: child!,
               );
