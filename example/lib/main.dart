@@ -29,13 +29,13 @@ class _MyAppState extends State<MyApp> {
         bottomNavigationBar: ResponsiveNavigationBar(
           selectedIndex: _selectedIndex,
           onTabChange: changeTab,
-          border: Border.all(
-            color: Colors.white,
-            width: 2,
-          ),
-          buttonSpacing: 4, // Add spacing between buttons
+          // border: Border.all(
+          //   color: Colors.white,
+          //   width: 2,
+          // ),
+          // buttonSpacing: 4,
           // showActiveButtonText: false,
-          // showInactiveButtonText: true, // Show text on inactive buttons
+          // showInactiveButtonText: true,
           // borderRadius: 20,
           // buttonBorderRadius: 15,
           textStyle: const TextStyle(
@@ -49,10 +49,10 @@ class _MyAppState extends State<MyApp> {
               backgroundGradient: const LinearGradient(
                 colors: [Colors.yellow, Colors.green, Colors.blue],
               ),
-              border: Border.all(
-                color: Colors.white,
-                width: 1.5,
-              ),
+              // border: Border.all(
+              //   color: Colors.white,
+              //   width: 1.5,
+              // ),
             ),
             NavigationBarButton(
               text: 'Tab 2',
@@ -60,10 +60,10 @@ class _MyAppState extends State<MyApp> {
               backgroundGradient: const LinearGradient(
                 colors: [Colors.cyan, Colors.teal],
               ),
-              border: Border.all(
-                color: Colors.white,
-                width: 1.5,
-              ),
+              // border: Border.all(
+              //   color: Colors.white,
+              //   width: 1.5,
+              // ),
             ),
             NavigationBarButton(
               text: 'Tab 3',
@@ -71,10 +71,10 @@ class _MyAppState extends State<MyApp> {
               backgroundGradient: const LinearGradient(
                 colors: [Colors.green, Colors.yellow],
               ),
-              border: Border.all(
-                color: Colors.white,
-                width: 1.5,
-              ),
+              // border: Border.all(
+              //   color: Colors.white,
+              //   width: 1.5,
+              // ),
             ),
           ],
         ),
