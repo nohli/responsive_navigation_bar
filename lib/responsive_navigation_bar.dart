@@ -192,12 +192,12 @@ class ResponsiveNavigationBar extends StatelessWidget {
     final buttons = <Widget>[];
     for (final button in navigationBarButtons) {
       final index = navigationBarButtons.indexOf(button);
-      
+
       // Add spacing before button (except for the first one)
       if (index > 0 && buttonSpacing > 0) {
         buttons.add(SizedBox(width: buttonSpacing));
       }
-      
+
       buttons.add(
         _Button(
           index: index,
@@ -212,7 +212,8 @@ class ResponsiveNavigationBar extends StatelessWidget {
           inactiveIconColor: inactiveIconColor,
           animationDuration: animationDuration,
           borderRadius: borderRadius,
-          padding: button.buttonPadding ?? button.padding ??
+          padding: button.buttonPadding ??
+              button.padding ??
               (deviceWidth >= 650
                   ? const EdgeInsets.symmetric(horizontal: 30, vertical: 10)
                   : const EdgeInsets.symmetric(horizontal: 8, vertical: 10)),
