@@ -60,7 +60,8 @@ void main() {
     for (final box in decoratedBoxes) {
       final decoration = box.decoration as BoxDecoration?;
       if (decoration?.borderRadius != null &&
-          (decoration?.color == Colors.blue || decoration?.color == Colors.red)) {
+          (decoration?.color == Colors.blue ||
+              decoration?.color == Colors.red)) {
         final radius = decoration!.borderRadius as BorderRadius;
         // Button border radius should be 20
         expect(radius.topLeft.x, 20);
@@ -128,7 +129,8 @@ void main() {
       final decoration = box.decoration as BoxDecoration?;
       // Only check DecoratedBoxes that have a borderRadius and a color matching button backgrounds
       if (decoration?.borderRadius != null &&
-          (decoration?.color == Colors.blue || decoration?.color == Colors.red)) {
+          (decoration?.color == Colors.blue ||
+              decoration?.color == Colors.red)) {
         final radius = decoration!.borderRadius as BorderRadius;
         // Button border radius should default to borderRadius (40)
         expect(radius.topLeft.x, 40);
