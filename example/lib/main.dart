@@ -33,6 +33,7 @@ class _MyAppState extends State<MyApp> {
             color: Colors.white,
             width: 2,
           ),
+          buttonSpacing: 4, // Add spacing between buttons
           // showActiveButtonText: false,
           // showInactiveButtonText: true, // Show text on inactive buttons
           // borderRadius: 20,

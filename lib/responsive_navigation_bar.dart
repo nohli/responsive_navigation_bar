@@ -18,6 +18,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
     this.border,
     this.padding = const EdgeInsets.all(6),
     this.outerPadding = const EdgeInsets.fromLTRB(8, 0, 8, 5),
+    this.buttonSpacing = 0,
     this.selectedIndex = 0,
     this.fontSize,
     this.textStyle = const TextStyle(fontWeight: FontWeight.bold),
@@ -87,20 +88,9 @@ class ResponsiveNavigationBar extends StatelessWidget {
 
   /// Border of the navigation bar.
   ///
-  /// Can be used to add a colored border around the navigation bar.
+  /// Example: `Border.all(color: Colors.white, width: 2)`
   ///
-  /// Example with solid color border:
-  /// ```dart
-  /// border: Border.all(color: Colors.white, width: 2)
-  /// ```
-  ///
-  /// For gradient borders, you can use packages like `gradient_borders`:
-  /// ```dart
-  /// border: GradientBoxBorder(
-  ///   gradient: LinearGradient(colors: [Colors.red, Colors.blue]),
-  ///   width: 2,
-  /// )
-  /// ```
+  /// Also supports gradient borders via third-party packages.
   final BoxBorder? border;
 
   /// Padding of the bar inside [backgroundColor]
@@ -108,6 +98,11 @@ class ResponsiveNavigationBar extends StatelessWidget {
 
   /// Padding of the bar outside [backgroundColor]
   final EdgeInsetsGeometry outerPadding;
+
+  /// Spacing between navigation buttons.
+  ///
+  /// Defaults to 0 (no spacing).
+  final double buttonSpacing;
 
   /// The selected tab.
   /// Pass your int value here.
@@ -208,6 +203,12 @@ class ResponsiveNavigationBar extends StatelessWidget {
     final buttons = <Widget>[];
     for (final button in navigationBarButtons) {
       final index = navigationBarButtons.indexOf(button);
+
+      // Add spacing before button (except for the first one)
+      if (index > 0 && buttonSpacing > 0) {
+        buttons.add(SizedBox(width: buttonSpacing));
+      }
+
       buttons.add(
         _Button(
           index: index,
@@ -299,7 +300,10 @@ class NavigationBarButton {
   /// Icon of the button.
   final IconData icon;
 
-  /// Padding of the button.
+  /// Inner padding of the button (padding inside the button's background).
+  ///
+  /// This controls the space between the button's content (icon and text)
+  /// and the button's edges.
   ///
   /// If null, defaults to:
   ///
@@ -325,20 +329,9 @@ class NavigationBarButton {
 
   /// Border of the button.
   ///
-  /// Can be used to add a colored border around the button.
+  /// Example: `Border.all(color: Colors.white, width: 2)`
   ///
-  /// Example with solid color border:
-  /// ```dart
-  /// border: Border.all(color: Colors.white, width: 2)
-  /// ```
-  ///
-  /// For gradient borders, you can use packages like `gradient_borders`:
-  /// ```dart
-  /// border: GradientBoxBorder(
-  ///   gradient: LinearGradient(colors: [Colors.red, Colors.blue]),
-  ///   width: 2,
-  /// )
-  /// ```
+  /// Also supports gradient borders via third-party packages.
   final BoxBorder? border;
 
   /// Color of the text.

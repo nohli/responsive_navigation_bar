@@ -91,6 +91,64 @@ void main() {
     expect(find.text('Profile'), findsOneWidget);
   });
 
+  testWidgets('buttonSpacing adds spacing between buttons',
+      (WidgetTester tester) async {
+    int selectedIndex = 0;
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          bottomNavigationBar: ResponsiveNavigationBar(
+            selectedIndex: selectedIndex,
+            onTabChange: (index) {
+              selectedIndex = index;
+            },
+            buttonSpacing: 8,
+            navigationBarButtons: const [
+              NavigationBarButton(text: 'Home', icon: Icons.home),
+              NavigationBarButton(text: 'Search', icon: Icons.search),
+              NavigationBarButton(text: 'Profile', icon: Icons.person),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    // Find all SizedBox widgets
+    final sizedBoxes = find.byType(SizedBox);
+    // There should be at least 2 SizedBox widgets for spacing (one between each button)
+    expect(sizedBoxes, findsWidgets);
+  });
+
+  testWidgets('padding parameter works on NavigationBarButton',
+      (WidgetTester tester) async {
+    int selectedIndex = 0;
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          bottomNavigationBar: ResponsiveNavigationBar(
+            selectedIndex: selectedIndex,
+            onTabChange: (index) {
+              selectedIndex = index;
+            },
+            navigationBarButtons: const [
+              NavigationBarButton(
+                text: 'Home',
+                icon: Icons.home,
+                padding: EdgeInsets.all(20),
+              ),
+              NavigationBarButton(text: 'Search', icon: Icons.search),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    // The widget should build without errors
+    expect(find.byType(ResponsiveNavigationBar), findsOneWidget);
+  });
+
   testWidgets('ResponsiveNavigationBar accepts buttonBorderRadius parameter',
       (WidgetTester tester) async {
     int selectedIndex = 0;

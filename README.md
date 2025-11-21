@@ -10,12 +10,12 @@
 * Everything is documented + you will be asked to add required values - the rest is optional (with sound null safety)
 * By default, `fontSize`, `iconSize` and `padding` are responsive (change size with screen size)
 * Optional: Beautiful gradient (`backgroundGradient`) for navigation bar and/or buttons (or solid colors)
-* Optional: Colored borders (`border`) for navigation bar and/or buttons (supports gradient borders via third-party packages)
+* Optional: Colored borders (`border`) for navigation bar and/or buttons
 * Optional: Change the opacity (`backgroundOpacity`) of the menu bar
 * Optional: Blurred background (`backgroundBlur`) from the top of the navigation bar to the bottom of the screen
-* Optional: Separate border radius controls for the navigation bar container (`borderRadius`) and buttons (`buttonBorderRadius`)
-* By default shows text on selected button (and resizes all buttons), this can simply be disabled via: `showActiveButtonText = false`
-* Optional: Show text on inactive buttons via: `showInactiveButtonText = true`
+* Optional: Separate border radius controls (`borderRadius`, `buttonBorderRadius`)
+* Optional: Control button spacing (`buttonSpacing`)
+* By default shows text on selected button, optionally show on inactive buttons too (`showInactiveButtonText`)
 * Only StatelessWidgets
 
 * How to make the `bottomNavigationBar` float above the `Scaffold`'s body:
@@ -38,28 +38,6 @@ inactiveIconColor:
     Theme.of(context).brightness == Brightness.dark
         ? const Color(0xffaaaaaa)
         : const Color(0xff969696),
-```
-
-* How to add borders around the navigation bar and buttons:
-```dart
-ResponsiveNavigationBar(
-  border: Border.all(color: Colors.white, width: 2),
-  navigationBarButtons: [
-    NavigationBarButton(
-      text: 'Home',
-      icon: Icons.home,
-      border: Border.all(color: Colors.white, width: 1.5),
-    ),
-  ],
-)
-```
-
-For gradient borders, use third-party packages like `gradient_borders`:
-```dart
-border: GradientBoxBorder(
-  gradient: LinearGradient(colors: [Colors.red, Colors.blue]),
-  width: 2,
-)
 ```
 
 
