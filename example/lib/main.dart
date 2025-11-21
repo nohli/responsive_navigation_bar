@@ -34,6 +34,7 @@ class _MyAppState extends State<MyApp> {
             width: 2,
           ),
           // showActiveButtonText: false,
+          // showInactiveButtonText: true, // Show text on inactive buttons
           textStyle: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
