@@ -1,11 +1,8 @@
-## 6.2.0
+## 6.1.0
 
 * Add `border` parameter to `ResponsiveNavigationBar` for adding colored borders around the navigation bar
 * Add `border` parameter to `NavigationBarButton` for adding colored borders around individual buttons
 * Support for gradient borders via third-party packages like `gradient_borders`
-
-## 6.1.0
-
 * Add `buttonSpacing` parameter to `ResponsiveNavigationBar` for spacing between buttons
 * Add `buttonBorderRadius` parameter to `ResponsiveNavigationBar` for separate control of button border radius
 * Add `showInactiveButtonText` parameter to display text on inactive buttons
