@@ -406,7 +406,9 @@ class _Button extends StatelessWidget {
         text != '';
 
     // To align the button-height of non-text buttons
-    final buttonHeight = (textStyle.fontSize ?? 14) * 1.44;
+    // Use the larger of text height or icon size to ensure proper vertical centering
+    final textHeight = (textStyle.fontSize ?? 14) * 1.44;
+    final buttonHeight = textHeight > iconSize ? textHeight : iconSize;
 
     return TweenAnimationBuilder<int>(
       duration: animationDuration,

@@ -492,4 +492,40 @@ void main() {
     expect(navBar.fontSize, isNull);
     expect(navBar.iconSize, isNull);
   });
+
+  testWidgets('larger iconSize than fontSize renders without overflow',
+      (WidgetTester tester) async {
+    int selectedIndex = 0;
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          bottomNavigationBar: ResponsiveNavigationBar(
+            selectedIndex: selectedIndex,
+            onTabChange: (index) {
+              selectedIndex = index;
+            },
+            fontSize: 14,
+            iconSize: 40,
+            navigationBarButtons: const [
+              NavigationBarButton(text: 'Home', icon: Icons.home),
+              NavigationBarButton(text: 'Search', icon: Icons.search),
+              NavigationBarButton(text: 'Profile', icon: Icons.person),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    // Verify the widget is created and renders without errors
+    expect(find.byType(ResponsiveNavigationBar), findsOneWidget);
+
+    // Find all Icon widgets
+    final icons = tester.widgetList<Icon>(find.byType(Icon));
+    
+    // Verify icons are rendered with the correct size
+    for (final icon in icons) {
+      expect(icon.size, 40);
+    }
+  });
 }
