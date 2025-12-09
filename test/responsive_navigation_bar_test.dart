@@ -522,7 +522,7 @@ void main() {
 
     // Find all Icon widgets
     final icons = tester.widgetList<Icon>(find.byType(Icon));
-    
+
     // Verify icons are rendered with the correct size
     for (final icon in icons) {
       expect(icon.size, 40);
