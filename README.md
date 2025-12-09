@@ -9,6 +9,7 @@
 * Very easy to set up, beginner friendly
 * Everything is documented + you will be asked to add required values - the rest is optional (with sound null safety)
 * By default, `fontSize`, `iconSize` and `padding` are responsive (change size with screen size)
+* `fontSize` and `iconSize` can be set independently to allow separate control of text and icon sizes
 * Optional: Beautiful gradient (`backgroundGradient`) for navigation bar and/or buttons (or solid colors)
 * Optional: Colored borders (`border`) for navigation bar and/or buttons
 * Optional: Change the opacity (`backgroundOpacity`) of the menu bar

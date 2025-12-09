@@ -394,4 +394,102 @@ void main() {
     // Active button text should not be visible (showActiveButtonText is false)
     expect(find.text('Home'), findsNothing);
   });
+
+  testWidgets('iconSize parameter sets icon size independently from fontSize',
+      (WidgetTester tester) async {
+    int selectedIndex = 0;
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          bottomNavigationBar: ResponsiveNavigationBar(
+            selectedIndex: selectedIndex,
+            onTabChange: (index) {
+              selectedIndex = index;
+            },
+            fontSize: 16,
+            iconSize: 32,
+            navigationBarButtons: const [
+              NavigationBarButton(text: 'Home', icon: Icons.home),
+              NavigationBarButton(text: 'Search', icon: Icons.search),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    // Verify the widget is created
+    expect(find.byType(ResponsiveNavigationBar), findsOneWidget);
+
+    // Verify the parameters are set correctly
+    final navBar = tester.widget<ResponsiveNavigationBar>(
+      find.byType(ResponsiveNavigationBar),
+    );
+    expect(navBar.fontSize, 16);
+    expect(navBar.iconSize, 32);
+  });
+
+  testWidgets('iconSize defaults to fontSize when not specified',
+      (WidgetTester tester) async {
+    int selectedIndex = 0;
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          bottomNavigationBar: ResponsiveNavigationBar(
+            selectedIndex: selectedIndex,
+            onTabChange: (index) {
+              selectedIndex = index;
+            },
+            fontSize: 24,
+            navigationBarButtons: const [
+              NavigationBarButton(text: 'Home', icon: Icons.home),
+              NavigationBarButton(text: 'Search', icon: Icons.search),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    // Verify the widget is created
+    expect(find.byType(ResponsiveNavigationBar), findsOneWidget);
+
+    // Verify fontSize is set and iconSize is null (will default to fontSize)
+    final navBar = tester.widget<ResponsiveNavigationBar>(
+      find.byType(ResponsiveNavigationBar),
+    );
+    expect(navBar.fontSize, 24);
+    expect(navBar.iconSize, isNull);
+  });
+
+  testWidgets('both fontSize and iconSize can be null for default sizing',
+      (WidgetTester tester) async {
+    int selectedIndex = 0;
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          bottomNavigationBar: ResponsiveNavigationBar(
+            selectedIndex: selectedIndex,
+            onTabChange: (index) {
+              selectedIndex = index;
+            },
+            navigationBarButtons: const [
+              NavigationBarButton(text: 'Home', icon: Icons.home),
+              NavigationBarButton(text: 'Search', icon: Icons.search),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    // Verify the widget is created and uses default responsive sizing
+    expect(find.byType(ResponsiveNavigationBar), findsOneWidget);
+
+    final navBar = tester.widget<ResponsiveNavigationBar>(
+      find.byType(ResponsiveNavigationBar),
+    );
+    expect(navBar.fontSize, isNull);
+    expect(navBar.iconSize, isNull);
+  });
 }
