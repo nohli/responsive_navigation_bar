@@ -21,6 +21,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
     this.buttonSpacing = 0,
     this.selectedIndex = 0,
     this.fontSize,
+    this.iconSize,
     this.textStyle = const TextStyle(fontWeight: FontWeight.bold),
     this.activeIconColor = Colors.white,
     this.inactiveIconColor = Colors.white,
@@ -108,7 +109,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
   /// Pass your int value here.
   final int selectedIndex;
 
-  /// Size of text and icons.
+  /// Size of text.
   ///
   /// The textScaleFactor is 1, so the text will NOT be scaled dynamically
   /// with the user's device settings.
@@ -128,6 +129,13 @@ class ResponsiveNavigationBar extends StatelessWidget {
   /// If you specify your own [fontSize], it will NOT be responsive any more
   /// - unless you pass something like above.
   final double? fontSize;
+
+  /// Size of icons.
+  ///
+  /// If null, defaults to [fontSize] value for backward compatibility.
+  ///
+  /// This allows you to set icon size independently from text size.
+  final double? iconSize;
 
   /// TextStyle for all buttons.
   ///
@@ -199,6 +207,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
             : deviceWidth >= 375
                 ? 20
                 : 18);
+    final buttonIconSize = iconSize ?? buttonFontSize;
 
     final buttons = <Widget>[];
     for (final button in navigationBarButtons) {
@@ -218,7 +227,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
           textStyle: textStyle.copyWith(
               color: button.textColor, fontSize: buttonFontSize),
           icon: button.icon,
-          iconSize: buttonFontSize,
+          iconSize: buttonIconSize,
           activeIconColor: activeIconColor,
           inactiveIconColor: inactiveIconColor,
           animationDuration: animationDuration,
@@ -397,7 +406,9 @@ class _Button extends StatelessWidget {
         text != '';
 
     // To align the button-height of non-text buttons
-    final buttonHeight = (textStyle.fontSize ?? 14) * 1.44;
+    // Use the larger of text height or icon size to ensure proper vertical centering
+    final textHeight = (textStyle.fontSize ?? 14) * 1.44;
+    final buttonHeight = textHeight > iconSize ? textHeight : iconSize;
 
     return TweenAnimationBuilder<int>(
       duration: animationDuration,

@@ -1,3 +1,9 @@
+## 6.2.0
+
+* Add `iconSize` parameter to `ResponsiveNavigationBar` for independent control of icon size
+* The `fontSize` parameter now specifically controls text size, while `iconSize` controls icon size
+* Backward compatible: `iconSize` defaults to `fontSize` value when not specified
+
 ## 6.1.0
 
 * Add `border` parameter to `ResponsiveNavigationBar` for adding colored borders around the navigation bar
