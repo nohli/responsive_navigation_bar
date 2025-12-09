@@ -29,7 +29,6 @@ class _MyAppState extends State<MyApp> {
         bottomNavigationBar: ResponsiveNavigationBar(
           selectedIndex: _selectedIndex,
           onTabChange: changeTab,
-          // Example: Set different sizes for text and icons
           // fontSize: 18,
           // iconSize: 28,
           // border: Border.all(
