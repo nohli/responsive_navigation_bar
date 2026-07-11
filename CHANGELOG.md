@@ -1,3 +1,7 @@
+## 6.2.1
+
+* Update the example Android toolchain to Android Gradle Plugin 9.1.1, Gradle 9.3.1, and Kotlin Gradle Plugin 2.2.20.
+* Apply the example app's Kotlin Gradle Plugin only when the host build still needs it.
 ## 6.2.0
 
 * Add `iconSize` parameter to `ResponsiveNavigationBar` for independent control of icon size
