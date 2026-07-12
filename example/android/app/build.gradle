@@ -1,9 +1,22 @@
 plugins {
     id "com.android.application"
-    id "org.jetbrains.kotlin.android"
-    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
-    id "dev.flutter.flutter-gradle-plugin"
 }
+
+def agpMajor = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION.tokenize('.')[0] as int
+boolean hasBuiltInKotlinSupport = agpMajor >= 9
+
+def builtInKotlinProperty = findProperty('android.builtInKotlin')
+boolean isBuiltInKotlinEnabled = builtInKotlinProperty == null ||
+        builtInKotlinProperty.toString().toBoolean()
+
+boolean shouldApplyKotlinGradlePlugin = !hasBuiltInKotlinSupport || !isBuiltInKotlinEnabled
+
+if (shouldApplyKotlinGradlePlugin) {
+    apply plugin: 'org.jetbrains.kotlin.android'
+}
+
+// The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+apply plugin: "dev.flutter.flutter-gradle-plugin"
 
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file("local.properties")
@@ -33,10 +46,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-
     defaultConfig {
         applicationId "com.responsive_navigation_bar.example"
         // You can update the following values to match your application needs.
@@ -58,4 +67,10 @@ android {
 
 flutter {
     source = "../.."
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+    }
 }
