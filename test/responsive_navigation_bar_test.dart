@@ -116,7 +116,8 @@ void main() {
 
     // Find all SizedBox widgets
     final sizedBoxes = find.byType(SizedBox);
-    // There should be at least 2 SizedBox widgets for spacing (one between each button)
+    // There should be at least 2 SizedBox widgets for spacing (one between each
+    // button)
     expect(sizedBoxes, findsWidgets);
   });
 
@@ -191,7 +192,8 @@ void main() {
     expect(navBar.borderRadius, 80);
 
     // Verify that buttons use the buttonBorderRadius value
-    // Find all DecoratedBox widgets (buttons have DecoratedBox with border radius)
+    // Find all DecoratedBox widgets (buttons have DecoratedBox with border
+    // radius)
     await tester.pumpAndSettle();
     final decoratedBoxes = tester.widgetList<DecoratedBox>(
       find.descendant(
@@ -201,7 +203,8 @@ void main() {
     );
 
     // Check that button DecoratedBoxes use buttonBorderRadius (20)
-    // Only check DecoratedBoxes that have a borderRadius and a color matching button backgrounds
+    // Only check DecoratedBoxes that have a borderRadius and a color matching
+    // button backgrounds
     var buttonDecoratedBoxFound = false;
     for (final box in decoratedBoxes) {
       final decoration = box.decoration as BoxDecoration?;
@@ -273,7 +276,8 @@ void main() {
     var buttonDecoratedBoxFound = false;
     for (final box in decoratedBoxes) {
       final decoration = box.decoration as BoxDecoration?;
-      // Only check DecoratedBoxes that have a borderRadius and a color matching button backgrounds
+      // Only check DecoratedBoxes that have a borderRadius and a color matching
+      // button backgrounds
       if (decoration?.borderRadius != null &&
           (decoration?.color == Colors.blue ||
               decoration?.color == Colors.red)) {
@@ -360,8 +364,8 @@ void main() {
   });
 
   testWidgets(
-      'Active button has proper width when showActiveButtonText is false and showInactiveButtonText is true',
-      (WidgetTester tester) async {
+      'Active button has proper width when showActiveButtonText is false and '
+      'showInactiveButtonText is true', (WidgetTester tester) async {
     int selectedIndex = 0;
 
     await tester.pumpWidget(

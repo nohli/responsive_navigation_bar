@@ -1,3 +1,8 @@
+## 6.2.1
+
+* Remove the Android example's explicit Kotlin Gradle Plugin and update it to
+  Flutter 3.44, Android Gradle Plugin 9.1.1, and Gradle 9.3.1.
+
 ## 6.2.0
 
 * Add `iconSize` parameter to `ResponsiveNavigationBar` for independent control of icon size

@@ -406,7 +406,8 @@ class _Button extends StatelessWidget {
         text != '';
 
     // To align the button-height of non-text buttons
-    // Use the larger of text height or icon size to ensure proper vertical centering
+    // Use the larger of text height or icon size to ensure proper vertical
+    // centering
     final textHeight = (textStyle.fontSize ?? 14) * 1.44;
     final buttonHeight = textHeight > iconSize ? textHeight : iconSize;
 
