@@ -3,8 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:responsive_navigation_bar/responsive_navigation_bar.dart';
 
 void main() {
-  testWidgets('showActiveButtonText displays text on active button',
-      (WidgetTester tester) async {
+  testWidgets('showActiveButtonText displays text on active button', (WidgetTester tester) async {
     int selectedIndex = 0;
 
     await tester.pumpWidget(
@@ -32,8 +31,7 @@ void main() {
     expect(find.text('Search'), findsNothing);
   });
 
-  testWidgets('showInactiveButtonText displays text on inactive buttons',
-      (WidgetTester tester) async {
+  testWidgets('showInactiveButtonText displays text on inactive buttons', (WidgetTester tester) async {
     int selectedIndex = 0;
 
     await tester.pumpWidget(
@@ -60,8 +58,7 @@ void main() {
     expect(find.text('Search'), findsOneWidget);
   });
 
-  testWidgets('inactive buttons show text when showInactiveButtonText is true',
-      (WidgetTester tester) async {
+  testWidgets('inactive buttons show text when showInactiveButtonText is true', (WidgetTester tester) async {
     int selectedIndex = 0;
 
     await tester.pumpWidget(
@@ -91,8 +88,7 @@ void main() {
     expect(find.text('Profile'), findsOneWidget);
   });
 
-  testWidgets('buttonSpacing adds spacing between buttons',
-      (WidgetTester tester) async {
+  testWidgets('buttonSpacing adds spacing between buttons', (WidgetTester tester) async {
     int selectedIndex = 0;
 
     await tester.pumpWidget(
@@ -121,8 +117,7 @@ void main() {
     expect(sizedBoxes, findsWidgets);
   });
 
-  testWidgets('padding parameter works on NavigationBarButton',
-      (WidgetTester tester) async {
+  testWidgets('padding parameter works on NavigationBarButton', (WidgetTester tester) async {
     int selectedIndex = 0;
 
     await tester.pumpWidget(
@@ -150,8 +145,7 @@ void main() {
     expect(find.byType(ResponsiveNavigationBar), findsOneWidget);
   });
 
-  testWidgets('ResponsiveNavigationBar accepts buttonBorderRadius parameter',
-      (WidgetTester tester) async {
+  testWidgets('ResponsiveNavigationBar accepts buttonBorderRadius parameter', (WidgetTester tester) async {
     int selectedIndex = 0;
 
     await tester.pumpWidget(
@@ -208,9 +202,7 @@ void main() {
     var buttonDecoratedBoxFound = false;
     for (final box in decoratedBoxes) {
       final decoration = box.decoration as BoxDecoration?;
-      if (decoration?.borderRadius != null &&
-          (decoration?.color == Colors.blue ||
-              decoration?.color == Colors.red)) {
+      if (decoration?.borderRadius != null && (decoration?.color == Colors.blue || decoration?.color == Colors.red)) {
         final radius = decoration!.borderRadius as BorderRadius;
         // Button border radius should be 20
         expect(radius.topLeft.x, 20);
@@ -218,13 +210,10 @@ void main() {
         break;
       }
     }
-    expect(buttonDecoratedBoxFound, true,
-        reason: 'Should find at least one button with border radius');
+    expect(buttonDecoratedBoxFound, true, reason: 'Should find at least one button with border radius');
   });
 
-  testWidgets(
-      'ResponsiveNavigationBar buttonBorderRadius defaults to borderRadius',
-      (WidgetTester tester) async {
+  testWidgets('ResponsiveNavigationBar buttonBorderRadius defaults to borderRadius', (WidgetTester tester) async {
     int selectedIndex = 0;
 
     await tester.pumpWidget(
@@ -278,9 +267,7 @@ void main() {
       final decoration = box.decoration as BoxDecoration?;
       // Only check DecoratedBoxes that have a borderRadius and a color matching
       // button backgrounds
-      if (decoration?.borderRadius != null &&
-          (decoration?.color == Colors.blue ||
-              decoration?.color == Colors.red)) {
+      if (decoration?.borderRadius != null && (decoration?.color == Colors.blue || decoration?.color == Colors.red)) {
         final radius = decoration!.borderRadius as BorderRadius;
         // Button border radius should default to borderRadius (40)
         expect(radius.topLeft.x, 40);
@@ -288,11 +275,9 @@ void main() {
         break;
       }
     }
-    expect(buttonDecoratedBoxFound, true,
-        reason: 'Should find at least one button with border radius');
+    expect(buttonDecoratedBoxFound, true, reason: 'Should find at least one button with border radius');
   });
-  testWidgets('ResponsiveNavigationBar accepts border property',
-      (WidgetTester tester) async {
+  testWidgets('ResponsiveNavigationBar accepts border property', (WidgetTester tester) async {
     int selectedIndex = 0;
 
     await tester.pumpWidget(
@@ -325,8 +310,7 @@ void main() {
     expect(find.byType(ResponsiveNavigationBar), findsOneWidget);
   });
 
-  testWidgets('NavigationBarButton accepts border property',
-      (WidgetTester tester) async {
+  testWidgets('NavigationBarButton accepts border property', (WidgetTester tester) async {
     int selectedIndex = 0;
 
     await tester.pumpWidget(
@@ -399,8 +383,7 @@ void main() {
     expect(find.text('Home'), findsNothing);
   });
 
-  testWidgets('iconSize parameter sets icon size independently from fontSize',
-      (WidgetTester tester) async {
+  testWidgets('iconSize parameter sets icon size independently from fontSize', (WidgetTester tester) async {
     int selectedIndex = 0;
 
     await tester.pumpWidget(
@@ -433,8 +416,7 @@ void main() {
     expect(navBar.iconSize, 32);
   });
 
-  testWidgets('iconSize defaults to fontSize when not specified',
-      (WidgetTester tester) async {
+  testWidgets('iconSize defaults to fontSize when not specified', (WidgetTester tester) async {
     int selectedIndex = 0;
 
     await tester.pumpWidget(
@@ -466,8 +448,7 @@ void main() {
     expect(navBar.iconSize, isNull);
   });
 
-  testWidgets('both fontSize and iconSize can be null for default sizing',
-      (WidgetTester tester) async {
+  testWidgets('both fontSize and iconSize can be null for default sizing', (WidgetTester tester) async {
     int selectedIndex = 0;
 
     await tester.pumpWidget(
@@ -497,8 +478,7 @@ void main() {
     expect(navBar.iconSize, isNull);
   });
 
-  testWidgets('larger iconSize than fontSize renders without overflow',
-      (WidgetTester tester) async {
+  testWidgets('larger iconSize than fontSize renders without overflow', (WidgetTester tester) async {
     int selectedIndex = 0;
 
     await tester.pumpWidget(
