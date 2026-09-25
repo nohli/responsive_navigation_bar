@@ -40,17 +40,12 @@ class _MyAppState extends State<MyApp> {
           // showInactiveButtonText: true,
           // borderRadius: 20,
           // buttonBorderRadius: 15,
-          textStyle: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
+          textStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           navigationBarButtons: <NavigationBarButton>[
             NavigationBarButton(
               text: 'Tab 1',
               icon: Icons.people,
-              backgroundGradient: const LinearGradient(
-                colors: [Colors.yellow, Colors.green, Colors.blue],
-              ),
+              backgroundGradient: const LinearGradient(colors: [Colors.yellow, Colors.green, Colors.blue]),
               // border: Border.all(
               //   color: Colors.white,
               //   width: 1.5,
@@ -59,9 +54,7 @@ class _MyAppState extends State<MyApp> {
             NavigationBarButton(
               text: 'Tab 2',
               icon: Icons.star,
-              backgroundGradient: const LinearGradient(
-                colors: [Colors.cyan, Colors.teal],
-              ),
+              backgroundGradient: const LinearGradient(colors: [Colors.cyan, Colors.teal]),
               // border: Border.all(
               //   color: Colors.white,
               //   width: 1.5,
@@ -70,9 +63,7 @@ class _MyAppState extends State<MyApp> {
             NavigationBarButton(
               text: 'Tab 3',
               icon: Icons.settings,
-              backgroundGradient: const LinearGradient(
-                colors: [Colors.green, Colors.yellow],
-              ),
+              backgroundGradient: const LinearGradient(colors: [Colors.green, Colors.yellow]),
               // border: Border.all(
               //   color: Colors.white,
               //   width: 1.5,

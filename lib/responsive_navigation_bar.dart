@@ -224,8 +224,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
           active: selectedIndex == index,
           text: button.text,
           textColor: button.textColor ?? textStyle.color,
-          textStyle: textStyle.copyWith(
-              color: button.textColor, fontSize: buttonFontSize),
+          textStyle: textStyle.copyWith(color: button.textColor, fontSize: buttonFontSize),
           icon: button.icon,
           iconSize: buttonIconSize,
           activeIconColor: activeIconColor,
@@ -239,12 +238,8 @@ class ResponsiveNavigationBar extends StatelessWidget {
                   : const EdgeInsets.symmetric(horizontal: 8, vertical: 10)),
           backgroundColor: button.backgroundColor,
           backgroundGradient: button.backgroundGradient,
-          activeFlexFactor: (showActiveButtonText || showInactiveButtonText)
-              ? activeButtonFlexFactor
-              : 1,
-          inactiveFlexFactor: (showActiveButtonText || showInactiveButtonText)
-              ? inactiveButtonsFlexFactor
-              : 1,
+          activeFlexFactor: (showActiveButtonText || showInactiveButtonText) ? activeButtonFlexFactor : 1,
+          inactiveFlexFactor: (showActiveButtonText || showInactiveButtonText) ? inactiveButtonsFlexFactor : 1,
           showActiveButtonText: showActiveButtonText,
           showInactiveButtonText: showInactiveButtonText,
           debugPaint: debugPaint,
@@ -268,8 +263,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   color: backgroundGradient == null
-                      ? (backgroundColor ?? const Color(0x7d8c8c8c))
-                          .withValues(alpha: backgroundOpacity)
+                      ? (backgroundColor ?? const Color(0x7d8c8c8c)).withValues(alpha: backgroundOpacity)
                       : null,
                   gradient: backgroundGradient,
                   border: border,
@@ -401,12 +395,11 @@ class _Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final showText = ((active && showActiveButtonText) ||
-            (!active && showInactiveButtonText)) &&
-        text != '';
+    final showText = ((active && showActiveButtonText) || (!active && showInactiveButtonText)) && text != '';
 
     // To align the button-height of non-text buttons
-    // Use the larger of text height or icon size to ensure proper vertical centering
+    // Use the larger of text height or icon size to ensure proper vertical
+    // centering
     final textHeight = (textStyle.fontSize ?? 14) * 1.44;
     final buttonHeight = textHeight > iconSize ? textHeight : iconSize;
 
