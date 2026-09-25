@@ -5,7 +5,7 @@ on:
   pull_request:
   push:
     branches:
-      - main
+      - '**'
 
 jobs:
   check_pub_dependencies:
@@ -75,9 +75,25 @@ jobs:
         run: dart analyze --fatal-infos
 
   test:
-    name: Flutter test
-    runs-on: ubuntu-latest
+    name: Flutter test (${{ matrix.platform }})
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: Linux
+            os: ubuntu-latest
+            command: flutter test
+          - platform: macOS
+            os: macos-latest
+            command: flutter test
+          - platform: Windows
+            os: windows-latest
+            command: flutter test
+          - platform: Web
+            os: ubuntu-latest
+            command: flutter test --platform chrome
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
@@ -95,12 +111,28 @@ jobs:
         run: flutter pub get
 
       - name: Flutter test
-        run: flutter test
+        run: ${{ matrix.command }}
 
   test_example:
-    name: Flutter test example
-    runs-on: ubuntu-latest
+    name: Flutter test example (${{ matrix.platform }})
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: Linux
+            os: ubuntu-latest
+            command: flutter test
+          - platform: macOS
+            os: macos-latest
+            command: flutter test
+          - platform: Windows
+            os: windows-latest
+            command: flutter test
+          - platform: Web
+            os: ubuntu-latest
+            command: flutter test --platform chrome
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
@@ -115,11 +147,9 @@ jobs:
         run: flutter config --no-analytics
 
       - name: Flutter pub get
-        run: |
-          cd example
-          flutter pub get
+        working-directory: example
+        run: flutter pub get
 
       - name: Flutter test example
-        run: |
-          cd example
-          flutter test
+        working-directory: example
+        run: ${{ matrix.command }}
