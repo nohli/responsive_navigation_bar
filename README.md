@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_navigation_bar/responsive_navigation_bar.dart';
 
 // In your State's build method, with `int selectedIndex = 0` as a field:
-Scaffold(
+return Scaffold(
   body: Center(child: Text('Tab $selectedIndex')),
   bottomNavigationBar: ResponsiveNavigationBar(
     selectedIndex: selectedIndex,
@@ -17,7 +17,7 @@ Scaffold(
       NavigationBarButton(text: 'Settings', icon: Icons.settings),
     ],
   ),
-)
+);
 ```
 
 ## Getting Started
