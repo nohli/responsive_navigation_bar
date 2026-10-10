@@ -1,16 +1,12 @@
 # responsive_navigation_bar_example
 
-Demonstrates how to use the responsive_navigation_bar package.
+Tap the three navigation buttons; the body shows the selected tab. The example demonstrates per-button gradients and app-controlled selection.
 
-## Getting Started
+Flutter 3.47 or newer for this checked-in native example. The package itself supports Flutter 3.29 or newer.
 
-This project is a starting point for a Flutter application.
+From this directory, select a compatible Flutter SDK with FVM, then run:
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```sh
+fvm flutter pub get
+fvm flutter run -d <device-id>
+```
