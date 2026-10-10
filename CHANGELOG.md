@@ -1,3 +1,9 @@
+## Unreleased
+
+* Use each button's position when repeated button instances appear in a list.
+* Apply background opacity to gradients.
+* Show selected destination content in the example and clarify controlled selection.
+
 ## 6.2.1
 
 * Remove the Android example's explicit Kotlin Gradle Plugin and update it to
