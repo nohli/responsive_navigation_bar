@@ -1,4 +1,10 @@
-## 6.2.2
+## 7.0.0
+
+* **Breaking:** Require Flutter 3.41 or newer and Dart 3.11 or newer. Upgrade
+  Flutter before adopting 7.0.0; applications on older Flutter can keep 6.2.1.
+  Existing widget constructors and selection callbacks are unchanged.
+* Use Flutter's built-in gradient scaling, which now preserves transforms,
+  and remove the compatibility implementation for older Flutter releases.
 
 * Expose button labels, tap actions, and selection state to screen readers,
   including when visual button text is hidden.
