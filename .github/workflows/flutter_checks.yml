@@ -117,6 +117,30 @@ jobs:
         timeout-minutes: 10
         run: ${{ matrix.command }}
 
+  minimum_flutter:
+    name: Minimum Flutter (3.41)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Install minimum supported Flutter line
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.41.9
+          channel: stable
+          cache: true
+
+      - name: Flutter pub get
+        run: flutter pub get --no-example
+
+      - name: Analyze package
+        run: flutter analyze --no-pub --fatal-infos
+
+      - name: Test package
+        run: flutter test --no-pub
+
   test_example:
     name: Flutter test example (${{ matrix.platform }})
     runs-on: ${{ matrix.os }}
