@@ -194,45 +194,6 @@ class ResponsiveNavigationBar extends StatelessWidget {
   /// Paints green/red background color for each button.
   final bool debugPaint;
 
-  static Gradient _scaleGradient(Gradient gradient, double opacity) {
-    final scaled = gradient.scale(opacity);
-    // Flutter 3.29 drops transforms in built-in Gradient.scale implementations.
-    if (scaled is LinearGradient && gradient is LinearGradient) {
-      return LinearGradient(
-        begin: scaled.begin,
-        end: scaled.end,
-        colors: scaled.colors,
-        stops: scaled.stops,
-        tileMode: scaled.tileMode,
-        transform: gradient.transform,
-      );
-    }
-    if (scaled is RadialGradient && gradient is RadialGradient) {
-      return RadialGradient(
-        center: scaled.center,
-        radius: scaled.radius,
-        focal: scaled.focal,
-        focalRadius: scaled.focalRadius,
-        colors: scaled.colors,
-        stops: scaled.stops,
-        tileMode: scaled.tileMode,
-        transform: gradient.transform,
-      );
-    }
-    if (scaled is SweepGradient && gradient is SweepGradient) {
-      return SweepGradient(
-        center: scaled.center,
-        startAngle: scaled.startAngle,
-        endAngle: scaled.endAngle,
-        colors: scaled.colors,
-        stops: scaled.stops,
-        tileMode: scaled.tileMode,
-        transform: gradient.transform,
-      );
-    }
-    return scaled;
-  }
-
   @override
   Widget build(BuildContext context) {
     // [points] from:
@@ -301,7 +262,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
                   color: backgroundGradient == null
                       ? (backgroundColor ?? const Color(0x7d8c8c8c)).withValues(alpha: backgroundOpacity)
                       : null,
-                  gradient: backgroundGradient == null ? null : _scaleGradient(backgroundGradient!, backgroundOpacity),
+                  gradient: backgroundGradient?.scale(backgroundOpacity),
                   border: border,
                   borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
                 ),
