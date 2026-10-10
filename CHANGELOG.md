@@ -14,6 +14,8 @@
   stops, and transforms.
 * Show each selected destination's content in the example, clarify caller-managed
   selection and text visibility, and add interaction and rendering regressions.
+* Migrate the native iOS example to the UIScene lifecycle and iOS 15 minimum
+  required by its Flutter 3.47 toolchain.
 
 ## 6.2.1
 
