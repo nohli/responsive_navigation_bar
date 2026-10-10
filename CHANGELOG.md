@@ -1,5 +1,6 @@
 ## Unreleased
 
+* Expose tab labels, tap actions, and selection state to screen readers.
 * Use each button's position when repeated button instances appear in a list.
 * Apply background opacity to gradients.
 * Show selected destination content in the example and clarify controlled selection.

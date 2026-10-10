@@ -1,6 +1,6 @@
 # responsive_navigation_bar
 
-Requires Flutter 3.29 or newer. Selection is controlled by your app: update `selectedIndex` inside `setState` when `onTabChange` fires.
+Requires Flutter 3.29 or newer. Provide button `text` for screen-reader labels, including icon-only layouts. Selection is controlled by your app: update `selectedIndex` inside `setState` when `onTabChange` fires.
 
 ```dart
 import 'package:flutter/material.dart';
