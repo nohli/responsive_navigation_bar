@@ -3,9 +3,9 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-///
+/// A responsive navigation bar with caller-managed selection.
 class ResponsiveNavigationBar extends StatelessWidget {
-  /// Put this in [Scaffold]'s [bottomNavigationBar]
+  /// Use this as [Scaffold.bottomNavigationBar].
   const ResponsiveNavigationBar({
     required this.navigationBarButtons,
     required this.onTabChange,
@@ -62,14 +62,14 @@ class ResponsiveNavigationBar extends StatelessWidget {
   /// Overrides [backgroundColor]!
   final Gradient? backgroundGradient;
 
-  /// Opacity of [backgroundColor]/[backGroundGradient].
+  /// Alpha of [backgroundColor], or a multiplier for [backgroundGradient] colors.
   ///
   /// ```
   /// 0 = invisible
   /// ```
   ///
   /// ```
-  /// 1 = fully visible
+  /// 1 = opaque solid background, or the gradient's original opacity
   /// ```
   final double backgroundOpacity;
 
@@ -153,12 +153,10 @@ class ResponsiveNavigationBar extends StatelessWidget {
   /// Set to 0 to disable animations.
   final Duration animationDuration;
 
-  /// This overrides [activeButtonFlexFactor] and [inactiveButtonsFlexFactor]
-  /// and sets each to 1 - so that active and inactive buttons
-  /// have the same size.
+  /// Whether to show text on the selected button.
   ///
-  /// Also, this overrides individual [text] parameters of
-  /// [NavigationBarButton]s (since the [text] will not be shown).
+  /// When both this and [showInactiveButtonText] are false, all buttons use
+  /// equal flex, overriding [activeButtonFlexFactor] and [inactiveButtonsFlexFactor].
   final bool showActiveButtonText;
 
   /// Whether to show text on inactive buttons.
@@ -210,8 +208,8 @@ class ResponsiveNavigationBar extends StatelessWidget {
     final buttonIconSize = iconSize ?? buttonFontSize;
 
     final buttons = <Widget>[];
-    for (final button in navigationBarButtons) {
-      final index = navigationBarButtons.indexOf(button);
+    for (var index = 0; index < navigationBarButtons.length; index++) {
+      final button = navigationBarButtons[index];
 
       // Add spacing before button (except for the first one)
       if (index > 0 && buttonSpacing > 0) {
@@ -265,7 +263,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
                   color: backgroundGradient == null
                       ? (backgroundColor ?? const Color(0x7d8c8c8c)).withValues(alpha: backgroundOpacity)
                       : null,
-                  gradient: backgroundGradient,
+                  gradient: backgroundGradient?.scale(backgroundOpacity),
                   border: border,
                   borderRadius: BorderRadius.all(
                     Radius.circular(borderRadius),
@@ -284,9 +282,9 @@ class ResponsiveNavigationBar extends StatelessWidget {
   }
 }
 
-///
+/// Appearance and content of a navigation button.
 class NavigationBarButton {
-  /// Put this in [ResponsiveNavigationBar]'s [navigationBarButtons]
+  /// Add this to [ResponsiveNavigationBar.navigationBarButtons].
   ///
   /// [ NavigationBarButton(...), NavigationBarButton(...), ... ]
   const NavigationBarButton({
@@ -342,7 +340,7 @@ class NavigationBarButton {
   /// Color of the text.
   ///
   /// If null, the button uses the color of the
-  /// [ResponsiveNavigationBar]'s [textStyle].
+  /// [ResponsiveNavigationBar.textStyle].
   final Color? textColor;
 }
 
