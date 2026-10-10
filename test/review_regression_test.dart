@@ -3,6 +3,34 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:responsive_navigation_bar/responsive_navigation_bar.dart';
 
 void main() {
+  for (final gradient in <Gradient>[
+    const LinearGradient(colors: [Colors.red, Colors.blue], transform: GradientRotation(1)),
+    const RadialGradient(colors: [Colors.red, Colors.blue], transform: GradientRotation(1)),
+    const SweepGradient(colors: [Colors.red, Colors.blue], transform: GradientRotation(1)),
+  ]) {
+    testWidgets('${gradient.runtimeType} opacity preserves its transform', (tester) async {
+      await tester.pumpWidget(MaterialApp(
+        home: Scaffold(
+          bottomNavigationBar: ResponsiveNavigationBar(
+            navigationBarButtons: const [NavigationBarButton()],
+            onTabChange: (_) {},
+            backgroundGradient: gradient,
+            backgroundOpacity: 0.4,
+          ),
+        ),
+      ));
+      final decoration = tester
+          .widget<DecoratedBox>(find
+              .descendant(
+                of: find.byType(ResponsiveNavigationBar),
+                matching: find.byType(DecoratedBox),
+              )
+              .first)
+          .decoration as BoxDecoration;
+      expect(decoration.gradient!.transform, same(gradient.transform));
+    });
+  }
+
   testWidgets('repeated button instances retain their list positions', (tester) async {
     const button = NavigationBarButton(icon: Icons.home);
     final taps = <int>[];
