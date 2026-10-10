@@ -1,8 +1,8 @@
-## Unreleased
+## 6.2.2
 
 * Expose tab labels, tap actions, and selection state to screen readers.
 * Use each button's position when repeated button instances appear in a list.
-* Apply background opacity to gradients.
+* Apply background opacity to gradients while preserving their transforms.
 * Show selected destination content in the example and clarify controlled selection.
 
 ## 6.2.1
