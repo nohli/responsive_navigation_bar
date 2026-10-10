@@ -8,21 +8,27 @@ void main() {
     final semantics = tester.ensureSemantics();
     try {
       var selectedIndex = 0;
-      await tester.pumpWidget(MaterialApp(home: StatefulBuilder(builder: (context, setState) {
-        return Scaffold(
-            bottomNavigationBar: ResponsiveNavigationBar(
-          selectedIndex: selectedIndex,
-          onTabChange: (index) => setState(() => selectedIndex = index),
-          showActiveButtonText: false,
-          navigationBarButtons: const [
-            NavigationBarButton(text: 'Home', icon: Icons.home),
-            NavigationBarButton(text: 'Settings', icon: Icons.settings),
-          ],
-        ));
-      })));
+      await tester.pumpWidget(
+        MaterialApp(
+          home: StatefulBuilder(
+            builder: (context, setState) {
+              return Scaffold(
+                bottomNavigationBar: ResponsiveNavigationBar(
+                  selectedIndex: selectedIndex,
+                  onTabChange: (index) => setState(() => selectedIndex = index),
+                  showActiveButtonText: false,
+                  navigationBarButtons: const [
+                    NavigationBarButton(text: 'Home', icon: Icons.home),
+                    NavigationBarButton(text: 'Settings', icon: Icons.settings),
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
+      );
       final inactive = tester.getSemantics(find.byIcon(Icons.settings)).getSemanticsData();
       expect(inactive.label, 'Settings');
-      // Individual flags also support the package's Flutter 3.29 minimum.
       // ignore: deprecated_member_use
       expect(inactive.hasFlag(ui.SemanticsFlag.isButton), isTrue);
       // ignore: deprecated_member_use

@@ -238,12 +238,13 @@ class ResponsiveNavigationBar extends StatelessWidget {
     // [points] from:
     // https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions
     final deviceWidth = MediaQuery.of(context).size.width;
-    final buttonFontSize = fontSize ??
+    final buttonFontSize =
+        fontSize ??
         (deviceWidth >= 650
             ? 33
             : deviceWidth >= 375
-                ? 20
-                : 18);
+            ? 20
+            : 18);
     final buttonIconSize = iconSize ?? buttonFontSize;
 
     final buttons = <Widget>[];
@@ -269,7 +270,8 @@ class ResponsiveNavigationBar extends StatelessWidget {
           animationDuration: animationDuration,
           borderRadius: buttonBorderRadius ?? borderRadius,
           border: button.border,
-          padding: button.padding ??
+          padding:
+              button.padding ??
               (deviceWidth >= 650
                   ? const EdgeInsets.symmetric(horizontal: 30, vertical: 10)
                   : const EdgeInsets.symmetric(horizontal: 8, vertical: 10)),
@@ -290,10 +292,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         heightFactor: 1,
         child: BackdropFilter(
-          filter: ImageFilter.blur(
-            sigmaX: backgroundBlur,
-            sigmaY: backgroundBlur,
-          ),
+          filter: ImageFilter.blur(sigmaX: backgroundBlur, sigmaY: backgroundBlur),
           child: SafeArea(
             child: Padding(
               padding: outerPadding,
@@ -304,9 +303,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
                       : null,
                   gradient: backgroundGradient == null ? null : _scaleGradient(backgroundGradient!, backgroundOpacity),
                   border: border,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(borderRadius),
-                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
                 ),
                 child: Padding(
                   padding: padding,
@@ -443,14 +440,9 @@ class _Button extends StatelessWidget {
 
     return TweenAnimationBuilder<int>(
       duration: animationDuration,
-      tween: IntTween(
-        end: active ? activeFlexFactor : inactiveFlexFactor,
-      ),
+      tween: IntTween(end: active ? activeFlexFactor : inactiveFlexFactor),
       builder: (context, flex, child) {
-        return Flexible(
-          flex: flex,
-          child: child!,
-        );
+        return Flexible(flex: flex, child: child!);
       },
       child: Semantics(
         container: true,
@@ -462,23 +454,19 @@ class _Button extends StatelessWidget {
         child: ColoredBox(
           color: kDebugMode && debugPaint
               ? index.remainder(2) == 0
-                  ? Colors.green.withValues(alpha: 0.3)
-                  : Colors.red.withValues(alpha: 0.3)
+                    ? Colors.green.withValues(alpha: 0.3)
+                    : Colors.red.withValues(alpha: 0.3)
               : Colors.transparent,
           child: GestureDetector(
             onTap: onTap,
             excludeFromSemantics: true,
             child: TweenAnimationBuilder<Color?>(
               duration: animationDuration,
-              tween: ColorTween(
-                end: active ? backgroundColor : Colors.transparent,
-              ),
+              tween: ColorTween(end: active ? backgroundColor : Colors.transparent),
               builder: (context, color, child) {
                 return DecoratedBox(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(borderRadius),
-                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
                     gradient: backgroundGradient,
                     color: color,
                     border: border,
@@ -497,15 +485,9 @@ class _Button extends StatelessWidget {
                       Flexible(
                         child: TweenAnimationBuilder<Color?>(
                           duration: animationDuration,
-                          tween: ColorTween(
-                            end: active ? activeIconColor : inactiveIconColor,
-                          ),
+                          tween: ColorTween(end: active ? activeIconColor : inactiveIconColor),
                           builder: (context, color, _) {
-                            return Icon(
-                              icon,
-                              size: iconSize,
-                              color: color,
-                            );
+                            return Icon(icon, size: iconSize, color: color);
                           },
                         ),
                       ),
