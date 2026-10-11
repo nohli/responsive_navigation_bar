@@ -3,9 +3,9 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-///
+/// A responsive navigation bar with caller-managed selection.
 class ResponsiveNavigationBar extends StatelessWidget {
-  /// Put this in [Scaffold]'s [bottomNavigationBar]
+  /// Use this as [Scaffold.bottomNavigationBar].
   const ResponsiveNavigationBar({
     required this.navigationBarButtons,
     required this.onTabChange,
@@ -62,14 +62,14 @@ class ResponsiveNavigationBar extends StatelessWidget {
   /// Overrides [backgroundColor]!
   final Gradient? backgroundGradient;
 
-  /// Opacity of [backgroundColor]/[backGroundGradient].
+  /// Alpha of [backgroundColor], or a multiplier for [backgroundGradient] colors.
   ///
   /// ```
   /// 0 = invisible
   /// ```
   ///
   /// ```
-  /// 1 = fully visible
+  /// 1 = opaque solid background, or the gradient's original opacity
   /// ```
   final double backgroundOpacity;
 
@@ -150,15 +150,13 @@ class ResponsiveNavigationBar extends StatelessWidget {
 
   /// Duration of the transition animations when switching tabs.
   ///
-  /// Set to 0 to disable animations.
+  /// Use [Duration.zero] to disable animations.
   final Duration animationDuration;
 
-  /// This overrides [activeButtonFlexFactor] and [inactiveButtonsFlexFactor]
-  /// and sets each to 1 - so that active and inactive buttons
-  /// have the same size.
+  /// Whether to show text on the selected button.
   ///
-  /// Also, this overrides individual [text] parameters of
-  /// [NavigationBarButton]s (since the [text] will not be shown).
+  /// When both this and [showInactiveButtonText] are false, all buttons use
+  /// equal flex, overriding [activeButtonFlexFactor] and [inactiveButtonsFlexFactor].
   final bool showActiveButtonText;
 
   /// Whether to show text on inactive buttons.
@@ -201,17 +199,18 @@ class ResponsiveNavigationBar extends StatelessWidget {
     // [points] from:
     // https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions
     final deviceWidth = MediaQuery.of(context).size.width;
-    final buttonFontSize = fontSize ??
+    final buttonFontSize =
+        fontSize ??
         (deviceWidth >= 650
             ? 33
             : deviceWidth >= 375
-                ? 20
-                : 18);
+            ? 20
+            : 18);
     final buttonIconSize = iconSize ?? buttonFontSize;
 
     final buttons = <Widget>[];
-    for (final button in navigationBarButtons) {
-      final index = navigationBarButtons.indexOf(button);
+    for (var index = 0; index < navigationBarButtons.length; index++) {
+      final button = navigationBarButtons[index];
 
       // Add spacing before button (except for the first one)
       if (index > 0 && buttonSpacing > 0) {
@@ -232,7 +231,8 @@ class ResponsiveNavigationBar extends StatelessWidget {
           animationDuration: animationDuration,
           borderRadius: buttonBorderRadius ?? borderRadius,
           border: button.border,
-          padding: button.padding ??
+          padding:
+              button.padding ??
               (deviceWidth >= 650
                   ? const EdgeInsets.symmetric(horizontal: 30, vertical: 10)
                   : const EdgeInsets.symmetric(horizontal: 8, vertical: 10)),
@@ -253,10 +253,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         heightFactor: 1,
         child: BackdropFilter(
-          filter: ImageFilter.blur(
-            sigmaX: backgroundBlur,
-            sigmaY: backgroundBlur,
-          ),
+          filter: ImageFilter.blur(sigmaX: backgroundBlur, sigmaY: backgroundBlur),
           child: SafeArea(
             child: Padding(
               padding: outerPadding,
@@ -265,11 +262,9 @@ class ResponsiveNavigationBar extends StatelessWidget {
                   color: backgroundGradient == null
                       ? (backgroundColor ?? const Color(0x7d8c8c8c)).withValues(alpha: backgroundOpacity)
                       : null,
-                  gradient: backgroundGradient,
+                  gradient: backgroundGradient?.scale(backgroundOpacity),
                   border: border,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(borderRadius),
-                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
                 ),
                 child: Padding(
                   padding: padding,
@@ -284,9 +279,9 @@ class ResponsiveNavigationBar extends StatelessWidget {
   }
 }
 
-///
+/// Appearance and content of a navigation button.
 class NavigationBarButton {
-  /// Put this in [ResponsiveNavigationBar]'s [navigationBarButtons]
+  /// Add this to [ResponsiveNavigationBar.navigationBarButtons].
   ///
   /// [ NavigationBarButton(...), NavigationBarButton(...), ... ]
   const NavigationBarButton({
@@ -299,7 +294,8 @@ class NavigationBarButton {
     this.textColor,
   });
 
-  /// Text of the button (if active).
+  /// Text shown according to the bar's visibility settings.
+  /// Also provides its screen-reader label, even when the text is hidden.
   final String text;
 
   /// Icon of the button.
@@ -342,7 +338,7 @@ class NavigationBarButton {
   /// Color of the text.
   ///
   /// If null, the button uses the color of the
-  /// [ResponsiveNavigationBar]'s [textStyle].
+  /// [ResponsiveNavigationBar.textStyle].
   final Color? textColor;
 }
 
@@ -405,78 +401,72 @@ class _Button extends StatelessWidget {
 
     return TweenAnimationBuilder<int>(
       duration: animationDuration,
-      tween: IntTween(
-        end: active ? activeFlexFactor : inactiveFlexFactor,
-      ),
+      tween: IntTween(end: active ? activeFlexFactor : inactiveFlexFactor),
       builder: (context, flex, child) {
-        return Flexible(
-          flex: flex,
-          child: child!,
-        );
+        return Flexible(flex: flex, child: child!);
       },
-      child: ColoredBox(
-        color: kDebugMode && debugPaint
-            ? index.remainder(2) == 0
-                ? Colors.green.withValues(alpha: 0.3)
-                : Colors.red.withValues(alpha: 0.3)
-            : Colors.transparent,
-        child: GestureDetector(
-          onTap: onTap,
-          child: TweenAnimationBuilder<Color?>(
-            duration: animationDuration,
-            tween: ColorTween(
-              end: active ? backgroundColor : Colors.transparent,
-            ),
-            builder: (context, color, child) {
-              return DecoratedBox(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(borderRadius),
+      child: Semantics(
+        container: true,
+        button: true,
+        selected: active,
+        label: text,
+        onTap: onTap,
+        excludeSemantics: true,
+        child: ColoredBox(
+          color: kDebugMode && debugPaint
+              ? index.remainder(2) == 0
+                    ? Colors.green.withValues(alpha: 0.3)
+                    : Colors.red.withValues(alpha: 0.3)
+              : Colors.transparent,
+          child: GestureDetector(
+            onTap: onTap,
+            excludeFromSemantics: true,
+            child: TweenAnimationBuilder<Color?>(
+              duration: animationDuration,
+              tween: ColorTween(end: active ? backgroundColor : Colors.transparent),
+              builder: (context, color, child) {
+                return DecoratedBox(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
+                    gradient: backgroundGradient,
+                    color: color,
+                    border: border,
                   ),
-                  gradient: backgroundGradient,
-                  color: color,
-                  border: border,
-                ),
-                child: child!,
-              );
-            },
-            child: Padding(
-              padding: padding,
-              child: SizedBox(
-                height: buttonHeight,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    if (showText) const SizedBox(width: 5),
-                    Flexible(
-                      child: TweenAnimationBuilder<Color?>(
-                        duration: animationDuration,
-                        tween: ColorTween(
-                          end: active ? activeIconColor : inactiveIconColor,
-                        ),
-                        builder: (context, color, _) {
-                          return Icon(
-                            icon,
-                            size: iconSize,
-                            color: color,
-                          );
-                        },
-                      ),
-                    ),
-                    if (showText) ...[
-                      const SizedBox(width: 5),
-                      Expanded(
-                        flex: 6,
-                        child: Text(
-                          text,
-                          style: textStyle,
-                          textAlign: TextAlign.center,
-                          textScaler: TextScaler.noScaling,
-                          maxLines: 1,
+                  child: child!,
+                );
+              },
+              child: Padding(
+                padding: padding,
+                child: SizedBox(
+                  height: buttonHeight,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      if (showText) const SizedBox(width: 5),
+                      Flexible(
+                        child: TweenAnimationBuilder<Color?>(
+                          duration: animationDuration,
+                          tween: ColorTween(end: active ? activeIconColor : inactiveIconColor),
+                          builder: (context, color, _) {
+                            return Icon(icon, size: iconSize, color: color);
+                          },
                         ),
                       ),
+                      if (showText) ...[
+                        const SizedBox(width: 5),
+                        Expanded(
+                          flex: 6,
+                          child: Text(
+                            text,
+                            style: textStyle,
+                            textAlign: TextAlign.center,
+                            textScaler: TextScaler.noScaling,
+                            maxLines: 1,
+                          ),
+                        ),
+                      ],
                     ],
-                  ],
+                  ),
                 ),
               ),
             ),
