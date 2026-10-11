@@ -26,3 +26,6 @@ migrate_working_dir/
 build/
 example/macos/Flutter/ephemeral/Flutter-Generated.xcconfig
 example/macos/Flutter/ephemeral/flutter_export_environment.sh
+
+# Generated FVM SDK links
+.fvm/
