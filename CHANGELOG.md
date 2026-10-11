@@ -2,6 +2,8 @@
 
 * **Breaking:** Require Flutter 3.47 or newer and Dart 3.13 or newer.
   Applications using older Flutter can continue with the previous major version.
+* Use Flutter’s version metadata directly in the Android example, removing
+  duplicate local-properties parsing and version fallbacks.
 
 ## 7.0.0
 
