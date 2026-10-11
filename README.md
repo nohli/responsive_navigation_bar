@@ -1,6 +1,6 @@
 # responsive_navigation_bar
 
-Requires Flutter 3.41 or newer (Dart 3.11+). Provide button `text` for screen-reader labels, including icon-only layouts. Selection is controlled by your app: update `selectedIndex` inside `setState` when `onTabChange` fires.
+Requires Flutter 3.47 or newer (Dart 3.13+). Provide button `text` for screen-reader labels, including icon-only layouts. Selection is controlled by your app: update `selectedIndex` inside `setState` when `onTabChange` fires.
 
 ```dart
 import 'package:flutter/material.dart';
@@ -24,9 +24,10 @@ return Scaffold(
 
 [Installation](https://pub.dev/packages/responsive_navigation_bar/install)
 
-Upgrading to 7.0.0: update Flutter to 3.41 or newer. The widget API is unchanged;
-applications using older Flutter can continue with 6.2.1. The checked-in native
-example requires Flutter 3.47 or newer.
+Upgrading to 8.0.0: update Flutter to 3.47 or newer. The widget API is unchanged;
+applications using older Flutter can continue with 7.x (Flutter 3.41+) or 6.2.1.
+The example also requires Flutter 3.47. Mobile host apps follow Flutter’s minimums
+(iOS 15 and Android API 24 on Flutter 3.47), or any higher minimum required by the app.
 
 [Example Code](https://pub.dev/packages/responsive_navigation_bar/example)
 

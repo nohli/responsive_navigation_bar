@@ -1,3 +1,8 @@
+## 8.0.0
+
+* **Breaking:** Require Flutter 3.47 or newer and Dart 3.13 or newer.
+  Applications using older Flutter can continue with the previous major version.
+
 ## 7.0.0
 
 * **Breaking:** Require Flutter 3.41 or newer and Dart 3.11 or newer. Upgrade
