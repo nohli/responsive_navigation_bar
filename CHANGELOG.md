@@ -1,28 +1,14 @@
 ## 8.0.0
 
-* **Breaking:** Require Flutter 3.47 or newer and Dart 3.13 or newer.
-  Applications using older Flutter can continue with the previous major version.
-* Use Flutter’s version metadata directly in the Android example, removing
-  duplicate local-properties parsing and version fallbacks.
+* **Breaking:** Require Flutter 3.47+.
 
 ## 7.0.0
 
-* **Breaking:** Require Flutter 3.41 or newer and Dart 3.11 or newer. Upgrade
-  Flutter before adopting 7.0.0; applications on older Flutter can keep 6.2.1.
-  Existing widget constructors and selection callbacks are unchanged.
-* Use Flutter's built-in gradient scaling, which now preserves transforms,
-  and remove the compatibility implementation for older Flutter releases.
-
-* Expose button labels, tap actions, and selection state to screen readers,
-  including when visual button text is hidden.
-* Use each button's position when the same button instance appears more than
-  once, so taps and selected state target the correct destination.
-* Apply background opacity to gradients while preserving their type, geometry,
-  stops, and transforms.
-* Show each selected destination's content in the example, clarify caller-managed
-  selection and text visibility, and add interaction and rendering regressions.
-* Migrate the native iOS example to the UIScene lifecycle and iOS 15 minimum
-  required by its Flutter 3.47 toolchain.
+* **Breaking:** Require Flutter 3.41+. Use 6.2.1 with older Flutter versions.
+* Add screen-reader labels, actions and selection state, including for icon-only buttons.
+* Fix taps and selection when a button instance is reused.
+* Preserve gradient geometry and transforms when applying background opacity.
+* Show selected page content in the example and update its iOS project for Flutter 3.47+.
 
 ## 6.2.1
 
