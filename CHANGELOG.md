@@ -3,7 +3,6 @@
 * **Breaking:** Require Flutter 3.41+. Use 6.2.1 with older Flutter versions.
 * Add screen-reader labels, actions and selection state, including for icon-only buttons.
 * Fix taps and selection when a button instance is reused.
-* Preserve gradient geometry and transforms when applying background opacity.
 * Show selected page content in the example and update its iOS project for Flutter 3.47+.
 
 ## 6.2.1

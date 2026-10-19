@@ -62,14 +62,14 @@ class ResponsiveNavigationBar extends StatelessWidget {
   /// Overrides [backgroundColor]!
   final Gradient? backgroundGradient;
 
-  /// Alpha of [backgroundColor], or a multiplier for [backgroundGradient] colors.
+  /// Alpha of the solid [backgroundColor]. Does not affect [backgroundGradient].
   ///
   /// ```
   /// 0 = invisible
   /// ```
   ///
   /// ```
-  /// 1 = opaque solid background, or the gradient's original opacity
+  /// 1 = opaque solid background
   /// ```
   final double backgroundOpacity;
 
@@ -262,7 +262,7 @@ class ResponsiveNavigationBar extends StatelessWidget {
                   color: backgroundGradient == null
                       ? (backgroundColor ?? const Color(0x7d8c8c8c)).withValues(alpha: backgroundOpacity)
                       : null,
-                  gradient: backgroundGradient?.scale(backgroundOpacity),
+                  gradient: backgroundGradient,
                   border: border,
                   borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
                 ),

@@ -38,7 +38,7 @@ example requires Flutter 3.47 or newer.
 * Set `iconSize` to control icon size independently (defaults to `fontSize` if not specified)
 * Optional: Beautiful gradient (`backgroundGradient`) for navigation bar and/or buttons (or solid colors)
 * Optional: Colored borders (`border`) for navigation bar and/or buttons
-* Optional: Change the opacity (`backgroundOpacity`) of the bar's solid background or gradient
+* Optional: Change the opacity (`backgroundOpacity`) of the bar's solid background; gradients retain their own opacity
 * Optional: Blurred background (`backgroundBlur`) from the top of the navigation bar to the bottom of the screen
 * Optional: Separate border radius controls (`borderRadius`, `buttonBorderRadius`)
 * Optional: Control button spacing (`buttonSpacing`)
