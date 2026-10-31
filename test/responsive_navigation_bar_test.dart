@@ -129,11 +129,7 @@ void main() {
               selectedIndex = index;
             },
             navigationBarButtons: const [
-              NavigationBarButton(
-                text: 'Home',
-                icon: Icons.home,
-                padding: EdgeInsets.all(20),
-              ),
+              NavigationBarButton(text: 'Home', icon: Icons.home, padding: EdgeInsets.all(20)),
               NavigationBarButton(text: 'Search', icon: Icons.search),
             ],
           ),
@@ -153,16 +149,8 @@ void main() {
         home: Scaffold(
           bottomNavigationBar: ResponsiveNavigationBar(
             navigationBarButtons: const [
-              NavigationBarButton(
-                text: 'Tab 1',
-                icon: Icons.home,
-                backgroundColor: Colors.blue,
-              ),
-              NavigationBarButton(
-                text: 'Tab 2',
-                icon: Icons.star,
-                backgroundColor: Colors.red,
-              ),
+              NavigationBarButton(text: 'Tab 1', icon: Icons.home, backgroundColor: Colors.blue),
+              NavigationBarButton(text: 'Tab 2', icon: Icons.star, backgroundColor: Colors.red),
             ],
             onTabChange: (index) {
               selectedIndex = index;
@@ -179,9 +167,7 @@ void main() {
     expect(find.byType(ResponsiveNavigationBar), findsOneWidget);
 
     // Verify the buttonBorderRadius parameter is set correctly
-    final navBar = tester.widget<ResponsiveNavigationBar>(
-      find.byType(ResponsiveNavigationBar),
-    );
+    final navBar = tester.widget<ResponsiveNavigationBar>(find.byType(ResponsiveNavigationBar));
     expect(navBar.buttonBorderRadius, 20);
     expect(navBar.borderRadius, 80);
 
@@ -190,10 +176,7 @@ void main() {
     // radius)
     await tester.pumpAndSettle();
     final decoratedBoxes = tester.widgetList<DecoratedBox>(
-      find.descendant(
-        of: find.byType(ResponsiveNavigationBar),
-        matching: find.byType(DecoratedBox),
-      ),
+      find.descendant(of: find.byType(ResponsiveNavigationBar), matching: find.byType(DecoratedBox)),
     );
 
     // Check that button DecoratedBoxes use buttonBorderRadius (20)
@@ -221,16 +204,8 @@ void main() {
         home: Scaffold(
           bottomNavigationBar: ResponsiveNavigationBar(
             navigationBarButtons: const [
-              NavigationBarButton(
-                text: 'Tab 1',
-                icon: Icons.home,
-                backgroundColor: Colors.blue,
-              ),
-              NavigationBarButton(
-                text: 'Tab 2',
-                icon: Icons.star,
-                backgroundColor: Colors.red,
-              ),
+              NavigationBarButton(text: 'Tab 1', icon: Icons.home, backgroundColor: Colors.blue),
+              NavigationBarButton(text: 'Tab 2', icon: Icons.star, backgroundColor: Colors.red),
             ],
             onTabChange: (index) {
               selectedIndex = index;
@@ -246,19 +221,14 @@ void main() {
     expect(find.byType(ResponsiveNavigationBar), findsOneWidget);
 
     // Verify the buttonBorderRadius is null (not set)
-    final navBar = tester.widget<ResponsiveNavigationBar>(
-      find.byType(ResponsiveNavigationBar),
-    );
+    final navBar = tester.widget<ResponsiveNavigationBar>(find.byType(ResponsiveNavigationBar));
     expect(navBar.buttonBorderRadius, isNull);
     expect(navBar.borderRadius, 40);
 
     // Verify that buttons default to using borderRadius value (40)
     await tester.pumpAndSettle();
     final decoratedBoxes = tester.widgetList<DecoratedBox>(
-      find.descendant(
-        of: find.byType(ResponsiveNavigationBar),
-        matching: find.byType(DecoratedBox),
-      ),
+      find.descendant(of: find.byType(ResponsiveNavigationBar), matching: find.byType(DecoratedBox)),
     );
 
     // Check that button DecoratedBoxes use borderRadius (40) as fallback
@@ -288,19 +258,10 @@ void main() {
             onTabChange: (index) {
               selectedIndex = index;
             },
-            border: Border.all(
-              color: Colors.white,
-              width: 2,
-            ),
+            border: Border.all(color: Colors.white, width: 2),
             navigationBarButtons: <NavigationBarButton>[
-              const NavigationBarButton(
-                text: 'Tab 1',
-                icon: Icons.home,
-              ),
-              const NavigationBarButton(
-                text: 'Tab 2',
-                icon: Icons.star,
-              ),
+              const NavigationBarButton(text: 'Tab 1', icon: Icons.home),
+              const NavigationBarButton(text: 'Tab 2', icon: Icons.star),
             ],
           ),
         ),
@@ -325,18 +286,12 @@ void main() {
               NavigationBarButton(
                 text: 'Tab 1',
                 icon: Icons.home,
-                border: Border.all(
-                  color: Colors.blue,
-                  width: 1.5,
-                ),
+                border: Border.all(color: Colors.blue, width: 1.5),
               ),
               NavigationBarButton(
                 text: 'Tab 2',
                 icon: Icons.star,
-                border: Border.all(
-                  color: Colors.red,
-                  width: 1.5,
-                ),
+                border: Border.all(color: Colors.red, width: 1.5),
               ),
             ],
           ),
@@ -347,8 +302,7 @@ void main() {
     expect(find.byType(ResponsiveNavigationBar), findsOneWidget);
   });
 
-  testWidgets(
-      'Active button has proper width when showActiveButtonText is false and '
+  testWidgets('Active button has proper width when showActiveButtonText is false and '
       'showInactiveButtonText is true', (WidgetTester tester) async {
     int selectedIndex = 0;
 
@@ -409,9 +363,7 @@ void main() {
     expect(find.byType(ResponsiveNavigationBar), findsOneWidget);
 
     // Verify the parameters are set correctly
-    final navBar = tester.widget<ResponsiveNavigationBar>(
-      find.byType(ResponsiveNavigationBar),
-    );
+    final navBar = tester.widget<ResponsiveNavigationBar>(find.byType(ResponsiveNavigationBar));
     expect(navBar.fontSize, 16);
     expect(navBar.iconSize, 32);
   });
@@ -441,9 +393,7 @@ void main() {
     expect(find.byType(ResponsiveNavigationBar), findsOneWidget);
 
     // Verify fontSize is set and iconSize is null (will default to fontSize)
-    final navBar = tester.widget<ResponsiveNavigationBar>(
-      find.byType(ResponsiveNavigationBar),
-    );
+    final navBar = tester.widget<ResponsiveNavigationBar>(find.byType(ResponsiveNavigationBar));
     expect(navBar.fontSize, 24);
     expect(navBar.iconSize, isNull);
   });
@@ -471,9 +421,7 @@ void main() {
     // Verify the widget is created and uses default responsive sizing
     expect(find.byType(ResponsiveNavigationBar), findsOneWidget);
 
-    final navBar = tester.widget<ResponsiveNavigationBar>(
-      find.byType(ResponsiveNavigationBar),
-    );
+    final navBar = tester.widget<ResponsiveNavigationBar>(find.byType(ResponsiveNavigationBar));
     expect(navBar.fontSize, isNull);
     expect(navBar.iconSize, isNull);
   });
