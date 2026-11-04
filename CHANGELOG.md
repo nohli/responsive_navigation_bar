@@ -1,3 +1,7 @@
+## 8.0.0
+
+* **Breaking:** Require Flutter 3.47+.
+
 ## 7.0.0
 
 * **Breaking:** Require Flutter 3.41+. Use 6.2.1 with older Flutter versions.

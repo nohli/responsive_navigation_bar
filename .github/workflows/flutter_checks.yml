@@ -118,7 +118,7 @@ jobs:
         run: ${{ matrix.command }}
 
   minimum_flutter:
-    name: Minimum Flutter (3.41)
+    name: Minimum Flutter (3.47)
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -128,7 +128,7 @@ jobs:
       - name: Install minimum supported Flutter line
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: 3.41.9
+          flutter-version: 3.47.0
           channel: stable
           cache: true
 
