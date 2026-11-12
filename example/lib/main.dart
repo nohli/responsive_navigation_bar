@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:responsive_navigation_bar/responsive_navigation_bar.dart';
 
 void main() => runApp(const MyApp());

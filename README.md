@@ -3,7 +3,7 @@
 Version 8.x requires Flutter 3.47 or newer. Provide button `text` for screen-reader labels, including icon-only layouts. Selection is controlled by your app: update `selectedIndex` inside `setState` when `onTabChange` fires.
 
 ```dart
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:responsive_navigation_bar/responsive_navigation_bar.dart';
 
 // In your State's build method, with `int selectedIndex = 0` as a field:
@@ -26,6 +26,7 @@ return Scaffold(
 
 ```yaml
 dependencies:
+  material_ui: ^1.11.0
   responsive_navigation_bar: ^8.0.0
 ```
 

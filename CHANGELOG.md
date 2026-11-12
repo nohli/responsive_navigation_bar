@@ -1,6 +1,7 @@
 ## 8.0.0
 
 * **Breaking:** Require Flutter 3.47+.
+* Remove deprecations in Flutter 3.50.
 
 ## 7.0.0
 
