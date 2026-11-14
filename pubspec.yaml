@@ -10,17 +10,18 @@ topics:
   - responsive
   - ui
 
-version: 6.2.1
+version: 8.0.0
 
 environment:
-  sdk: '>=3.6.0 <4.0.0'
-  flutter: '>=3.29.0'
+  sdk: ^3.13.0
+  flutter: '>=3.47.0'
 
 dependencies:
   flutter:
     sdk: flutter
+  material_ui: ^1.11.0
 
 dev_dependencies:
-  flutter_lints: ^6.0.0
+  flutter_lints: '>=5.0.0 <7.0.0'
   flutter_test:
     sdk: flutter

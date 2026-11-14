@@ -1,6 +1,44 @@
+# responsive_navigation_bar
+
+Version 8.x requires Flutter 3.47 or newer. Provide button `text` for screen-reader labels, including icon-only layouts. Selection is controlled by your app: update `selectedIndex` inside `setState` when `onTabChange` fires.
+
+```dart
+import 'package:material_ui/material_ui.dart';
+import 'package:responsive_navigation_bar/responsive_navigation_bar.dart';
+
+// In your State's build method, with `int selectedIndex = 0` as a field:
+return Scaffold(
+  body: Center(child: Text('Tab $selectedIndex')),
+  bottomNavigationBar: ResponsiveNavigationBar(
+    selectedIndex: selectedIndex,
+    onTabChange: (index) => setState(() => selectedIndex = index),
+    navigationBarButtons: const [
+      NavigationBarButton(text: 'Home', icon: Icons.home),
+      NavigationBarButton(text: 'Settings', icon: Icons.settings),
+    ],
+  ),
+);
+```
+
 ## Getting Started
 
-[Installation](https://pub.dev/packages/responsive_navigation_bar/install)
+**Flutter 3.47+**
+
+```yaml
+dependencies:
+  material_ui: ^1.11.0
+  responsive_navigation_bar: ^8.0.0
+```
+
+**Flutter 3.29–<3.47**
+
+```yaml
+dependencies:
+  responsive_navigation_bar: ^6.2.1
+```
+
+The widget API is unchanged. The example also requires Flutter 3.47. Mobile host apps follow Flutter’s minimums
+(iOS 15 and Android API 24 on Flutter 3.47), or any higher minimum required by the app.
 
 [Example Code](https://pub.dev/packages/responsive_navigation_bar/example)
 
@@ -8,11 +46,11 @@
 
 * Very easy to set up, beginner friendly
 * Everything is documented + you will be asked to add required values - the rest is optional (with sound null safety)
-* By default, `fontSize`, `iconSize` and `padding` are responsive (change size with screen size)
+* By default, text size, icon size and button padding are responsive (change size with screen size)
 * Set `iconSize` to control icon size independently (defaults to `fontSize` if not specified)
 * Optional: Beautiful gradient (`backgroundGradient`) for navigation bar and/or buttons (or solid colors)
 * Optional: Colored borders (`border`) for navigation bar and/or buttons
-* Optional: Change the opacity (`backgroundOpacity`) of the menu bar
+* Optional: Change the opacity (`backgroundOpacity`) of the bar's solid background; gradients retain their own opacity
 * Optional: Blurred background (`backgroundBlur`) from the top of the navigation bar to the bottom of the screen
 * Optional: Separate border radius controls (`borderRadius`, `buttonBorderRadius`)
 * Optional: Control button spacing (`buttonSpacing`)
@@ -46,19 +84,19 @@ inactiveIconColor:
 
 ### With animation
 
-![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/assets/animation-darkmode-with-text.gif)
-![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/assets/animation-darkmode-without-text.gif)
+![Screenrecording](https://raw.githubusercontent.com/nohli/responsive_navigation_bar/main/assets/animation-darkmode-with-text.gif)
+![Screenrecording](https://raw.githubusercontent.com/nohli/responsive_navigation_bar/main/assets/animation-darkmode-without-text.gif)
 \
-![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/assets/animation-lightmode-with-text.gif)
-![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/assets/animation-lightmode-without-text.gif)
+![Screenrecording](https://raw.githubusercontent.com/nohli/responsive_navigation_bar/main/assets/animation-lightmode-with-text.gif)
+![Screenrecording](https://raw.githubusercontent.com/nohli/responsive_navigation_bar/main/assets/animation-lightmode-without-text.gif)
 
 ### Without animation
 
-![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/assets/darkmode-with-text.gif)
-![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/assets/darkmode-without-text.gif)
+![Screenrecording](https://raw.githubusercontent.com/nohli/responsive_navigation_bar/main/assets/darkmode-with-text.gif)
+![Screenrecording](https://raw.githubusercontent.com/nohli/responsive_navigation_bar/main/assets/darkmode-without-text.gif)
 \
-![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/assets/lightmode-with-text.gif)
-![Screenrecording](https://raw.githubusercontent.com/nohli/navigation_bar/master/assets/lightmode-without-text.gif)
+![Screenrecording](https://raw.githubusercontent.com/nohli/responsive_navigation_bar/main/assets/lightmode-with-text.gif)
+![Screenrecording](https://raw.githubusercontent.com/nohli/responsive_navigation_bar/main/assets/lightmode-without-text.gif)
 
 ## Todo
 

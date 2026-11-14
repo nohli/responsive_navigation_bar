@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:responsive_navigation_bar/responsive_navigation_bar.dart';
 
 void main() => runApp(const MyApp());
@@ -25,6 +25,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        body: Center(child: Text('Selected tab ${_selectedIndex + 1}')),
         // extendBody: true,
         bottomNavigationBar: ResponsiveNavigationBar(
           selectedIndex: _selectedIndex,
