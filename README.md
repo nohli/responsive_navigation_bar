@@ -30,14 +30,7 @@ dependencies:
   responsive_navigation_bar: ^8.0.0
 ```
 
-**Flutter 3.41–<3.47**
-
-```yaml
-dependencies:
-  responsive_navigation_bar: ^7.0.0
-```
-
-**Flutter 3.29–<3.41**
+**Flutter 3.29–<3.47**
 
 ```yaml
 dependencies:

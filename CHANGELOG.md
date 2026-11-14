@@ -1,13 +1,9 @@
 ## 8.0.0
 
-* **Breaking:** Require Flutter 3.47+.
-* Remove deprecations in Flutter 3.50.
-
-## 7.0.0
-
-* **Breaking:** Require Flutter 3.41+. Use 6.2.1 with older Flutter versions.
+* **Breaking:** Require Flutter 3.47+. Use 6.2.1 with Flutter 3.29–3.46.
 * Add screen-reader labels, actions and selection state, including for icon-only buttons.
 * Fix taps and selection when a button instance is reused.
+* Replace deprecated Material imports with `package:material_ui/material_ui.dart` for Flutter 3.50.
 * Show selected page content in the example and update its iOS project for Flutter 3.47+.
 
 ## 6.2.1
