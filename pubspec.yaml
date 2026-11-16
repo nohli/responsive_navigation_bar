@@ -10,7 +10,7 @@ topics:
   - responsive
   - ui
 
-version: 8.0.0
+version: 8.0.0+1
 
 environment:
   sdk: ^3.13.0

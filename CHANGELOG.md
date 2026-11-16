@@ -1,10 +1,19 @@
+## 8.0.0+1
+
+* Update documentation
+
 ## 8.0.0
 
 * **Breaking:** Requires Flutter 3.47 or later; no Dart API changes
+* Replace deprecated Material imports with `package:material_ui/material_ui.dart` for Flutter 3.50
+
+## 7.0.0
+
+* **Breaking:** Requires Flutter 3.41 or later; no Dart API changes
 * Add screen-reader labels, tap actions and selection state, including for icon-only buttons
 * Fix incorrect tab selection when the same `NavigationBarButton` instance appears more than once
-* Replace deprecated Material imports with `package:material_ui/material_ui.dart` for Flutter 3.50
 * Display the selected page's content in the example
+* Update the example's iOS project for Flutter 3.47 or later
 
 ## 6.2.1
 
